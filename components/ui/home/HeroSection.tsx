@@ -77,7 +77,7 @@ export default function Hero() {
             className="mt-8 text-5xl font-black leading-tight md:text-7xl"
           >
             Master
-            <span className="bg-gradient-to-r from-orange-500 via-fuchsia-400 to-orange-500 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient">
+            <span className="bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-500 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient">
               {' '}
               Technical Interviews
             </span>

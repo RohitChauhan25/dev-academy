@@ -180,7 +180,7 @@ export default function Footer() {
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t pt-8 text-sm text-muted-foreground md:flex-row">
           <p>© {new Date().getFullYear()} InterviewHub. All rights reserved.</p>
 
-          <p>Built with ❤️ using Next.js, Tailwind CSS & shadcn/ui</p>
+          {/* <p>Built with ❤️ using Next.js, Tailwind CSS & shadcn/ui</p> */}
         </div>
       </div>
     </footer>

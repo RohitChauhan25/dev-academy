@@ -6,17 +6,21 @@ const links = [
     href: '/learn',
   },
   {
-    title: 'Interview Questions',
+    title: 'Practice',
+    href: '/practice',
+  },
+  {
+    title: 'Interview',
     href: '/interview-questions',
   },
   {
     title: 'Blogs',
     href: '/blogs',
   },
-  {
-    title: 'Resources',
-    href: '/resources',
-  },
+  // {
+  //   title: 'Resources',
+  //   href: '/resources',
+  // },
 
   // {
   //   title: 'About',
