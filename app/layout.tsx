@@ -73,7 +73,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Navbar />
 
-          <main>{children}</main>
+          <main className="px-4 lg:px-0 p-12">{children}</main>
 
           <Footer />
         </ThemeProvider>

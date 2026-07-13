@@ -18,6 +18,7 @@ import { RiNextjsFill } from 'react-icons/ri';
 import { SiMongodb } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { useInView } from 'react-intersection-observer';
 
 const categories = [
   'Frontend',
@@ -95,6 +96,10 @@ const technologies = [
 ];
 
 export default function Hero() {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.3,
+  });
   return (
     <section className="relative overflow-hidden py-24">
       {/* Background */}
@@ -157,7 +162,7 @@ export default function Hero() {
           >
             Prepare for
             <br />
-            <span className="bg-gradient-to-r from-orange-500 via-fuchsia-500 to-orange-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-indigo-500 via-violet-500 to-sky-400  bg-clip-text text-transparent">
               Technical Interview Rounds
             </span>
           </motion.h1>
@@ -242,32 +247,29 @@ export default function Hero() {
 
           {/* Cards */}
         </div>
-        <div className="mt-20 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div ref={ref} className="mt-20 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {technologies.map((item, index) => (
             <motion.div
               key={index}
-              initial={{
-                opacity: 0,
-                y: 30,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
+              initial={{ opacity: 0, y: 50 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{
-                delay: index * 0.15,
+                duration: 0.5,
+                delay: 0.15,
               }}
               whileHover={{
-                y: -8,
-                scale: 1.03,
+                y: -12,
+                scale: 1.04,
               }}
-              className="group rounded-2xl border bg-card/70 p-6 backdrop-blur transition-all"
+              className="group relative overflow-hidden rounded-3xl border bg-card p-8"
             >
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-violet-500/10">
-                {item.icon && <item.icon className={`h-6 w-6 ${item.color}`} />}
+              <div className="absolute left-0 top-0 h-1 w-0 bg-gradient-to-r from-violet-500 to-cyan-400 transition-all duration-500 group-hover:w-full" />
+
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 ">
+                {item.icon && <item.icon className={`h-8 w-8 `} />}
               </div>
 
-              <h3 className="text-lg font-bold">{item.title}</h3>
+              <h3 className="text-xl font-bold">{item.title}</h3>
 
               <p className="mt-3 text-sm leading-6 text-muted-foreground">
                 Curated interview questions, important concepts, practical examples and preparation

@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur shadow">
+    <header className="fixed top-0 z-50 border-b bg-background/80 backdrop-blur shadow w-full">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-8">
         <Logo />
 

@@ -63,10 +63,10 @@ export default function Hero() {
           <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={0}>
             <Badge
               variant="outline"
-              className="rounded-full border-orange-500/40 bg-orange-500/10 px-5 py-2 text-orange-300"
+              className="rounded-full border-blue-500/40 bg-blue-500/10 px-5 py-2 text-blue-300"
             >
               <Sparkles className="mr-2 h-4 w-4" />
-              AI Powered Technical Interview Platform
+              Learn • Practice • Crack Interviews
             </Badge>
           </motion.div>
           <motion.h1
@@ -74,15 +74,14 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
             custom={0.2}
-            className="mt-8 text-5xl font-black leading-tight md:text-7xl"
+            className="mt-8 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-7xl"
           >
-            Master
-            <span className="bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-500 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient">
-              {' '}
-              Technical Interviews
+            Learn{' '}
+            <span className="bg-gradient-to-r from-indigo-500 via-violet-500 to-sky-400 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient">
+              Modern Technologies
             </span>
             <br />
-            Faster With AI
+            <span className="text-foreground">Build Skills. Get Hired.</span>
           </motion.h1>
 
           <motion.p
@@ -92,9 +91,9 @@ export default function Hero() {
             custom={0.35}
             className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-muted-foreground md:text-xl"
           >
-            Prepare for Frontend, Backend, Full Stack, DSA, System Design, Machine Coding, and
-            Behavioral interviews using AI-powered mock interviews, curated roadmaps,
-            company-specific questions, and personalized learning paths.
+            Learn JavaScript, TypeScript, React, Next.js, Node.js, HTML, CSS, DSA, System Design,
+            and more through structured tutorials, interview questions, MCQs, output-based
+            challenges, company-wise preparation, and curated learning roadmaps.
           </motion.p>
 
           <motion.div

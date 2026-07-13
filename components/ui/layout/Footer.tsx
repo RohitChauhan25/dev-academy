@@ -64,7 +64,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="border-t bg-background">
+    <footer className="border-t bg-background  z-10">
       <div className="container mx-auto px-6 py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
           {/* Logo */}

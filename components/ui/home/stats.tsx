@@ -4,36 +4,36 @@ import { motion } from 'framer-motion';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
 
-import { BookOpen, Building2, Code2, FileText } from 'lucide-react';
+import { BookOpen, BrainCircuit, Building2, Code2, FileText } from 'lucide-react';
 
 const stats = [
   {
     icon: BookOpen,
-    value: 1200,
+    value: 10,
     suffix: '+',
-    title: 'Interview Questions',
-    description: 'Curated questions from beginner to advanced level.',
-  },
-  {
-    icon: Building2,
-    value: 150,
-    suffix: '+',
-    title: 'Companies',
-    description: 'Company-specific interview experiences and questions.',
+    title: 'Tutorials',
+    description: 'Step-by-step guides for modern web technologies.',
   },
   {
     icon: Code2,
     value: 20,
     suffix: '+',
     title: 'Technologies',
-    description: 'Frontend, Backend, DSA, System Design and more.',
+    description: 'JavaScript, React, Next.js, Node.js, CSS, HTML and more.',
+  },
+  {
+    icon: BrainCircuit,
+    value: 1200,
+    suffix: '+',
+    title: 'Interview Questions',
+    description: 'Curated questions from beginner to advanced level.',
   },
   {
     icon: FileText,
-    value: 250,
+    value: 500,
     suffix: '+',
-    title: 'Technical Blogs',
-    description: 'In-depth tutorials and interview preparation guides.',
+    title: 'Practice Questions',
+    description: 'MCQs, output-based questions and coding challenges.',
   },
 ];
 
