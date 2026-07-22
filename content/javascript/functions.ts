@@ -12,7 +12,7 @@ export const functions: Tutorial = {
 
   readingTime: '24 min',
 
-  lesson: 'Lesson 10 of 30',
+  lesson: 'Lesson 11 of 48',
 
   sections: [
     {
@@ -37,7 +37,8 @@ export const functions: Tutorial = {
     {
       type: 'paragraph',
       title: 'Function Declaration',
-      content: 'A function declaration defines a named function using the function keyword.',
+      content:
+        'A function declaration defines a named function using the function keyword.',
     },
 
     {
@@ -164,7 +165,8 @@ console.log(square(6));`,
     {
       type: 'paragraph',
       title: 'Function Scope',
-      content: 'Variables declared inside a function are accessible only within that function.',
+      content:
+        'Variables declared inside a function are accessible only within that function.',
     },
 
     {
@@ -250,16 +252,6 @@ function sayHello() {
       content:
         'Functions are one of the core building blocks of JavaScript. They make code reusable, modular, and easier to maintain.',
     },
-  ],
-
-  interviewQuestions: [
-    'What is a function in JavaScript?',
-    'What is the difference between parameters and arguments?',
-    'What is the difference between function declaration and function expression?',
-    'What are arrow functions?',
-    'What is a callback function?',
-    'What is function scope?',
-    'What is the return statement?',
   ],
 
   quiz: [

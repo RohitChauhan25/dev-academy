@@ -10,7 +10,7 @@ export const strings = {
 
   readingTime: '18 min',
 
-  lesson: 'Lesson 15 of 40',
+  lesson: 'Lesson 15 of 48',
 
   sections: [
     {
@@ -54,7 +54,8 @@ console.log(language.charAt(2));`,
     {
       type: 'paragraph',
       title: 'String Length',
-      content: 'The length property returns the total number of characters in a string.',
+      content:
+        'The length property returns the total number of characters in a string.',
     },
 
     {
@@ -122,7 +123,8 @@ console.log(\`Hello \${name}, welcome to \${technology}!\`);`,
     {
       type: 'paragraph',
       title: 'Splitting a String',
-      content: 'The split() method divides a string into an array using a specified separator.',
+      content:
+        'The split() method divides a string into an array using a specified separator.',
     },
 
     {
@@ -161,31 +163,6 @@ console.log(\`\${firstName} \${lastName}\`);`,
       title: 'Best Practice',
       content:
         'Prefer template literals over string concatenation because they are easier to read and maintain, especially when working with variables.',
-    },
-  ],
-
-  interviewQuestions: [
-    {
-      question: 'What is a string in JavaScript?',
-      answer: 'A string is a sequence of characters used to represent textual data.',
-    },
-    {
-      question: 'How do you find the length of a string?',
-      answer: 'Using the length property.',
-    },
-    {
-      question: 'What is the difference between slice() and split()?',
-      answer:
-        'slice() extracts a portion of a string, whereas split() converts a string into an array.',
-    },
-    {
-      question: 'What are template literals?',
-      answer:
-        'Template literals are strings enclosed in backticks that support interpolation and multi-line strings.',
-    },
-    {
-      question: 'How do you check if a string contains a specific word?',
-      answer: 'Using the includes() method.',
     },
   ],
 

@@ -10,7 +10,7 @@ export const transformingMethods = {
 
   readingTime: '20 min',
 
-  lesson: 'Lesson 19 of 40',
+  lesson: 'Lesson 27 of 48',
 
   sections: [
     {
@@ -26,7 +26,12 @@ export const transformingMethods = {
       headers: ['Method', 'Purpose', 'Returns', 'Modifies Original Array'],
       rows: [
         ['sort()', 'Reorder elements', 'The same array, sorted', '✅ Yes'],
-        ['reverse()', 'Reverse the order of elements', 'The same array, reversed', '✅ Yes'],
+        [
+          'reverse()',
+          'Reverse the order of elements',
+          'The same array, reversed',
+          '✅ Yes',
+        ],
         ['flat()', 'Flatten nested arrays', 'New, flattened array', '❌ No'],
         ['flatMap()', 'Map then flatten one level', 'New array', '❌ No'],
         ['join()', 'Combine elements into a string', 'A string', '❌ No'],
@@ -197,44 +202,10 @@ console.log(fruits.join(""));
     },
   ],
 
-  interviewQuestions: [
-    {
-      question: 'Why does numbers.sort() sometimes produce unexpected results with numeric arrays?',
-      answer:
-        'By default, sort() converts every element to a string and compares them based on their UTF-16 code unit values, not their numeric value. This means numbers are sorted lexicographically (as text) rather than numerically, so an array like [40, 1, 5, 200] can come out in an order that looks wrong at first glance. To sort numbers correctly, you must pass a comparator function such as (a, b) => a - b for ascending order.',
-    },
-    {
-      question:
-        'Do sort() and reverse() mutate the original array? How would you avoid that if needed?',
-      answer:
-        'Yes, both sort() and reverse() mutate the array in place and also return a reference to that same (now-modified) array. To avoid mutating the original — for example when working with immutable state — make a shallow copy first, such as with the spread operator ([...array].sort(...)) or array.slice(), and call the method on the copy instead.',
-    },
-    {
-      question: 'What is the difference between flat() and flatMap()?',
-      answer:
-        "flat() simply flattens an existing array by a given depth (one level by default, or more if you pass a number, or fully with Infinity) — it doesn't transform the elements themselves. flatMap() first maps each element through a callback function and then flattens the result by exactly one level, combining both operations into a single, slightly more efficient call. Use flatMap() when your mapping callback returns arrays that need to be flattened afterward.",
-    },
-    {
-      question: 'How would you flatten a deeply, arbitrarily nested array in one call?',
-      answer:
-        'Call flat(Infinity) — passing Infinity as the depth argument tells flat() to keep flattening no matter how many levels of nesting exist, rather than being limited to a specific number of levels.',
-    },
-    {
-      question: 'What does join() return, and how is it related to split()?',
-      answer:
-        "join() returns a single string made by concatenating every element of the array together, separated by whatever separator you provide (a comma by default). It's effectively the reverse operation of String.prototype.split(), which takes a string and breaks it into an array — join() takes an array and combines it back into a string.",
-    },
-    {
-      question:
-        'If you need to sort an array of objects by a numeric property in descending order, how would you write the comparator?',
-      answer:
-        "You'd pass a comparator like (a, b) => b.property - a.property, where \"property\" is the numeric field you're sorting by. Subtracting a's value from b's value (rather than the other way around) produces descending order, since it returns a positive number whenever a's value is smaller than b's, telling sort() to place b first.",
-    },
-  ],
-
   quiz: [
     {
-      question: 'What is wrong with calling [40, 1, 5, 200].sort() without a comparator?',
+      question:
+        'What is wrong with calling [40, 1, 5, 200].sort() without a comparator?',
       options: [
         'It throws an error',
         'It sorts the numbers as strings, not numerically',
@@ -249,7 +220,8 @@ console.log(fruits.join(""));
       answer: 2,
     },
     {
-      question: 'What argument would you pass to flat() to flatten an array of any nesting depth?',
+      question:
+        'What argument would you pass to flat() to flatten an array of any nesting depth?',
       options: ['0', '1', 'true', 'Infinity'],
       answer: 3,
     },
@@ -264,7 +236,8 @@ console.log(fruits.join(""));
       answer: 1,
     },
     {
-      question: 'What does join() return by default if no separator is provided?',
+      question:
+        'What does join() return by default if no separator is provided?',
       options: [
         'Elements separated by a space',
         'Elements separated by a comma',

@@ -10,7 +10,7 @@ export const scope = {
 
   readingTime: '18 min',
 
-  lesson: 'Lesson 11 of 30',
+  lesson: 'Lesson 13 of 48',
 
   sections: [
     {
@@ -199,16 +199,6 @@ console.log(language);`,
     },
   ],
 
-  interviewQuestions: [
-    'What is scope in JavaScript?',
-    'What is the difference between global scope and local scope?',
-    'What is block scope?',
-    'Why is let preferred over var?',
-    'What is lexical scope?',
-    'What is variable shadowing?',
-    'What is function scope?',
-  ],
-
   quiz: [
     {
       question: 'Which keyword creates a block-scoped variable?',
@@ -221,8 +211,14 @@ console.log(language);`,
       answer: 2,
     },
     {
-      question: 'Which scope allows inner functions to access parent variables?',
-      options: ['Global Scope', 'Function Scope', 'Lexical Scope', 'Module Scope'],
+      question:
+        'Which scope allows inner functions to access parent variables?',
+      options: [
+        'Global Scope',
+        'Function Scope',
+        'Lexical Scope',
+        'Module Scope',
+      ],
       answer: 2,
     },
   ],

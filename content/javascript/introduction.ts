@@ -12,7 +12,7 @@ export const introduction: Tutorial = {
 
   readingTime: '10 min',
 
-  lesson: 'Lesson 1 of 20',
+  lesson: 'Lesson 1 of 48',
 
   sections: [
     {
@@ -157,21 +157,15 @@ export const introduction: Tutorial = {
     },
   ],
 
-  interviewQuestions: [
-    'What is JavaScript?',
-    'Who created JavaScript?',
-    'What is ECMAScript?',
-    'Can JavaScript run outside the browser?',
-    'What is the difference between Java and JavaScript?',
-    'Which browsers use the V8 Engine?',
-    'What can JavaScript do inside a browser?',
-    'Why is JavaScript considered the language of the web?',
-  ],
-
   quiz: [
     {
       question: 'Who created JavaScript?',
-      options: ['James Gosling', 'Brendan Eich', 'Dennis Ritchie', 'Guido van Rossum'],
+      options: [
+        'James Gosling',
+        'Brendan Eich',
+        'Dennis Ritchie',
+        'Guido van Rossum',
+      ],
       answer: 1,
     },
     {

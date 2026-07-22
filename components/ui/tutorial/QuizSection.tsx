@@ -53,6 +53,7 @@ import { Card, CardContent } from '@/components/ui/card';
 
 interface Quiz {
   question: string;
+  code?: string;
   options: string[];
   answer: number;
 }
@@ -89,6 +90,12 @@ export default function QuizSection({ quiz }: QuizSectionProps) {
               <h3 className="mb-5 font-semibold">
                 {questionIndex + 1}. {item.question}
               </h3>
+
+              {item.code && (
+                <pre className="mb-5 overflow-x-auto rounded-lg bg-muted p-4 text-sm">
+                  <code>{item.code}</code>
+                </pre>
+              )}
 
               <div className="space-y-3">
                 {item.options.map((option, optionIndex) => {

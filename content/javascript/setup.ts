@@ -12,7 +12,7 @@ export const setup: Tutorial = {
 
   readingTime: '10 min',
 
-  lesson: 'Lesson 2 of 20',
+  lesson: 'Lesson 2 of 48',
 
   sections: [
     {
@@ -25,7 +25,11 @@ export const setup: Tutorial = {
     {
       type: 'list',
       title: 'Tools Required',
-      items: ['Google Chrome (Recommended)', 'Visual Studio Code', 'Basic knowledge of HTML'],
+      items: [
+        'Google Chrome (Recommended)',
+        'Visual Studio Code',
+        'Basic knowledge of HTML',
+      ],
     },
 
     {
@@ -52,7 +56,8 @@ export const setup: Tutorial = {
     {
       type: 'paragraph',
       title: 'Method 2: Run JavaScript Inside an HTML File',
-      content: 'JavaScript is commonly written inside HTML files using the <script> tag.',
+      content:
+        'JavaScript is commonly written inside HTML files using the <script> tag.',
     },
 
     {
@@ -158,14 +163,6 @@ export const setup: Tutorial = {
     },
   ],
 
-  interviewQuestions: [
-    'Do we need to install JavaScript?',
-    'How do you run JavaScript in a browser?',
-    'What is the purpose of the <script> tag?',
-    'Why should we use external JavaScript files?',
-    'How do you open the browser Developer Console?',
-  ],
-
   quiz: [
     {
       question: 'Which HTML tag is used to include JavaScript?',
@@ -179,7 +176,12 @@ export const setup: Tutorial = {
     },
     {
       question: 'Which method is recommended for real-world projects?',
-      options: ['Browser Console', 'Inline JavaScript', 'External JavaScript File', 'Bookmark'],
+      options: [
+        'Browser Console',
+        'Inline JavaScript',
+        'External JavaScript File',
+        'Bookmark',
+      ],
       answer: 2,
     },
   ],

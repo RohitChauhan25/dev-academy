@@ -12,7 +12,7 @@ export const dataTypes: Tutorial = {
 
   readingTime: '12 min',
 
-  lesson: 'Lesson 5 of 20',
+  lesson: 'Lesson 5 of 48',
 
   sections: [
     {
@@ -32,7 +32,16 @@ export const dataTypes: Tutorial = {
     {
       type: 'list',
       title: 'JavaScript Data Types',
-      items: ['String', 'Number', 'Boolean', 'Undefined', 'Null', 'BigInt', 'Symbol', 'Object'],
+      items: [
+        'String',
+        'Number',
+        'Boolean',
+        'Undefined',
+        'Null',
+        'BigInt',
+        'Symbol',
+        'Object',
+      ],
     },
 
     {
@@ -236,17 +245,6 @@ console.log(typeof {});`,
       content:
         'JavaScript provides seven primitive data types and one non-primitive type (Object). Understanding data types is essential because every variable, function, and expression in JavaScript works with them.',
     },
-  ],
-
-  interviewQuestions: [
-    'What are data types in JavaScript?',
-    'How many primitive data types does JavaScript have?',
-    'What is the difference between null and undefined?',
-    'Why does typeof null return "object"?',
-    'What is the difference between primitive and non-primitive data types?',
-    'What is BigInt?',
-    'What is Symbol?',
-    'What does the typeof operator do?',
   ],
 
   quiz: [

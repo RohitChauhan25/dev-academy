@@ -12,7 +12,7 @@ export const hoisting: Tutorial = {
 
   readingTime: '20 min',
 
-  lesson: 'Lesson 12 of 30',
+  lesson: 'Lesson 14 of 48',
 
   sections: [
     {
@@ -57,7 +57,8 @@ var name = "Rohit";
     {
       type: 'paragraph',
       title: 'What Actually Happens?',
-      content: 'JavaScript internally moves the declaration to the top, but not the assignment.',
+      content:
+        'JavaScript internally moves the declaration to the top, but not the assignment.',
     },
 
     {
@@ -209,16 +210,6 @@ const add = () => {
     },
   ],
 
-  interviewQuestions: [
-    'What is hoisting in JavaScript?',
-    'What is the difference between hoisting in var, let, and const?',
-    'What is the Temporal Dead Zone?',
-    'Why does var return undefined before declaration?',
-    'Are arrow functions hoisted?',
-    'What is the difference between function declaration and function expression during hoisting?',
-    'Why should you avoid using var?',
-  ],
-
   quiz: [
     {
       question: 'Which keyword is initialized as undefined during hoisting?',
@@ -238,6 +229,20 @@ const add = () => {
         'Function Declaration',
         'Anonymous Function',
       ],
+      answer: 2,
+    },
+    {
+      question: 'What does this code log?',
+      code: `console.log(a);
+var a = 5;`,
+      options: ['5', 'undefined', 'ReferenceError', 'null'],
+      answer: 1,
+    },
+    {
+      question: 'What does this code log?',
+      code: `console.log(b);
+let b = 10;`,
+      options: ['10', 'undefined', 'ReferenceError', 'null'],
       answer: 2,
     },
   ],

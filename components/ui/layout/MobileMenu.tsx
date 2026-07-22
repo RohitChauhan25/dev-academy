@@ -20,7 +20,7 @@ const navItems = [
   },
   {
     title: 'Interview',
-    href: '/interview',
+    href: '/interview-questions',
   },
   {
     title: 'Roadmaps',

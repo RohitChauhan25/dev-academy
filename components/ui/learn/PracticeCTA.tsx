@@ -70,7 +70,7 @@ export default function PracticeCTA() {
               </Button>
 
               <Button variant="outline" size="lg" asChild>
-                <Link href="/interview">Explore Interview Questions</Link>
+                <Link href="/interview-questions">Explore Interview Questions</Link>
               </Button>
             </div>
           </div>

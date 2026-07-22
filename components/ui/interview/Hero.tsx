@@ -5,12 +5,10 @@ import { motion } from 'framer-motion';
 import {
   ArrowRight,
   Sparkles,
-  BrainCircuit,
   Code2,
   Database,
   Server,
   Network,
-  Binary,
   FileCode2,
   Atom,
 } from 'lucide-react';
@@ -35,63 +33,71 @@ const categories = [
   'SQL',
 ];
 
-const technologies = [
+const questionSets = [
   {
-    title: 'JavaScript',
+    title: 'JavaScript Interview Questions & Answers',
     description: 'Closures, Promises, Event Loop, DOM, Async/Await, Hoisting and more.',
-    questions: 240,
+    questions: '150+',
     icon: Code2,
     color: 'text-yellow-400',
+    href: '/interview-questions/javascript',
+    status: 'live' as const,
   },
   {
-    title: 'React',
+    title: 'React.js Interview Questions & Answers',
     description: 'Hooks, Lifecycle, Performance, Context API, Redux, React 19.',
-    questions: 180,
+    questions: '100+',
     icon: Atom,
     color: 'text-cyan-400',
+    status: 'coming-soon' as const,
   },
   {
-    title: 'Node.js',
+    title: 'Node.js Interview Questions & Answers',
     description: 'Express, Authentication, Streams, Event Loop, REST APIs.',
-    questions: 150,
+    questions: '80+',
     icon: Server,
     color: 'text-green-400',
+    status: 'coming-soon' as const,
   },
   {
-    title: 'TypeScript',
+    title: 'TypeScript Interview Questions & Answers',
     description: 'Generics, Utility Types, Interfaces, Advanced Types.',
-    questions: 130,
+    questions: '60+',
     icon: FileCode2,
     color: 'text-blue-400',
+    status: 'coming-soon' as const,
   },
-
   {
-    title: 'Next.js',
-    description: 'OOP, Generators, Decorators, Django, Flask, FastAPI.',
-    questions: 190,
+    title: 'Next.js Interview Questions & Answers',
+    description: 'Routing, Rendering Strategies, Server Actions, Middleware.',
+    questions: '50+',
     icon: RiNextjsFill,
-    color: 'text-black-400',
+    color: 'text-foreground',
+    status: 'coming-soon' as const,
   },
   {
-    title: 'SQL',
+    title: 'SQL Interview Questions & Answers',
     description: 'Joins, Indexing, Transactions, Window Functions.',
-    questions: 140,
+    questions: '70+',
     icon: Database,
     color: 'text-pink-400',
+    status: 'coming-soon' as const,
   },
   {
-    title: 'MONGODB',
-    description: 'Joins, Indexing, Transactions, Window Functions.',
-    questions: 140,
+    title: 'MongoDB Interview Questions & Answers',
+    description: 'Aggregation, Indexing, Schema Design, Replication.',
+    questions: '40+',
     icon: SiMongodb,
     color: 'text-green-400',
+    status: 'coming-soon' as const,
   },
   {
-    title: 'System Design',
+    title: 'System Design Concepts',
     description: 'Scalability, Caching, Load Balancer, CAP, Queues.',
-    questions: 170,
+    questions: '30+',
     icon: Network,
     color: 'text-violet-400',
+    status: 'coming-soon' as const,
   },
 ];
 
@@ -247,43 +253,57 @@ export default function Hero() {
 
           {/* Cards */}
         </div>
-        <div ref={ref} className="mt-20 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {technologies.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{
-                duration: 0.5,
-                delay: 0.15,
-              }}
-              whileHover={{
-                y: -12,
-                scale: 1.04,
-              }}
-              className="group relative overflow-hidden rounded-3xl border bg-card p-8"
-            >
-              <div className="absolute left-0 top-0 h-1 w-0 bg-gradient-to-r from-violet-500 to-cyan-400 transition-all duration-500 group-hover:w-full" />
 
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 ">
-                {item.icon && <item.icon className={`h-8 w-8 `} />}
-              </div>
-
-              <h3 className="text-xl font-bold">{item.title}</h3>
-
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                Curated interview questions, important concepts, practical examples and preparation
-                roadmap.
-              </p>
-
-              <Link
-                href="/practice"
-                className="mt-5 inline-flex items-center text-sm font-medium text-violet-400 transition group-hover:translate-x-1"
+        <div ref={ref} className="mx-auto mt-20 grid max-w-5xl gap-6 md:grid-cols-2">
+          {questionSets.map((item, index) => {
+            const isLive = item.status === 'live';
+            const Card = (
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.05,
+                }}
+                whileHover={isLive ? { y: -6 } : undefined}
+                className={`group relative h-full overflow-hidden rounded-2xl border bg-card p-6 transition-colors duration-300 ${
+                  isLive ? 'hover:border-violet-500' : 'opacity-80'
+                }`}
               >
-                Start Practice →
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                    {item.icon && <item.icon className={`h-6 w-6 ${item.color}`} />}
+                  </div>
+
+                  <h3 className="text-lg font-bold">
+                    {item.questions} {item.title}
+                  </h3>
+                </div>
+
+                <p className="mt-4 text-sm leading-6 text-muted-foreground">{item.description}</p>
+
+                <div className="mt-5">
+                  {isLive ? (
+                    <span className="inline-flex items-center text-sm font-medium text-violet-400 transition group-hover:translate-x-1">
+                      View questions →
+                    </span>
+                  ) : (
+                    <Badge variant="secondary" className="uppercase tracking-wide">
+                      Coming soon
+                    </Badge>
+                  )}
+                </div>
+              </motion.div>
+            );
+
+            return isLive ? (
+              <Link key={item.title} href={item.href}>
+                {Card}
               </Link>
-            </motion.div>
-          ))}
+            ) : (
+              <div key={item.title}>{Card}</div>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -10,7 +10,7 @@ export const objects = {
 
   readingTime: '18 min',
 
-  lesson: 'Lesson 11 of 40',
+  lesson: 'Lesson 12 of 48',
 
   sections: [
     {
@@ -36,7 +36,8 @@ console.log(person);`,
     {
       type: 'paragraph',
       title: 'Accessing Object Properties',
-      content: 'Object properties can be accessed using dot notation or bracket notation.',
+      content:
+        'Object properties can be accessed using dot notation or bracket notation.',
     },
 
     {
@@ -55,7 +56,8 @@ console.log(person["age"]);`,
     {
       type: 'paragraph',
       title: 'Updating Properties',
-      content: 'You can update an existing property by assigning a new value to it.',
+      content:
+        'You can update an existing property by assigning a new value to it.',
     },
 
     {
@@ -75,7 +77,8 @@ console.log(person);`,
     {
       type: 'paragraph',
       title: 'Adding New Properties',
-      content: 'JavaScript objects are dynamic, meaning new properties can be added at any time.',
+      content:
+        'JavaScript objects are dynamic, meaning new properties can be added at any time.',
     },
 
     {
@@ -158,7 +161,8 @@ person.greet();`,
     {
       type: 'paragraph',
       title: 'Looping Through Objects',
-      content: "Use the for...in loop to iterate through an object's properties.",
+      content:
+        "Use the for...in loop to iterate through an object's properties.",
     },
 
     {
@@ -198,44 +202,35 @@ for (const key in person) {
     },
   ],
 
-  interviewQuestions: [
-    {
-      question: 'What is an object in JavaScript?',
-      answer: 'An object is a collection of key-value pairs used to store related data.',
-    },
-    {
-      question: 'What is the difference between dot notation and bracket notation?',
-      answer:
-        'Dot notation accesses properties directly, while bracket notation is useful for dynamic property names.',
-    },
-    {
-      question: 'How do you delete a property from an object?',
-      answer: 'Using the delete operator.',
-    },
-    {
-      question: 'What does Object.keys() return?',
-      answer: 'An array containing all property names.',
-    },
-    {
-      question: 'What is the purpose of the this keyword inside an object method?',
-      answer: 'It refers to the current object that owns the method.',
-    },
-  ],
-
   quiz: [
     {
       question: 'How are object properties stored?',
-      options: ['As key-value pairs', 'As indexes', 'As arrays', 'As variables'],
+      options: [
+        'As key-value pairs',
+        'As indexes',
+        'As arrays',
+        'As variables',
+      ],
       answer: 0,
     },
     {
       question: 'Which notation is useful for dynamic property names?',
-      options: ['Dot notation', 'Bracket notation', 'Parentheses', 'Angle brackets'],
+      options: [
+        'Dot notation',
+        'Bracket notation',
+        'Parentheses',
+        'Angle brackets',
+      ],
       answer: 1,
     },
     {
       question: 'Which method returns all property names?',
-      options: ['Object.values()', 'Object.entries()', 'Object.keys()', 'Object.assign()'],
+      options: [
+        'Object.values()',
+        'Object.entries()',
+        'Object.keys()',
+        'Object.assign()',
+      ],
       answer: 2,
     },
   ],

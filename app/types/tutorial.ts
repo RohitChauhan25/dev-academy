@@ -59,6 +59,11 @@ export type TutorialSection =
   | WarningSection
   | ImageSection;
 
+export interface InterviewQuestion {
+  question: string;
+  answer: string;
+}
+
 export interface Tutorial {
   slug: string;
 
@@ -74,10 +79,9 @@ export interface Tutorial {
 
   sections: TutorialSection[];
 
-  interviewQuestions: string[];
-
   quiz?: {
     question: string;
+    code?: string;
     options: string[];
     answer: number;
   }[];

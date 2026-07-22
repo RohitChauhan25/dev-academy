@@ -10,7 +10,7 @@ export const addingRemovingMethods = {
 
   readingTime: '18 min',
 
-  lesson: 'Lesson 16 of 40',
+  lesson: 'Lesson 24 of 48',
 
   sections: [
     {
@@ -23,12 +23,42 @@ export const addingRemovingMethods = {
     {
       type: 'table',
       title: 'Methods Overview',
-      headers: ['Method', 'Purpose', 'Modifies Original Array', 'Returns', 'Typical Speed'],
+      headers: [
+        'Method',
+        'Purpose',
+        'Modifies Original Array',
+        'Returns',
+        'Typical Speed',
+      ],
       rows: [
-        ['push()', 'Add element(s) to the end', '✅ Yes', 'New length', 'Fast — O(1)'],
-        ['pop()', 'Remove the last element', '✅ Yes', 'The removed element', 'Fast — O(1)'],
-        ['unshift()', 'Add element(s) to the beginning', '✅ Yes', 'New length', 'Slower — O(n)'],
-        ['shift()', 'Remove the first element', '✅ Yes', 'The removed element', 'Slower — O(n)'],
+        [
+          'push()',
+          'Add element(s) to the end',
+          '✅ Yes',
+          'New length',
+          'Fast — O(1)',
+        ],
+        [
+          'pop()',
+          'Remove the last element',
+          '✅ Yes',
+          'The removed element',
+          'Fast — O(1)',
+        ],
+        [
+          'unshift()',
+          'Add element(s) to the beginning',
+          '✅ Yes',
+          'New length',
+          'Slower — O(n)',
+        ],
+        [
+          'shift()',
+          'Remove the first element',
+          '✅ Yes',
+          'The removed element',
+          'Slower — O(n)',
+        ],
         [
           'splice()',
           'Add/remove/replace anywhere',
@@ -222,44 +252,6 @@ console.log(letters);
     },
   ],
 
-  interviewQuestions: [
-    {
-      question:
-        'What is the difference between push() and unshift(), both in behavior and performance?',
-      answer:
-        "push() adds one or more elements to the end of the array and returns the new length; unshift() adds one or more elements to the beginning and also returns the new length. Behaviorally they're mirror images of each other, but performance differs: push() is O(1) because it just appends after the last element, while unshift() is O(n) because every existing element has to be shifted one position to the right to make room at the front.",
-    },
-    {
-      question:
-        'What is the return value of pop(), and what happens if you call it on an empty array?',
-      answer:
-        'pop() returns the element that was removed from the end of the array. If the array is empty, pop() does not throw an error — it simply returns undefined and the array remains an empty array.',
-    },
-    {
-      question:
-        'How is shift() different from pop() in terms of which element is removed and how fast each is?',
-      answer:
-        'pop() removes the last element of the array and runs in O(1) time since no re-indexing is needed. shift() removes the first element and runs in O(n) time, because every remaining element must be shifted one position to the left to fill the gap left at index 0.',
-    },
-    {
-      question:
-        'What does splice() return, and how do its start/deleteCount/items arguments work together?',
-      answer:
-        'splice() returns an array containing the elements that were removed (an empty array if none were removed). Its signature is array.splice(start, deleteCount, item1, item2, ...): "start" is the index to begin at (negative values count from the end), "deleteCount" is how many elements to remove from that index, and any additional arguments are new elements inserted at that same position — so splice() can remove, insert, or replace depending on which of these you use.',
-    },
-    {
-      question:
-        'Which array methods mutate the original array, and how would you achieve the same result without mutation?',
-      answer:
-        'push(), pop(), shift(), unshift(), and splice() all mutate the original array in place. To get an equivalent result without mutating, use non-mutating alternatives instead: slice() to copy out a portion, concat() or the spread operator [...arr] to add elements into a new array, filter() to remove elements into a new array, or the newer ES2023 methods like toSpliced(), toSorted(), and toReversed(), which return a new array and leave the original untouched.',
-    },
-    {
-      question: 'Why is unshift() considered slower than push() on large arrays?',
-      answer:
-        "Arrays in JavaScript are typically stored so that elements can be appended at the end cheaply. push() takes advantage of this by just adding to the end — O(1). unshift() has to insert at index 0, which means every other element's index shifts up by one, so the engine must move all n existing elements — O(n). The larger the array, the more noticeable this cost becomes.",
-    },
-  ],
-
   quiz: [
     {
       question: 'Which method adds an element to the beginning of an array?',
@@ -287,7 +279,8 @@ console.log(letters);
       answer: 1,
     },
     {
-      question: 'Why is unshift() generally slower than push() on large arrays?',
+      question:
+        'Why is unshift() generally slower than push() on large arrays?',
       options: [
         'unshift() copies the array to a new memory location every time',
         'unshift() has to re-index every existing element',

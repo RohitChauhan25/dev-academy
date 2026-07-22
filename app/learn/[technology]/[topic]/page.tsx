@@ -5,7 +5,7 @@ import InterviewSection from '@/components/ui/tutorial/InterviewSection';
 import QuizSection from '@/components/ui/tutorial/QuizSection';
 import NavigationSection from '@/components/ui/tutorial/NavigationSection';
 import TutorialHero from '@/components/ui/tutorial/TechnologyHero';
-import { getTutorial } from '@/lib/tutorials';
+import { getInterviewQuestions, getTutorial } from '@/lib/tutorials';
 import TableOfContents from '@/components/ui/tutorial/TableOfContents';
 
 interface Props {
@@ -24,6 +24,8 @@ export default async function TutorialPage({ params }: Props) {
     notFound();
   }
 
+  const interviewQuestions = getInterviewQuestions(technology, topic) ?? [];
+
   return (
     <main className="container mx-auto max-w-6xl py-10">
       <TutorialHero
@@ -38,7 +40,7 @@ export default async function TutorialPage({ params }: Props) {
 
       <TutorialRenderer sections={tutorial?.sections} />
 
-      <InterviewSection questions={tutorial.interviewQuestions} />
+      <InterviewSection questions={interviewQuestions} />
 
       {tutorial.quiz && <QuizSection quiz={tutorial.quiz} />}
 

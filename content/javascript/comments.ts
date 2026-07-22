@@ -12,7 +12,7 @@ export const comments: Tutorial = {
 
   readingTime: '8 min',
 
-  lesson: 'Lesson 3 of 20',
+  lesson: 'Lesson 4 of 48',
 
   sections: [
     {
@@ -141,14 +141,6 @@ i++;`,
       content:
         'Comments are an essential part of writing clean code. Use single-line comments for short explanations and multi-line comments for detailed documentation. Always keep comments meaningful and up to date.',
     },
-  ],
-
-  interviewQuestions: [
-    'What are comments in JavaScript?',
-    'Why do we use comments?',
-    'What is the difference between single-line and multi-line comments?',
-    'Can comments be executed by JavaScript?',
-    'When should comments be avoided?',
   ],
 
   quiz: [

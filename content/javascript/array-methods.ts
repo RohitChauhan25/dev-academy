@@ -10,7 +10,7 @@ export const arrayMethods = {
 
   readingTime: '12 min',
 
-  lesson: 'Lesson 15 of 40',
+  lesson: 'Lesson 23 of 48',
 
   sections: [
     {
@@ -86,14 +86,6 @@ console.log(fruits);`,
       content:
         'In the following lessons, we will explore every category of array methods in detail with practical examples, interview questions, and coding exercises.',
     },
-  ],
-
-  interviewQuestions: [
-    'What are array methods in JavaScript?',
-    'Why are array methods preferred over loops?',
-    'Name five commonly used array methods.',
-    'Which array methods modify the original array?',
-    'Which array methods return a new array?',
   ],
 
   quiz: [

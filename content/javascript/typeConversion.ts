@@ -12,7 +12,7 @@ export const typeConversion: Tutorial = {
 
   readingTime: '14 min',
 
-  lesson: 'Lesson 6 of 20',
+  lesson: 'Lesson 6 of 48',
 
   sections: [
     {
@@ -32,7 +32,10 @@ export const typeConversion: Tutorial = {
     {
       type: 'list',
       title: 'Types of Conversion',
-      items: ['Implicit (Automatic) Conversion', 'Explicit (Manual) Conversion'],
+      items: [
+        'Implicit (Automatic) Conversion',
+        'Explicit (Manual) Conversion',
+      ],
     },
 
     {
@@ -118,7 +121,16 @@ console.log(Boolean("Hello"));`,
     {
       type: 'list',
       title: 'Falsy Values',
-      items: ['false', '0', '-0', '0n', '"" (empty string)', 'null', 'undefined', 'NaN'],
+      items: [
+        'false',
+        '0',
+        '-0',
+        '0n',
+        '"" (empty string)',
+        'null',
+        'undefined',
+        'NaN',
+      ],
     },
 
     {
@@ -158,16 +170,6 @@ console.log(5 === "5");  // false`,
     },
   ],
 
-  interviewQuestions: [
-    'What is type conversion in JavaScript?',
-    'What is the difference between implicit and explicit conversion?',
-    'What is type coercion?',
-    'What is the difference between == and ===?',
-    'What are truthy and falsy values?',
-    'What does Number("abc") return?',
-    'How do you convert a number into a string?',
-  ],
-
   quiz: [
     {
       question: 'Which function converts a value to a number?',
@@ -183,6 +185,19 @@ console.log(5 === "5");  // false`,
       question: 'Which operator checks both value and data type?',
       options: ['==', '===', '=', '!='],
       answer: 1,
+    },
+    {
+      question: 'What does this code log?',
+      code: `console.log([] + []);
+console.log([] + {});
+console.log(1 + "1");`,
+      options: [
+        '"", "[object Object]", "11"',
+        '0, NaN, "11"',
+        '"[object Object]", "", 11',
+        'TypeError for all three',
+      ],
+      answer: 0,
     },
   ],
 

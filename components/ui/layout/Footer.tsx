@@ -13,7 +13,7 @@ export default function Footer() {
     },
     {
       title: 'Interview Questions',
-      href: '/questions',
+      href: '/interview-questions',
     },
     {
       title: 'Roadmaps',

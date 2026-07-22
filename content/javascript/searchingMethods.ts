@@ -10,7 +10,7 @@ export const searchingMethods = {
 
   readingTime: '20 min',
 
-  lesson: 'Lesson 17 of 40',
+  lesson: 'Lesson 25 of 48',
 
   sections: [
     {
@@ -25,7 +25,12 @@ export const searchingMethods = {
       title: 'Methods Overview',
       headers: ['Method', 'Purpose', 'Returns', 'Stops at First Match?'],
       rows: [
-        ['indexOf()', 'Find the index of an exact value', 'Index number, or -1', '✅ Yes'],
+        [
+          'indexOf()',
+          'Find the index of an exact value',
+          'Index number, or -1',
+          '✅ Yes',
+        ],
         [
           'lastIndexOf()',
           'Find the index of the last exact match',
@@ -39,8 +44,18 @@ export const searchingMethods = {
           'The matching element, or undefined',
           '✅ Yes',
         ],
-        ['findIndex()', 'Get the index of the first match', 'Index number, or -1', '✅ Yes'],
-        ['some()', 'Check if at least one element matches', 'true or false', '✅ Yes'],
+        [
+          'findIndex()',
+          'Get the index of the first match',
+          'Index number, or -1',
+          '✅ Yes',
+        ],
+        [
+          'some()',
+          'Check if at least one element matches',
+          'true or false',
+          '✅ Yes',
+        ],
         [
           'every()',
           'Check if all elements match',
@@ -241,49 +256,16 @@ console.log([].every((n) => n > 100));
     },
   ],
 
-  interviewQuestions: [
-    {
-      question: 'What is the difference between indexOf() and includes()?',
-      answer:
-        "indexOf() returns the index of the first matching element, or -1 if it isn't found, so it's useful when you need the position. includes() returns a boolean (true/false) indicating whether the value exists, which is more readable when you only care about presence. includes() also has an edge-case advantage: it can correctly detect NaN in an array using the SameValueZero algorithm, while indexOf() cannot, because NaN !== NaN under strict equality.",
-    },
-    {
-      question:
-        'How does find() differ from filter(), and what does find() return if nothing matches?',
-      answer:
-        'find() returns only the first element that satisfies the callback and stops iterating as soon as it finds one, whereas filter() checks every element and returns a new array containing all matches. If no element satisfies the condition, find() returns undefined, while filter() would return an empty array.',
-    },
-    {
-      question: 'What is the difference between find() and findIndex()?',
-      answer:
-        'find() returns the actual matching element (or undefined if none matches), while findIndex() returns the index of that matching element (or -1 if none matches). Use findIndex() when you need the position — for example, to later remove or replace that element with splice().',
-    },
-    {
-      question: 'What does every() return when called on an empty array, and why?',
-      answer:
-        "every() returns true on an empty array. This is because every() is only false if it finds an element that fails the condition; with no elements to check, there's nothing to fail, so the check is vacuously true. This is a common source of confusion and worth testing explicitly.",
-    },
-    {
-      question:
-        'Why might indexOf() fail to find an object in an array even if an "identical" object exists in that array?',
-      answer:
-        'indexOf() uses strict equality (===) to compare values. For objects, strict equality checks whether two variables reference the exact same object in memory, not whether their properties are equal. So searching for a newly created object like { id: 1 } will return -1 even if the array contains another object with the same shape and values, because they are different references. To search by property value, use find() or findIndex() with a callback instead.',
-    },
-    {
-      question: 'When would you choose some() over every(), or vice versa?',
-      answer:
-        'Choose some() when you need to confirm that at least one element in the array meets a condition — for example, checking if a cart contains any out-of-stock item. Choose every() when you need to confirm that all elements meet a condition — for example, validating that every field in a form has been filled in. some() short-circuits on the first true result, and every() short-circuits on the first false result, so both can be efficient even on large arrays.',
-    },
-  ],
-
   quiz: [
     {
-      question: 'What does indexOf() return when the value is not found in the array?',
+      question:
+        'What does indexOf() return when the value is not found in the array?',
       options: ['null', 'undefined', '-1', 'false'],
       answer: 2,
     },
     {
-      question: 'Which method returns a boolean instead of an index or element?',
+      question:
+        'Which method returns a boolean instead of an index or element?',
       options: ['findIndex()', 'includes()', 'find()', 'lastIndexOf()'],
       answer: 1,
     },

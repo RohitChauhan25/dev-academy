@@ -10,7 +10,7 @@ export const conditionals = {
 
   readingTime: '18 min',
 
-  lesson: 'Lesson 8 of 30',
+  lesson: 'Lesson 8 of 48',
 
   sections: [
     {
@@ -54,7 +54,8 @@ if (age >= 18) {
     {
       type: 'paragraph',
       title: 'The if...else Statement',
-      content: 'The else block executes when the condition inside the if statement is false.',
+      content:
+        'The else block executes when the condition inside the if statement is false.',
     },
 
     {
@@ -73,7 +74,8 @@ if (age >= 18) {
     {
       type: 'paragraph',
       title: 'The else if Statement',
-      content: 'Use else if when multiple conditions need to be checked one after another.',
+      content:
+        'Use else if when multiple conditions need to be checked one after another.',
     },
 
     {
@@ -264,16 +266,6 @@ if (age === 18) {
     },
   ],
 
-  interviewQuestions: [
-    'What are conditional statements in JavaScript?',
-    'What is the difference between if and switch?',
-    'What is the difference between == and ===?',
-    'What are truthy and falsy values?',
-    'What is a nested if statement?',
-    'What is the ternary operator?',
-    'When should you use switch instead of if?',
-  ],
-
   quiz: [
     {
       question: 'Which statement executes code when a condition is true?',
@@ -286,7 +278,8 @@ if (age === 18) {
       answer: 0,
     },
     {
-      question: 'Which statement is best for comparing one variable against multiple fixed values?',
+      question:
+        'Which statement is best for comparing one variable against multiple fixed values?',
       options: ['if', 'switch', 'while', 'for'],
       answer: 1,
     },

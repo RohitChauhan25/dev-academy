@@ -17,7 +17,7 @@ export default function PracticeCTA({ technology }: { technology: string }) {
           </Button>
 
           <Button variant="outline" asChild>
-            <Link href="/interview">Interview Questions</Link>
+            <Link href="/interview-questions">Interview Questions</Link>
           </Button>
         </div>
       </div>

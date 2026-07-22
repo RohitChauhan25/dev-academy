@@ -10,7 +10,7 @@ export const operators = {
 
   readingTime: '18 min',
 
-  lesson: 'Lesson 7 of 30',
+  lesson: 'Lesson 7 of 48',
 
   sections: [
     {
@@ -43,7 +43,8 @@ export const operators = {
     {
       type: 'paragraph',
       title: 'Arithmetic Operators',
-      content: 'Arithmetic operators are used to perform mathematical calculations.',
+      content:
+        'Arithmetic operators are used to perform mathematical calculations.',
     },
 
     {
@@ -78,7 +79,8 @@ console.log(a ** b);`,
     {
       type: 'paragraph',
       title: 'Assignment Operators',
-      content: 'Assignment operators assign or update values stored in variables.',
+      content:
+        'Assignment operators assign or update values stored in variables.',
     },
 
     {
@@ -111,7 +113,8 @@ console.log(score);`,
     {
       type: 'paragraph',
       title: 'Comparison Operators',
-      content: 'Comparison operators compare two values and always return either true or false.',
+      content:
+        'Comparison operators compare two values and always return either true or false.',
     },
 
     {
@@ -145,7 +148,8 @@ console.log(10 === "10");`,
     {
       type: 'note',
       title: 'Remember',
-      content: 'Always prefer === instead of == because === compares both value and data type.',
+      content:
+        'Always prefer === instead of == because === compares both value and data type.',
     },
 
     {
@@ -274,16 +278,6 @@ console.log("5" * 2); // 10`,
       content:
         'JavaScript provides different categories of operators for arithmetic calculations, assignments, comparisons, logical operations, and string concatenation. Mastering these operators is essential before learning conditionals and loops.',
     },
-  ],
-
-  interviewQuestions: [
-    'What are operators in JavaScript?',
-    'What is the difference between == and ===?',
-    'What is the difference between ++i and i++?',
-    'What is the modulus operator?',
-    'Which operator is used for exponentiation?',
-    'What are logical operators?',
-    'How does the + operator behave with strings?',
   ],
 
   quiz: [

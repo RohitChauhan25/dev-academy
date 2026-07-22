@@ -10,7 +10,7 @@ export const iterationMethods = {
 
   readingTime: '22 min',
 
-  lesson: 'Lesson 18 of 40',
+  lesson: 'Lesson 26 of 48',
 
   sections: [
     {
@@ -27,7 +27,12 @@ export const iterationMethods = {
       rows: [
         ['forEach()', 'Run a function once per element', 'undefined', '❌ No'],
         ['map()', 'Transform each element', 'New array (same length)', '❌ No'],
-        ['filter()', 'Keep only matching elements', 'New array (same length or shorter)', '❌ No'],
+        [
+          'filter()',
+          'Keep only matching elements',
+          'New array (same length or shorter)',
+          '❌ No',
+        ],
         [
           'reduce()',
           'Combine all elements into one value (left to right)',
@@ -210,44 +215,15 @@ console.log(parts.reduceRight((acc, part) => acc + " " + part));
     },
   ],
 
-  interviewQuestions: [
-    {
-      question: 'What is the key difference between forEach() and map()?',
-      answer:
-        "forEach() runs a callback for every element purely for its side effects and always returns undefined, so it should never be used when you need a new array back. map() also runs a callback for every element, but it collects each callback's return value into a brand new array of the same length as the original, making it the right choice when you want to transform data rather than just act on it.",
-    },
-    {
-      question: 'Why is it recommended to always pass an initialValue to reduce()?',
-      answer:
-        "If you omit initialValue, reduce() uses the array's first element as the starting accumulator and begins iterating from the second element. This can cause confusing bugs — most notably, calling reduce() without an initialValue on an empty array throws a TypeError, since there's no element to use as a starting point. Passing an explicit initialValue makes the behavior predictable and safe for empty arrays.",
-    },
-    {
-      question: 'How would you use filter() and map() together, and why chain them in that order?',
-      answer:
-        'You can chain them as array.filter(condition).map(transform) to first narrow the array down to only the elements you care about, then transform just those elements. Filtering first is generally more efficient because map() then only has to run its transformation on the smaller, already-filtered set rather than on every original element.',
-    },
-    {
-      question: 'What is the difference between reduce() and reduceRight()?',
-      answer:
-        "Both combine every element of an array into a single accumulated value using a callback, but reduce() processes elements from left to right (start to end), while reduceRight() processes them from right to left (end to start). For operations like summing numbers, the direction doesn't change the result, but for order-sensitive operations — like building a string or composing functions — the direction changes the outcome.",
-    },
-    {
-      question: 'Can you stop forEach() early, and if not, what should you use instead?',
-      answer:
-        'No — forEach() has no built-in way to break out early; return inside the callback only skips to the next iteration, it does not stop the loop. If you need to exit early once a condition is met, use a traditional for loop or a for...of loop (both support break), or reach for a method designed to short-circuit, such as some(), every(), or find().',
-    },
-    {
-      question:
-        "If a callback inside map() or filter() mutates an object from the original array, is that still a problem even though these methods don't mutate the array itself?",
-      answer:
-        "Yes. map() and filter() don't mutate the array structure (its length or which elements are at which index), but they don't protect you from mutating the contents of the elements themselves. If an array holds objects and your callback changes a property on one of those objects, that change persists on the original object — and on the original array too, since arrays of objects store references, not copies.",
-    },
-  ],
-
   quiz: [
     {
       question: 'What does forEach() return?',
-      options: ['A new array', 'The last processed element', 'undefined', 'true or false'],
+      options: [
+        'A new array',
+        'The last processed element',
+        'undefined',
+        'true or false',
+      ],
       answer: 2,
     },
     {
@@ -257,7 +233,8 @@ console.log(parts.reduceRight((acc, part) => acc + " " + part));
       answer: 2,
     },
     {
-      question: 'What happens if you call reduce() on an empty array without an initialValue?',
+      question:
+        'What happens if you call reduce() on an empty array without an initialValue?',
       options: [
         'It returns undefined',
         'It returns 0',
@@ -272,7 +249,8 @@ console.log(parts.reduceRight((acc, part) => acc + " " + part));
       answer: 1,
     },
     {
-      question: 'Which method can shorten the resulting array compared to the original?',
+      question:
+        'Which method can shorten the resulting array compared to the original?',
       options: ['map()', 'forEach()', 'filter()', 'reduce()'],
       answer: 2,
     },

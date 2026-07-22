@@ -10,7 +10,7 @@ export const arrays = {
 
   readingTime: '15 min',
 
-  lesson: 'Lesson 10 of 40',
+  lesson: 'Lesson 10 of 48',
 
   sections: [
     {
@@ -31,7 +31,8 @@ console.log(fruits);`,
     {
       type: 'paragraph',
       title: 'Accessing Array Elements',
-      content: 'Array elements are accessed using their index. The first element is at index 0.',
+      content:
+        'Array elements are accessed using their index. The first element is at index 0.',
     },
 
     {
@@ -48,7 +49,8 @@ console.log(fruits[2]); // Mango`,
     {
       type: 'paragraph',
       title: 'Updating Array Elements',
-      content: 'You can change any element by assigning a new value to its index.',
+      content:
+        'You can change any element by assigning a new value to its index.',
     },
 
     {
@@ -65,7 +67,8 @@ console.log(fruits);`,
     {
       type: 'paragraph',
       title: 'Array Properties',
-      content: 'The length property returns the total number of elements present in an array.',
+      content:
+        'The length property returns the total number of elements present in an array.',
     },
 
     {
@@ -111,29 +114,6 @@ console.log(numbers);`,
       title: 'Remember',
       content:
         'Arrays can store different data types including numbers, strings, booleans, objects, functions, and even other arrays.',
-    },
-  ],
-
-  interviewQuestions: [
-    {
-      question: 'What is an array in JavaScript?',
-      answer: 'An array is an ordered collection of values stored in a single variable.',
-    },
-    {
-      question: 'What is the index of the first element?',
-      answer: '0',
-    },
-    {
-      question: 'What is the difference between push() and pop()?',
-      answer: 'push() adds an element to the end, while pop() removes the last element.',
-    },
-    {
-      question: 'How do you find the length of an array?',
-      answer: 'Using the length property.',
-    },
-    {
-      question: 'Can an array contain different data types?',
-      answer: 'Yes, JavaScript arrays can contain mixed data types.',
     },
   ],
 

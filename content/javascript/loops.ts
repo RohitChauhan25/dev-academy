@@ -10,7 +10,7 @@ export const loops = {
 
   readingTime: '20 min',
 
-  lesson: 'Lesson 9 of 30',
+  lesson: 'Lesson 9 of 48',
 
   sections: [
     {
@@ -107,7 +107,8 @@ for (const fruit of fruits) {
     {
       type: 'paragraph',
       title: 'The for...in Loop',
-      content: 'The for...in loop is used to iterate over the keys of an object.',
+      content:
+        'The for...in loop is used to iterate over the keys of an object.',
     },
 
     {
@@ -213,19 +214,10 @@ while (i <= 5) {
     },
   ],
 
-  interviewQuestions: [
-    'What are loops in JavaScript?',
-    'What is the difference between for and while loops?',
-    'What is the difference between for...of and for...in?',
-    'When should you use a do...while loop?',
-    'What is an infinite loop?',
-    'What do break and continue do?',
-    'Which loop is best for arrays?',
-  ],
-
   quiz: [
     {
-      question: 'Which loop is commonly used when the number of iterations is known?',
+      question:
+        'Which loop is commonly used when the number of iterations is known?',
       options: ['for', 'while', 'do...while', 'switch'],
       answer: 0,
     },

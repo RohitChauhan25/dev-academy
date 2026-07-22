@@ -12,7 +12,7 @@ export const variables: Tutorial = {
 
   readingTime: '12 min',
 
-  lesson: 'Lesson 2 of 20',
+  lesson: 'Lesson 3 of 48',
 
   sections: [
     {
@@ -97,14 +97,6 @@ console.log(age);`,
       content:
         'Variable names are case-sensitive. userName and username are considered different variables.',
     },
-  ],
-
-  interviewQuestions: [
-    'What is a variable?',
-    'Difference between var, let and const?',
-    'Why should we avoid var?',
-    'Can we change the value of a const object?',
-    'What are block scope and function scope?',
   ],
 
   quiz: [
