@@ -59,9 +59,12 @@ export type TutorialSection =
   | WarningSection
   | ImageSection;
 
+export type InterviewDifficulty = 'beginner' | 'intermediate' | 'advanced';
+
 export interface InterviewQuestion {
   question: string;
   answer: string;
+  difficulty: InterviewDifficulty;
 }
 
 export interface Tutorial {
