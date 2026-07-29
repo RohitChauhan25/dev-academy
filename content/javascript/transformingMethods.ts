@@ -1,5 +1,5 @@
 export const transformingMethods = {
-  slug: 'transforming-methods',
+  slug: 'transformation-methods',
 
   title: 'Transforming Arrays',
 

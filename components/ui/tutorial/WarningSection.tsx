@@ -1,8 +1,12 @@
 import { TriangleAlert } from 'lucide-react';
+import { slugify } from '@/lib/utils';
 
 export default function WarningSection({ title, content }: { title: string; content: string }) {
   return (
-    <section className="mt-10 rounded-xl border border-red-300 bg-red-500/10 p-6">
+    <section
+      id={slugify(title)}
+      className="mt-10 scroll-mt-24 rounded-xl border border-red-300 bg-red-500/10 p-6"
+    >
       <div className="flex gap-4">
         <TriangleAlert className="text-red-500" />
 

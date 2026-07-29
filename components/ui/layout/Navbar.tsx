@@ -2,12 +2,13 @@ import ProfileDropdown from '../profile/ProfileDropdown';
 import Logo from './Logo';
 import MobileMenu from './MobileMenu';
 import NavLinks from './NavLinks';
-import SearchBar from './SearchBar';
 import SearchDialog from './SearchDialog';
 import ThemeToggle from './ThemeToggle';
-import { Button } from '@/components/ui/button';
+import { getSearchIndex } from '@/lib/search-index';
 
 export default function Navbar() {
+  const searchIndex = getSearchIndex();
+
   return (
     <header className="fixed top-0 z-50 border-b bg-background/80 backdrop-blur shadow w-full">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-8">
@@ -18,7 +19,7 @@ export default function Navbar() {
         </div>
 
         <div className="hidden lg:flex items-center gap-3">
-          <SearchDialog />
+          <SearchDialog items={searchIndex} />
           <ThemeToggle />
 
           {/* <Button variant="ghost">Sign In</Button> */}
@@ -27,7 +28,7 @@ export default function Navbar() {
 
         <div className="lg:hidden flex items-center gap-2">
           <ThemeToggle />
-          <SearchDialog mobile={true} />
+          <SearchDialog mobile={true} items={searchIndex} />
           <MobileMenu />
         </div>
       </div>

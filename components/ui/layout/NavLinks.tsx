@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const links = [
   {
@@ -10,7 +13,7 @@ const links = [
     href: '/practice',
   },
   {
-    title: 'Interview',
+    title: 'Questions',
     href: '/interview-questions',
   },
   {
@@ -29,17 +32,29 @@ const links = [
 ];
 
 export default function NavLinks() {
+  const pathname = usePathname();
+
   return (
     <nav className="flex items-center gap-8">
-      {links.map((link) => (
-        <Link
-          key={link.title}
-          href={link.href}
-          className="text-base font-medium text-foreground transition hover:text-foreground"
-        >
-          {link.title}
-        </Link>
-      ))}
+      {links.map((link) => {
+        const isActive =
+          pathname === link.href || pathname.startsWith(`${link.href}/`);
+
+        return (
+          <Link
+            key={link.title}
+            href={link.href}
+            className="group relative py-1 text-base font-medium text-foreground transition hover:text-foreground"
+          >
+            {link.title}
+            <span
+              className={`absolute -bottom-1 left-0 h-0.5 w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-sky-400 transition-transform duration-300 ease-out group-hover:scale-x-100 ${
+                isActive ? 'scale-x-100' : ''
+              }`}
+            />
+          </Link>
+        );
+      })}
     </nav>
   );
 }

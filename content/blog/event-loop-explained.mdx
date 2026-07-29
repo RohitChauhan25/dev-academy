@@ -1,0 +1,66 @@
+export const metadata = {
+  title: 'The Event Loop, Explained With Real Output',
+  description:
+    'JavaScript is single-threaded, so how does it run async code without blocking? A walk through the call stack, the microtask queue, and the macrotask queue with real predict-the-output examples.',
+  date: '2026-06-18',
+  author: 'Dev Academy',
+  tags: ['javascript', 'event-loop', 'async'],
+  readingTime: '9 min read',
+};
+
+If you've ever been asked to predict the output of a snippet mixing `setTimeout`, `Promise`, and plain synchronous code, you've been tested on the event loop. Let's build the mental model properly, once.
+
+## The pieces involved
+
+- **Call stack** — where your currently executing code runs, one frame at a time.
+- **Web APIs / Node APIs** — where things like timers and network requests actually happen, outside the call stack.
+- **Microtask queue** — holds callbacks from `Promise.then/catch/finally` and `queueMicrotask`.
+- **Macrotask (callback) queue** — holds things like `setTimeout` callbacks and DOM events.
+
+The event loop's job is simple: **whenever the call stack is empty, run the next task from a queue.** The one rule that trips people up is the order it checks those queues in.
+
+## Predict the output
+
+```js
+console.log(1);
+
+setTimeout(() => console.log(2), 0);
+
+Promise.resolve().then(() => console.log(3));
+
+console.log(4);
+```
+
+The output is:
+
+```
+1
+4
+3
+2
+```
+
+Here's why, step by step:
+
+1. `console.log(1)` and `console.log(4)` run immediately — they're synchronous, so they execute directly on the call stack with nothing to wait for.
+2. Once the stack is empty, the event loop doesn't jump straight to `setTimeout`. It fully drains the **microtask queue** first — that's the `Promise.then` callback, logging `3`.
+3. Only after the microtask queue is completely empty does the event loop take a single task from the **macrotask queue** — the `setTimeout` callback, logging `2`.
+
+## The rule that matters most
+
+**All pending microtasks run before the next macrotask — every single time**, even if that macrotask was scheduled first. This is why a `Promise.resolve().then(...)` will always beat a `setTimeout(..., 0)` to the console, no matter how the code is ordered.
+
+```js
+setTimeout(() => console.log('timeout'), 0);
+Promise.resolve().then(() => console.log('promise'));
+
+// always: "promise" then "timeout"
+```
+
+## Why a long loop freezes the page
+
+Because the browser's rendering, click handlers, and queued callbacks all wait for the call stack to empty, a long synchronous `for` loop blocks everything — the event loop can't get a turn until your loop finishes. This is why heavy computation should be chunked with `setTimeout`/`requestAnimationFrame`, or moved to a Web Worker entirely.
+
+## Takeaway
+
+There's no real concurrency happening under the hood — JavaScript still runs one thing at a time. What makes it feel async is that the runtime hands off timers, I/O, and network calls to the environment, then uses two ordered queues to decide what runs next once the stack is clear. Microtasks first, always — then one macrotask, then repeat.

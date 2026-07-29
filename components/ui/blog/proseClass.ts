@@ -1,0 +1,17 @@
+export const PROSE_CLASS = [
+  '[&_h1]:mt-8 [&_h1]:text-3xl [&_h1]:font-black [&_h1]:leading-tight [&_h1:first-child]:mt-0',
+  '[&_h2]:mt-8 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:leading-tight [&_h2:first-child]:mt-0',
+  '[&_h3]:mt-6 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:leading-tight [&_h3:first-child]:mt-0',
+  '[&_p]:mt-4 [&_p]:leading-7 [&_p]:text-muted-foreground [&_p:first-child]:mt-0',
+  '[&_ul]:mt-4 [&_ul]:list-disc [&_ul]:space-y-1.5 [&_ul]:pl-6 [&_ul]:marker:text-violet-500',
+  '[&_ol]:mt-4 [&_ol]:list-decimal [&_ol]:space-y-1.5 [&_ol]:pl-6 [&_ol]:marker:text-violet-500',
+  '[&_li]:leading-7 [&_li]:text-muted-foreground',
+  '[&_blockquote]:mt-4 [&_blockquote]:border-l-4 [&_blockquote]:border-violet-500/50 [&_blockquote]:bg-violet-500/5 [&_blockquote]:py-2 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-muted-foreground',
+  '[&_code]:rounded [&_code]:bg-violet-500/10 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[0.85em] [&_code]:text-violet-700 dark:[&_code]:text-violet-300',
+  '[&_pre]:mt-4 [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:bg-[#1f1f20] [&_pre]:p-4 [&_pre]:font-mono [&_pre]:text-[0.85rem] [&_pre]:leading-6 [&_pre]:text-zinc-200',
+  '[&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-inherit',
+  '[&_a]:font-medium [&_a]:text-violet-600 [&_a]:underline [&_a]:underline-offset-4 dark:[&_a]:text-violet-400',
+  '[&_hr]:my-8 [&_hr]:border-border',
+  '[&_strong]:font-semibold [&_strong]:text-foreground',
+  '[&_img]:my-4 [&_img]:w-full [&_img]:rounded-xl [&_img]:border',
+].join(' ');

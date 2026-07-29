@@ -1,3 +1,5 @@
+import { slugify } from '@/lib/utils';
+
 interface ParagraphSectionProps {
   title: string;
   content: string;
@@ -5,7 +7,7 @@ interface ParagraphSectionProps {
 
 export default function ParagraphSection({ title, content }: ParagraphSectionProps) {
   return (
-    <section className="mt-8 sm:mt-10 lg:mt-14">
+    <section id={slugify(title)} className="mt-8 scroll-mt-24 sm:mt-10 lg:mt-14">
       {/* Heading */}
       <div className="border-l-4 border-primary pl-3 sm:pl-4">
         <h2 className="text-xl font-bold tracking-tight sm:text-2xl lg:text-3xl">{title}</h2>

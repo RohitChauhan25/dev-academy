@@ -19,7 +19,7 @@ const navItems = [
     href: '/practice',
   },
   {
-    title: 'Interview',
+    title: 'Questions',
     href: '/interview-questions',
   },
   {

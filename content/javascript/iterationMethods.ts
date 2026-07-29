@@ -258,5 +258,5 @@ console.log(parts.reduceRight((acc, part) => acc + " " + part));
 
   previous: 'searching-methods',
 
-  next: 'transforming-methods',
+  next: 'transformation-methods',
 };

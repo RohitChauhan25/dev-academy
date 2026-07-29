@@ -1,0 +1,78 @@
+export const metadata = {
+  title: 'Understanding Closures in JavaScript',
+  description:
+    'A practical walkthrough of what closures actually are, why they exist, and how to use them for data privacy, memoization, and function factories.',
+  date: '2026-06-02',
+  author: 'Dev Academy',
+  tags: ['javascript', 'closures', 'fundamentals'],
+  readingTime: '7 min read',
+};
+
+Closures show up in almost every "explain this JavaScript output" interview question, yet most explanations make them sound more mysterious than they are. Here's the short version: **a closure is just a function that remembers the scope it was created in.**
+
+## The core idea
+
+Every function in JavaScript forms a closure the moment it's created — it keeps a live reference to the variables in its surrounding scope, even after that outer scope has technically finished running.
+
+```js
+function makeCounter() {
+  let count = 0;
+
+  return function increment() {
+    count += 1;
+    return count;
+  };
+}
+
+const counter = makeCounter();
+counter(); // 1
+counter(); // 2
+counter(); // 3
+```
+
+`makeCounter()` runs and returns, but `count` doesn't disappear. The inner `increment` function still has a reference to it, so every call continues from where the last one left off.
+
+## Why this matters: private state
+
+Because `count` is never attached to the returned function as a property, nothing outside `makeCounter` can reach in and directly modify it. This is how closures give you real data privacy without needing classes or private fields:
+
+```js
+function createAccount(balance) {
+  return {
+    deposit: (amount) => (balance += amount),
+    withdraw: (amount) => (balance -= amount),
+    getBalance: () => balance,
+  };
+}
+
+const account = createAccount(100);
+account.deposit(50);
+account.getBalance(); // 150
+account.balance; // undefined — there's no such property
+```
+
+## A classic gotcha: closures in loops
+
+This is the single most common closures bug:
+
+```js
+for (var i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 0);
+}
+// logs: 3, 3, 3
+```
+
+`var` is function-scoped, so there's only **one** `i` shared by every iteration. By the time the callbacks run, the loop has already finished and `i` is `3`.
+
+Switching to `let` fixes it, because `let` creates a fresh binding for every iteration:
+
+```js
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 0);
+}
+// logs: 0, 1, 2
+```
+
+## Takeaway
+
+Closures aren't a special feature you opt into — they're just what happens naturally when a function is defined inside another. Once that clicks, patterns like private state, memoization, and currying stop feeling like magic and start feeling like the obvious way to solve those problems.

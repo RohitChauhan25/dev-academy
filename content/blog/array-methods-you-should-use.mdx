@@ -1,0 +1,74 @@
+export const metadata = {
+  title: '5 Array Methods You Should Actually Be Using',
+  description:
+    'Beyond map, filter, and reduce — a look at five underused array methods that quietly clean up a lot of everyday JavaScript code.',
+  date: '2026-07-05',
+  author: 'Dev Academy',
+  tags: ['javascript', 'arrays', 'tips'],
+  readingTime: '6 min read',
+};
+
+`map`, `filter`, and `reduce` get all the attention, but a handful of less-hyped array methods solve everyday problems more directly than the loop-and-condition code most of us default to. Here are five worth adding to your toolkit.
+
+## 1. `Array.prototype.at()`
+
+Negative indexing without the `arr[arr.length - 1]` dance:
+
+```js
+const items = [10, 20, 30, 40];
+
+items[items.length - 1]; // 40 — works, but noisy
+items.at(-1); // 40 — same result, reads better
+```
+
+## 2. `Array.prototype.flatMap()`
+
+`map` followed by `flat(1)`, fused into one pass — perfect when your callback sometimes needs to return multiple items, or none at all:
+
+```js
+const sentences = ['hello world', 'goodbye moon'];
+
+sentences.flatMap((s) => s.split(' '));
+// ['hello', 'world', 'goodbye', 'moon']
+```
+
+## 3. `Array.prototype.find()` / `findLast()`
+
+Reach for `find` when you need the *element itself*, not its index or a filtered array:
+
+```js
+const users = [
+  { id: 1, active: false },
+  { id: 2, active: true },
+  { id: 3, active: true },
+];
+
+users.find((u) => u.active); // { id: 2, active: true }
+users.findLast((u) => u.active); // { id: 3, active: true }
+```
+
+Compare that to `users.filter((u) => u.active)[0]`, which allocates a whole new array just to throw most of it away.
+
+## 4. `Array.prototype.some()` / `every()`
+
+Both return a boolean, and both stop iterating as soon as the answer is known — no need to build an intermediate array just to check `.length`:
+
+```js
+const hasNegative = [1, -2, 3].some((n) => n < 0); // true
+const allPositive = [1, -2, 3].every((n) => n > 0); // false
+```
+
+## 5. The ES2023 trio: `toSorted()`, `toReversed()`, `toSpliced()`
+
+`sort()`, `reverse()`, and `splice()` all mutate the original array — a common source of bugs when you didn't mean to change the source data. Their `to*` counterparts do the same job but return a new array, leaving the original untouched:
+
+```js
+const original = [3, 1, 2];
+
+const sorted = original.toSorted(); // [1, 2, 3]
+original; // [3, 1, 2] — unchanged
+```
+
+## Takeaway
+
+None of these methods are exotic — they're just easy to forget when `map`/`filter`/`reduce` cover 90% of cases. The next time you catch yourself writing `arr[arr.length - 1]` or `arr.filter(...)[0]`, there's probably a more direct method already sitting on `Array.prototype`.

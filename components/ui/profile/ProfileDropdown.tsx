@@ -23,7 +23,7 @@ export default function ProfileDropdown() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button className="rounded-full ring-2 ring-primary/30 transition hover:ring-primary">
-          <Avatar className="h-11 w-11">
+          <Avatar className="h-10 w-10">
             <AvatarImage src={user.image} />
             <AvatarFallback>RC</AvatarFallback>
           </Avatar>
@@ -32,11 +32,11 @@ export default function ProfileDropdown() {
 
       <DropdownMenuContent
         align="end"
-        className="w-80 rounded-2xl border bg-background p-0 shadow-2xl"
+        className="w-70 rounded-2xl border bg-background p-0 shadow-2xl"
       >
         {/* Header */}
-        <div className="flex items-center gap-4 p-5">
-          <Avatar className="h-14 w-14">
+        <div className="flex items-center gap-4 p-3 px-5">
+          <Avatar className="h-10 w-10">
             <AvatarImage src={user.image} />
             <AvatarFallback>RC</AvatarFallback>
           </Avatar>
@@ -49,13 +49,13 @@ export default function ProfileDropdown() {
 
         <DropdownMenuSeparator />
 
-        <div className="px-5 py-3 text-xs font-semibold tracking-wider text-muted-foreground">
+        <div className="px-5 py-2 text-xs font-semibold tracking-wider text-muted-foreground">
           ACCOUNT
         </div>
 
         <Link
           href="/profile"
-          className="flex items-center justify-between px-5 py-3 transition hover:bg-accent"
+          className="flex items-center justify-between px-5 py-2 transition hover:bg-accent"
         >
           <div className="flex items-center gap-3">
             <div className="rounded-lg bg-primary/10 p-2">
@@ -85,7 +85,7 @@ export default function ProfileDropdown() {
 
         <DropdownMenuSeparator />
 
-        <button className="flex w-full items-center gap-3 px-5 py-4 text-red-500 transition hover:bg-red-500/10">
+        <button className="flex w-full  items-center gap-3 px-5 py-2 text-red-500 transition hover:bg-red-500/10">
           <div className="rounded-lg bg-red-500/10 p-2">
             <LogOut className="h-5 w-5" />
           </div>

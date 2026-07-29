@@ -103,7 +103,7 @@ export default function Footer() {
               </Link>
 
               <Link
-                href="mailto:hello@example.com"
+                href="mailto:devacademyofficial@gmail.com"
                 className="rounded-lg border p-2 transition hover:border-violet-500 hover:text-violet-500"
               >
                 <Mail size={18} />
@@ -121,11 +121,13 @@ export default function Footer() {
                 <li key={item.title}>
                   <Link
                     href={item.href}
-                    className="group flex items-center text-muted-foreground transition hover:text-white"
+                    className="group relative inline-flex w-fit items-center text-muted-foreground transition hover:text-foreground"
                   >
                     {item.title}
 
                     <ArrowUpRight className="ml-1 h-4 w-4 opacity-0 transition group-hover:opacity-100" />
+
+                    <span className="absolute -bottom-1 left-0 h-0.5 w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-sky-400 transition-transform duration-300 ease-out group-hover:scale-x-100" />
                   </Link>
                 </li>
               ))}
@@ -142,11 +144,13 @@ export default function Footer() {
                 <li key={item.title}>
                   <Link
                     href={item.href}
-                    className="group flex items-center text-muted-foreground transition hover:text-white"
+                    className="group relative inline-flex w-fit items-center text-muted-foreground transition hover:text-foreground"
                   >
                     {item.title}
 
                     <ArrowUpRight className="ml-1 h-4 w-4 opacity-0 transition group-hover:opacity-100" />
+
+                    <span className="absolute -bottom-1 left-0 h-0.5 w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-sky-400 transition-transform duration-300 ease-out group-hover:scale-x-100" />
                   </Link>
                 </li>
               ))}
@@ -163,11 +167,13 @@ export default function Footer() {
                 <li key={item.title}>
                   <Link
                     href={item.href}
-                    className="group flex items-center text-muted-foreground transition hover:text-white"
+                    className="group relative inline-flex w-fit items-center text-muted-foreground transition hover:text-foreground"
                   >
                     {item.title}
 
                     <ArrowUpRight className="ml-1 h-4 w-4 opacity-0 transition group-hover:opacity-100" />
+
+                    <span className="absolute -bottom-1 left-0 h-0.5 w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-sky-400 transition-transform duration-300 ease-out group-hover:scale-x-100" />
                   </Link>
                 </li>
               ))}

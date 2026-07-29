@@ -1,3 +1,5 @@
+import { slugify } from '@/lib/utils';
+
 interface TableSectionProps {
   title: string;
   headers: string[];
@@ -6,7 +8,7 @@ interface TableSectionProps {
 
 export default function TableSection({ title, headers, rows }: TableSectionProps) {
   return (
-    <section className="mt-12">
+    <section id={slugify(title)} className="mt-12 scroll-mt-24">
       <h2 className="text-3xl font-bold">{title}</h2>
 
       <div className="mt-6 overflow-x-auto rounded-xl border">

@@ -20,9 +20,8 @@ export function getTechnologyTutorials(technology: string) {
 }
 
 export function getInterviewQuestions(technology: string, topic: string) {
-  return interviewQuestions[technology as keyof typeof interviewQuestions]?.[
-    topic
-  ];
+  const topics = interviewQuestions[technology as keyof typeof interviewQuestions];
+  return topics?.find((t) => t.slug === topic)?.questions;
 }
 
 export function getTechnologyInterviewQuestions(technology: string) {

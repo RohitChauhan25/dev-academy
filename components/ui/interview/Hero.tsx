@@ -254,7 +254,7 @@ export default function Hero() {
           {/* Cards */}
         </div>
 
-        <div ref={ref} className="mx-auto mt-20 grid max-w-5xl gap-6 md:grid-cols-2">
+        <div ref={ref} className="mx-auto mt-20 grid max-w-full gap-6 md:grid-cols-3">
           {questionSets.map((item, index) => {
             const isLive = item.status === 'live';
             const Card = (

@@ -15,14 +15,16 @@ export const metadata: Metadata = {
 
 export default function JavaScriptInterviewQuestionsPage() {
   const tutorials = getTechnologyTutorials('javascript') ?? {};
-  const questionsBySlug = getTechnologyInterviewQuestions('javascript') ?? {};
+  const topicList = getTechnologyInterviewQuestions('javascript') ?? [];
+  const tutorialSlugs = new Set(Object.keys(tutorials));
 
-  const topics: InterviewTopic[] = Object.values(tutorials)
-    .filter((tutorial: any) => questionsBySlug[tutorial.slug]?.length)
-    .map((tutorial: any) => ({
-      title: tutorial.title,
-      slug: tutorial.slug,
-      questions: questionsBySlug[tutorial.slug],
+  const topics: InterviewTopic[] = topicList
+    .filter((topic) => topic.questions.length > 0)
+    .map((topic) => ({
+      title: topic.title,
+      slug: topic.slug,
+      questions: topic.questions,
+      hasTutorial: tutorialSlugs.has(topic.slug),
     }));
 
   const totalQuestions = topics.reduce(

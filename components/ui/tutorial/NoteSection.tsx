@@ -1,4 +1,5 @@
 import { Lightbulb } from 'lucide-react';
+import { slugify } from '@/lib/utils';
 
 interface NoteSectionProps {
   title: string;
@@ -7,7 +8,10 @@ interface NoteSectionProps {
 
 export default function NoteSection({ title, content }: NoteSectionProps) {
   return (
-    <section className="mt-10 rounded-xl border-l-4 border-yellow-500 bg-yellow-500/10 p-5">
+    <section
+      id={slugify(title)}
+      className="mt-10 scroll-mt-24 rounded-xl border-l-4 border-yellow-500 bg-yellow-500/10 p-5"
+    >
       <div className="flex items-start gap-3">
         <Lightbulb className="mt-1 h-5 w-5 text-yellow-500" />
 

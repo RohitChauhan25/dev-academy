@@ -7,23 +7,24 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import type { InterviewDifficulty, InterviewQuestion } from '@/app/types/tutorial';
 
-const DIFFICULTY_META: Record<InterviewDifficulty, { label: string; dot: string; badge: string }> = {
-  beginner: {
-    label: 'Beginner',
-    dot: 'bg-emerald-400',
-    badge: 'border-emerald-500/25 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300',
-  },
-  intermediate: {
-    label: 'Intermediate',
-    dot: 'bg-amber-400',
-    badge: 'border-amber-500/25 bg-amber-500/10 text-amber-700 dark:text-amber-300',
-  },
-  advanced: {
-    label: 'Advanced',
-    dot: 'bg-rose-400',
-    badge: 'border-rose-500/25 bg-rose-500/10 text-rose-700 dark:text-rose-300',
-  },
-};
+const DIFFICULTY_META: Record<InterviewDifficulty, { label: string; dot: string; badge: string }> =
+  {
+    beginner: {
+      label: 'Beginner',
+      dot: 'bg-emerald-400',
+      badge: 'border-emerald-500/25 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300',
+    },
+    intermediate: {
+      label: 'Intermediate',
+      dot: 'bg-amber-400',
+      badge: 'border-amber-500/25 bg-amber-500/10 text-amber-700 dark:text-amber-300',
+    },
+    advanced: {
+      label: 'Advanced',
+      dot: 'bg-rose-400',
+      badge: 'border-rose-500/25 bg-rose-500/10 text-rose-700 dark:text-rose-300',
+    },
+  };
 
 const DIFFICULTY_FILTERS: { value: 'all' | InterviewDifficulty; label: string; dot?: string }[] = [
   { value: 'all', label: 'All levels' },
@@ -57,11 +58,49 @@ function renderInline(text: string) {
 }
 
 const JS_KEYWORDS = new Set([
-  'const', 'let', 'var', 'function', 'return', 'if', 'else', 'for', 'while', 'do',
-  'class', 'extends', 'new', 'this', 'export', 'default', 'import', 'from', 'as',
-  'async', 'await', 'try', 'catch', 'finally', 'throw', 'typeof', 'instanceof', 'of',
-  'in', 'switch', 'case', 'break', 'continue', 'null', 'undefined', 'true', 'false',
-  'void', 'yield', 'static', 'get', 'set', 'delete',
+  'const',
+  'let',
+  'var',
+  'function',
+  'return',
+  'if',
+  'else',
+  'for',
+  'while',
+  'do',
+  'class',
+  'extends',
+  'new',
+  'this',
+  'export',
+  'default',
+  'import',
+  'from',
+  'as',
+  'async',
+  'await',
+  'try',
+  'catch',
+  'finally',
+  'throw',
+  'typeof',
+  'instanceof',
+  'of',
+  'in',
+  'switch',
+  'case',
+  'break',
+  'continue',
+  'null',
+  'undefined',
+  'true',
+  'false',
+  'void',
+  'yield',
+  'static',
+  'get',
+  'set',
+  'delete',
 ]);
 
 const CODE_TOKEN_PATTERN =
@@ -97,7 +136,7 @@ function CodeBlock({ language, code }: { language: string; code: string }) {
   };
 
   return (
-    <div className="overflow-hidden rounded-xl border border-white/5 bg-zinc-950">
+    <div className="overflow-hidden rounded-xl border border-white/5 dark:bg-[#2a292e] bg-[#1f1f20]">
       <div className="flex items-center justify-between border-b border-white/5 px-4 py-2.5">
         <div className="flex items-center gap-3">
           <div className="flex gap-1.5">
@@ -106,14 +145,14 @@ function CodeBlock({ language, code }: { language: string; code: string }) {
             <span className="h-2.5 w-2.5 rounded-full bg-green-500/70" />
           </div>
           {language && (
-            <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+            <span className="text-xs font-medium uppercase tracking-wide  text-white">
               {language}
             </span>
           )}
         </div>
         <button
           onClick={handleCopy}
-          className="text-muted-foreground transition hover:text-foreground"
+          className="text-white cursor-pointer transition hover:text-foreground"
           aria-label="Copy code"
         >
           {copied ? <Check className="h-4 w-4 text-green-400" /> : <Copy className="h-4 w-4" />}
@@ -128,7 +167,7 @@ function CodeBlock({ language, code }: { language: string; code: string }) {
               </span>
             ) : (
               t.text
-            ),
+            )
           )}
         </code>
       </pre>
@@ -152,7 +191,8 @@ function parseAnswerBlocks(answer: string): AnswerBlock[] {
     if (block.startsWith('```')) {
       const lines = block.split('\n');
       const language = lines[0].slice(3).trim();
-      const closingIndex = lines[lines.length - 1].trim() === '```' ? lines.length - 1 : lines.length;
+      const closingIndex =
+        lines[lines.length - 1].trim() === '```' ? lines.length - 1 : lines.length;
       return { kind: 'code', language, code: lines.slice(1, closingIndex).join('\n') };
     }
 
@@ -188,7 +228,10 @@ function AnswerDetail({ answer }: { answer: string }) {
         }
         if (block.kind === 'list') {
           return (
-            <ul key={i} className="ml-1 list-disc space-y-1.5 pl-5 marker:text-violet-600 dark:marker:text-violet-400">
+            <ul
+              key={i}
+              className="ml-1 list-disc space-y-1.5 pl-5 marker:text-violet-600 dark:marker:text-violet-400"
+            >
               {block.items.map((item, j) => (
                 <li key={j} className="text-[0.95rem] leading-7 text-muted-foreground">
                   {renderInline(item)}
@@ -214,6 +257,7 @@ export interface InterviewTopic {
   title: string;
   slug: string;
   questions: InterviewQuestion[];
+  hasTutorial?: boolean;
 }
 
 interface InterviewQuestionsViewProps {
@@ -239,7 +283,9 @@ export default function InterviewQuestionsView({
         ...topic,
         questions: topic.questions.filter((q) => {
           const matchesTerm =
-            !term || q.question.toLowerCase().includes(term) || q.answer.toLowerCase().includes(term);
+            !term ||
+            q.question.toLowerCase().includes(term) ||
+            q.answer.toLowerCase().includes(term);
           const matchesDifficulty = difficulty === 'all' || q.difficulty === difficulty;
           return matchesTerm && matchesDifficulty;
         }),
@@ -374,7 +420,9 @@ export default function InterviewQuestionsView({
                       >
                         <div className="flex items-start justify-between gap-3">
                           <h3 className="text-lg font-bold leading-7">
-                            <span className="text-violet-600 dark:text-violet-400">Q{questionNumber}.</span>{' '}
+                            <span className="text-violet-600 dark:text-violet-400">
+                              Q{questionNumber}.
+                            </span>{' '}
                             {item.question}
                           </h3>
                           <a
@@ -387,22 +435,24 @@ export default function InterviewQuestionsView({
                         </div>
 
                         <div className="mt-3 flex flex-wrap items-center gap-2">
-                          <Badge
+                          {/* <Badge
                             variant="outline"
                             className="rounded-full border-amber-500/25 bg-amber-500/10 text-amber-700 dark:text-amber-200"
                           >
                             {topic.title}
-                          </Badge>
+                          </Badge> */}
                           <Badge variant="outline" className={`gap-1.5 rounded-full ${meta.badge}`}>
                             <span className={`h-1.5 w-1.5 rounded-full ${meta.dot}`} />
                             {meta.label}
                           </Badge>
-                          <Link
-                            href={`/learn/javascript/${topic.slug}`}
-                            className="text-xs font-medium text-violet-600 dark:text-violet-400 transition hover:translate-x-0.5"
-                          >
-                            Learn topic →
-                          </Link>
+                          {topic.hasTutorial && (
+                            <Link
+                              href={`/learn/javascript/${topic.slug}`}
+                              className="text-xs font-medium text-violet-600 dark:text-violet-400 transition hover:translate-x-0.5"
+                            >
+                              Learn topic →
+                            </Link>
+                          )}
                         </div>
 
                         <AnswerDetail answer={item.answer} />

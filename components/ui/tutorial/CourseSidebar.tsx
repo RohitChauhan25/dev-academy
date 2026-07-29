@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ChevronDown, ChevronRight } from 'lucide-react';
@@ -8,6 +8,39 @@ import { javascriptSidebar } from '@/app/data/technologies/sidebar';
 
 export default function CourseSidebar() {
   const pathname = usePathname();
+  const sidebarRef = useRef<HTMLDivElement>(null);
+  const [maxHeight, setMaxHeight] = useState<number | null>(null);
+
+  useEffect(() => {
+    let frame: number;
+
+    const updateHeight = () => {
+      const sidebarEl = sidebarRef.current;
+      const footerEl = document.querySelector('footer');
+      if (!sidebarEl || !footerEl) return;
+
+      const sidebarTop = sidebarEl.getBoundingClientRect().top;
+      const footerTop = footerEl.getBoundingClientRect().top;
+      const availableBottom = Math.min(window.innerHeight, footerTop);
+
+      setMaxHeight(Math.max(0, availableBottom - sidebarTop));
+    };
+
+    const onScrollOrResize = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(updateHeight);
+    };
+
+    updateHeight();
+    window.addEventListener('scroll', onScrollOrResize, { passive: true });
+    window.addEventListener('resize', onScrollOrResize);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', onScrollOrResize);
+      window.removeEventListener('resize', onScrollOrResize);
+    };
+  }, [pathname]);
 
   const [openMenus, setOpenMenus] = useState<Record<string, boolean>>(() => {
     const initial: Record<string, boolean> = {};
@@ -33,7 +66,11 @@ export default function CourseSidebar() {
   return (
     pathname !== '/learn/javascript' && (
       <aside className="hidden w-64 shrink-0 lg:block">
-        <div className="fixed top-20 h-[calc(100vh-5rem)] w-60 overflow-y-auto border-r pr-3">
+        <div
+          ref={sidebarRef}
+          style={maxHeight !== null ? { height: maxHeight } : undefined}
+          className="fixed top-20 h-[calc(100vh-5rem)] w-60 overflow-y-auto border-r pr-3"
+        >
           <div className="space-y-8 py-6">
             {javascriptSidebar.map((section) => (
               <div key={section.title}>

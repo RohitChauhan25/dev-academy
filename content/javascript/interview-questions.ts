@@ -1,13 +1,21 @@
 import type { InterviewQuestion } from '@/app/types/tutorial';
 
-export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
+export interface InterviewQuestionTopic {
+  slug: string;
+  title: string;
+  questions: InterviewQuestion[];
+}
+
+export const javascriptInterviewQuestions: InterviewQuestionTopic[] = [
   {
-    'adding-removing-methods': [
+    slug: 'adding-removing-methods',
+    title: 'Adding & Removing Array Elements',
+    questions: [
       {
         question:
           'What is the difference between push() and unshift(), both in behavior and performance?',
         answer:
-          "`push()` and `unshift()` are mirror images of each other, but their performance is very different.\n\n- **push(element)** — adds to the end and returns the new length. Runs in **O(1)** because it just appends after the last element.\n- **unshift(element)** — adds to the beginning and also returns the new length. Runs in **O(n)** because every existing element has to be shifted one position to the right to make room at the front.\n\n```js\nconst arr = [2, 3];\narr.push(4);    // [2, 3, 4]   — O(1)\narr.unshift(1); // [1, 2, 3, 4] — O(n)\n```",
+          '`push()` and `unshift()` are mirror images of each other, but their performance is very different.\n\n- **push(element)** — adds to the end and returns the new length. Runs in **O(1)** because it just appends after the last element.\n- **unshift(element)** — adds to the beginning and also returns the new length. Runs in **O(n)** because every existing element has to be shifted one position to the right to make room at the front.\n\n```js\nconst arr = [2, 3];\narr.push(4);    // [2, 3, 4]   — O(1)\narr.unshift(1); // [1, 2, 3, 4] — O(n)\n```',
         difficulty: 'beginner',
       },
       {
@@ -39,14 +47,18 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'Why is unshift() considered slower than push() on large arrays?',
+        question:
+          'Why is unshift() considered slower than push() on large arrays?',
         answer:
           "Arrays in JavaScript are typically stored so that elements can be appended at the end cheaply. `push()` takes advantage of this by just adding to the end — **O(1)**. `unshift()` has to insert at index 0, which means every other element's index shifts up by one, so the engine must move all n existing elements — **O(n)**. The larger the array, the more noticeable this cost becomes.",
         difficulty: 'intermediate',
       },
     ],
-
-    'array-destructuring': [
+  },
+  {
+    slug: 'array-destructuring',
+    title: 'Array Destructuring',
+    questions: [
       {
         question: 'What is array destructuring and why was it introduced?',
         answer:
@@ -79,8 +91,11 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
     ],
-
-    'array-methods': [
+  },
+  {
+    slug: 'array-methods',
+    title: 'JavaScript Array Methods',
+    questions: [
       {
         question: 'What are array methods in JavaScript?',
         answer:
@@ -112,8 +127,11 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
     ],
-
-    arrays: [
+  },
+  {
+    slug: 'arrays',
+    title: 'JavaScript Arrays',
+    questions: [
       {
         question: 'What is the difference between map, forEach, and filter?',
         answer:
@@ -140,7 +158,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
       },
       {
         question: 'What is an array in JavaScript?',
-        answer: 'An array is an ordered collection of values stored in a single variable.',
+        answer:
+          'An array is an ordered collection of values stored in a single variable.',
         difficulty: 'beginner',
       },
       {
@@ -150,7 +169,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
       },
       {
         question: 'What is the difference between push() and pop()?',
-        answer: '`push()` adds an element to the end, while `pop()` removes the last element.',
+        answer:
+          '`push()` adds an element to the end, while `pop()` removes the last element.',
         difficulty: 'beginner',
       },
       {
@@ -164,8 +184,11 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
     ],
-
-    'async-await': [
+  },
+  {
+    slug: 'async-await',
+    title: 'Async/Await',
+    questions: [
       {
         question:
           "Why doesn't await work as expected inside array.forEach, and how do you fix it?",
@@ -220,8 +243,11 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
     ],
-
-    'class-features': [
+  },
+  {
+    slug: 'class-features',
+    title: 'Static, Private, and Getter/Setter Members',
+    questions: [
       {
         question:
           'What is the difference between a static member and an instance member in a class?',
@@ -251,14 +277,18 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'What happens if you try to access a private field from outside its class?',
+        question:
+          'What happens if you try to access a private field from outside its class?',
         answer:
           'JavaScript throws a `SyntaxError` indicating the private field must be declared in an enclosing class, because private fields are only visible and accessible within the body of the class that declares them, never from outside code or even from subclasses.',
         difficulty: 'intermediate',
       },
     ],
-
-    'class-inheritance': [
+  },
+  {
+    slug: 'class-inheritance',
+    title: 'Class Inheritance',
+    questions: [
       {
         question: 'What does the extends keyword do in a class declaration?',
         answer:
@@ -266,7 +296,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
       {
-        question: 'Why must super() be called before using this in a subclass constructor?',
+        question:
+          'Why must super() be called before using this in a subclass constructor?',
         answer:
           "In a derived class, `this` is not initialized until the parent class's constructor, called via `super()`, actually runs and creates the instance. Trying to access `this` before that point throws a `ReferenceError`, because there is technically no initialized instance yet to refer to.",
         difficulty: 'intermediate',
@@ -279,7 +310,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'What is the prototype chain, and how does extends relate to it?',
+        question:
+          'What is the prototype chain, and how does extends relate to it?',
         answer:
           "The prototype chain is the series of linked prototype objects that JavaScript walks through when looking up a property or method that isn't found directly on an object. Writing `class Dog extends Animal` sets `Animal.prototype` as the prototype of `Dog.prototype`, so looking up a method on a `Dog` instance that isn't defined on `Dog` falls back to searching `Animal.prototype` next.",
         difficulty: 'advanced',
@@ -292,10 +324,14 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
     ],
-
-    classes: [
+  },
+  {
+    slug: 'classes',
+    title: 'Classes',
+    questions: [
       {
-        question: 'What is a class in JavaScript, and what problem does it solve?',
+        question:
+          'What is a class in JavaScript, and what problem does it solve?',
         answer:
           'A class is a template for creating multiple objects that share the same structure — the same properties and methods — without repeating that structure by hand for every object. It solves the problem of duplicating object-creation logic by letting you define the shape once and instantiate it with `new` as many times as needed.',
         difficulty: 'beginner',
@@ -307,7 +343,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
       {
-        question: 'What actually happens when you call a class with the new keyword?',
+        question:
+          'What actually happens when you call a class with the new keyword?',
         answer:
           "Calling `new ClassName()` does four things in order:\n\n- Creates a new, empty object\n- Links that object's prototype to `ClassName.prototype`\n- Runs the constructor with `this` bound to the new object so it can be initialized\n- Returns that object automatically",
         difficulty: 'intermediate',
@@ -327,8 +364,11 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
     ],
-
-    closures: [
+  },
+  {
+    slug: 'closures',
+    title: 'Closures',
+    questions: [
       {
         question:
           'How would you implement a function that can only run once, no matter how many times it is called?',
@@ -344,7 +384,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'What is a common memory leak caused by closures, and how do you prevent it?',
+        question:
+          'What is a common memory leak caused by closures, and how do you prevent it?',
         answer:
           'Because a closure keeps its entire surrounding scope alive as long as the closure itself is reachable, holding on to a closure can unintentionally keep large objects or DOM nodes in memory that would otherwise be garbage-collected. A classic case is attaching an event listener whose callback closes over a big object and never removing the listener, so the object can never be freed.\n\nYou prevent it by:\n\n- Removing listeners when they are no longer needed\n- Avoiding capturing large variables you do not actually use\n- Nulling out references once you are done with them',
         difficulty: 'advanced',
@@ -369,26 +410,32 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'How can closures be used to create private variables in JavaScript?',
+        question:
+          'How can closures be used to create private variables in JavaScript?',
         answer:
           'By declaring a variable inside an outer function and only exposing access to it through inner functions that are returned from that outer function, the variable itself is never attached to the returned object and cannot be accessed or modified directly from outside — it can only be read or changed through the exposed functions, which is exactly how a `createAccount()` example hides its balance.',
         difficulty: 'intermediate',
       },
       {
-        question: 'Do closures capture the value of a variable or a reference to it?',
+        question:
+          'Do closures capture the value of a variable or a reference to it?',
         answer:
           'Closures capture a live reference to the variable, not a copy of its value at creation time. If the variable changes after the closure is formed but before the inner function runs, the inner function will see the updated value, which is the root cause of the classic `var` loop bug.',
         difficulty: 'advanced',
       },
       {
-        question: 'What is a function factory and how does it rely on closures?',
+        question:
+          'What is a function factory and how does it rely on closures?',
         answer:
           'A function factory is a function that returns other functions, each customized using arguments passed to the factory.\n\n```js\nfunction multiplyBy(factor) {\n  return (n) => n * factor;\n}\nconst double = multiplyBy(2);\nconst triple = multiplyBy(3);\n```\n\nIt relies on closures because each returned function keeps access to the specific arguments the factory was called with, letting you generate a family of related functions, like `multiplyBy(2)` and `multiplyBy(3)`, that behave differently without duplicating logic.',
         difficulty: 'intermediate',
       },
     ],
-
-    comments: [
+  },
+  {
+    slug: 'comments',
+    title: 'JavaScript Comments',
+    questions: [
       {
         question: 'What are comments in JavaScript?',
         answer:
@@ -402,7 +449,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
       {
-        question: 'What is the difference between single-line and multi-line comments?',
+        question:
+          'What is the difference between single-line and multi-line comments?',
         answer:
           'Single-line comments start with `//` and cover the rest of the line, while multi-line comments are wrapped in `/* */` and can span multiple lines.\n\n```js\n// single-line comment\n\n/*\n  multi-line\n  comment\n*/\n```',
         difficulty: 'beginner',
@@ -420,8 +468,11 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
     ],
-
-    conditionals: [
+  },
+  {
+    slug: 'conditionals',
+    title: 'JavaScript Conditionals',
+    questions: [
       {
         question: 'What are conditional statements in JavaScript?',
         answer:
@@ -465,8 +516,11 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
     ],
-
-    'data-types-in-javascript': [
+  },
+  {
+    slug: 'data-types-in-javascript',
+    title: 'JavaScript Data Types',
+    questions: [
       {
         question:
           'How do you reliably check whether a value is an array, is null, or is a specific object type?',
@@ -482,7 +536,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'How do you deep-copy an object, and why does the spread operator fall short?',
+        question:
+          'How do you deep-copy an object, and why does the spread operator fall short?',
         answer:
           'The spread operator and `Object.assign` only make a shallow copy: top-level properties are copied, but nested objects and arrays are still shared by reference, so mutating a nested value affects both copies.\n\nFor a true deep copy you can use the modern `structuredClone(value)`, which handles nested structures and many built-in types, or, for plain JSON-safe data, `JSON.parse(JSON.stringify(value))` — though the latter drops functions, `undefined`, and symbols and mishandles dates.',
         difficulty: 'intermediate',
@@ -512,7 +567,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'What is the difference between primitive and non-primitive data types?',
+        question:
+          'What is the difference between primitive and non-primitive data types?',
         answer:
           'Primitive types store a single immutable value directly, while non-primitive types (objects, arrays, functions) store a reference to a mutable value in memory.',
         difficulty: 'beginner',
@@ -536,10 +592,14 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
     ],
-
-    'date-and-time': [
+  },
+  {
+    slug: 'date-and-time',
+    title: 'Date and Time',
+    questions: [
       {
-        question: 'What are the different ways to create a Date object in JavaScript?',
+        question:
+          'What are the different ways to create a Date object in JavaScript?',
         answer:
           'You can create a `Date` several ways:\n\n- No arguments, to capture the current moment: `new Date()`\n- From a date string: `new Date("2024-03-15")`\n- From individual components: `new Date(year, month, day, hours, minutes, seconds)`\n- From a timestamp representing milliseconds since the Unix epoch: `new Date(1710500000000)`',
         difficulty: 'beginner',
@@ -553,7 +613,7 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
       {
         question: 'What is the difference between getTime() and Date.now()?',
         answer:
-          "`getTime()` is an instance method called on an existing `Date` object that returns its timestamp in milliseconds since the epoch. `Date.now()` is a static method on the `Date` constructor that returns the current timestamp directly, without needing to construct a `Date` object first.",
+          '`getTime()` is an instance method called on an existing `Date` object that returns its timestamp in milliseconds since the epoch. `Date.now()` is a static method on the `Date` constructor that returns the current timestamp directly, without needing to construct a `Date` object first.',
         difficulty: 'beginner',
       },
       {
@@ -570,10 +630,14 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
     ],
-
-    dom: [
+  },
+  {
+    slug: 'dom',
+    title: 'The DOM (Document Object Model)',
+    questions: [
       {
-        question: 'What is the difference between event bubbling and event capturing?',
+        question:
+          'What is the difference between event bubbling and event capturing?',
         answer:
           'When an event fires on an element, it travels through the DOM in two phases.\n\n- **Capturing phase** — descends from the document down to the target.\n- **Bubbling phase** — rises back up from the target to the document.\n\nBy default, listeners run during the bubbling phase; you opt into the capturing phase by passing `true` or `{ capture: true }` as the third argument to `addEventListener`. Bubbling is what makes event delegation possible, since a parent can handle events that originated on its children.',
         difficulty: 'intermediate',
@@ -592,13 +656,15 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'What is the difference between the load and DOMContentLoaded events?',
+        question:
+          'What is the difference between the load and DOMContentLoaded events?',
         answer:
           '`DOMContentLoaded` fires as soon as the HTML has been fully parsed and the DOM tree is built, without waiting for stylesheets, images, and other sub-resources. The `load` event fires later, only once the entire page including all dependent resources has loaded. For most script initialization that only needs the DOM to exist, `DOMContentLoaded` is the right and faster choice, while `load` is used when you genuinely need images or other assets to be ready.',
         difficulty: 'intermediate',
       },
       {
-        question: 'What is the DOM, and how is it different from the HTML source file?',
+        question:
+          'What is the DOM, and how is it different from the HTML source file?',
         answer:
           "The DOM is the browser's live, in-memory tree of objects built from parsing the HTML, representing the current state of the page. The HTML source is just the original text sent by the server; the DOM can diverge from it immediately after load because JavaScript, browser corrections, and user interaction can all modify the tree without changing the original file.",
         difficulty: 'beginner',
@@ -610,26 +676,32 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'What does querySelectorAll() return, and how is it different from a real array?',
+        question:
+          'What does querySelectorAll() return, and how is it different from a real array?',
         answer:
           '`querySelectorAll()` returns a `NodeList`, which supports `forEach()` but lacks most other array methods like `map()`, `filter()`, and `reduce()`. To use those, you need to convert it into a real array first, typically with `Array.from(nodeList)` or the spread syntax `[...nodeList]`.',
         difficulty: 'beginner',
       },
       {
-        question: 'How would you add a new list item to the page using JavaScript?',
+        question:
+          'How would you add a new list item to the page using JavaScript?',
         answer:
           'You create the element, set its content, and then insert it into the visible DOM.\n\n```js\nconst li = document.createElement("li");\nli.textContent = "New item";\nlist.appendChild(li);\n```\n\nThe element does not appear on the page until that insertion step happens.',
         difficulty: 'beginner',
       },
       {
-        question: 'Why is classList generally preferred over manipulating the className string directly?',
+        question:
+          'Why is classList generally preferred over manipulating the className string directly?',
         answer:
           '`classList` exposes dedicated methods like `add()`, `remove()`, `toggle()`, and `contains()` that let you manage a single class without disturbing the others already present on the element. Manipulating `className` directly means working with one long string and manually splitting or joining it, which is more error-prone.',
         difficulty: 'beginner',
       },
     ],
-
-    'error-handling': [
+  },
+  {
+    slug: 'error-handling',
+    title: 'Error Handling',
+    questions: [
       {
         question:
           'What is the difference between a synchronous try/catch and handling errors in async code?',
@@ -638,25 +710,29 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'What happens to an unhandled promise rejection, and how do you catch them globally?',
+        question:
+          'What happens to an unhandled promise rejection, and how do you catch them globally?',
         answer:
           "If a rejected promise has no rejection handler, it becomes an unhandled rejection: in browsers it fires a `window` `unhandledrejection` event and logs a warning, and in Node.js it emits an `unhandledRejection` event and, in modern versions, can terminate the process.\n\n```js\nwindow.addEventListener('unhandledrejection', (e) => { /* ... */ });\n// Node.js\nprocess.on('unhandledRejection', (reason) => { /* ... */ });\n```\n\nThis is useful as a safety net for logging, though per-operation `catch` handlers remain the proper fix.",
         difficulty: 'advanced',
       },
       {
-        question: 'Why is it bad practice to catch an error and do nothing with it?',
+        question:
+          'Why is it bad practice to catch an error and do nothing with it?',
         answer:
           'Swallowing an error with an empty `catch` block hides failures: the program keeps running as if nothing went wrong, but in a broken state, which makes bugs far harder to diagnose because the original cause is silently discarded. At minimum you should log the error, and ideally handle it meaningfully — retrying, showing the user a message, or rethrowing so a higher layer can decide. If you truly must ignore it, a comment explaining why keeps the intent clear.',
         difficulty: 'beginner',
       },
       {
-        question: 'When should you throw an error versus return a special value like null or false?',
+        question:
+          'When should you throw an error versus return a special value like null or false?',
         answer:
           'Throw when something has gone genuinely wrong and the current operation cannot sensibly continue — invalid input that violates a contract, a failed network request, or a broken invariant — so callers are forced to deal with it rather than accidentally proceeding.\n\nReturn a normal value like `null` or an empty result when the absence of a result is an expected, ordinary outcome, such as a lookup that found no match. Overusing exceptions for routine control flow makes code harder to follow and slower.',
         difficulty: 'intermediate',
       },
       {
-        question: 'What is the purpose of the finally block, and when does it run?',
+        question:
+          'What is the purpose of the finally block, and when does it run?',
         answer:
           'The `finally` block contains cleanup code that should run no matter what happens in the `try` and `catch` blocks. It always runs — whether the `try` block completes successfully, the `catch` block handles an error, or the `try` block returns a value early — making it the right place for logic like closing connections or hiding loading indicators.',
         difficulty: 'beginner',
@@ -668,59 +744,73 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'What properties does a caught Error object typically expose?',
+        question:
+          'What properties does a caught Error object typically expose?',
         answer:
           'An `Error` object exposes:\n\n- **message** — a string describing what went wrong\n- **name** — the error type (such as `"TypeError"` or a custom name)\n- **stack** — a string trace of the call stack at the point the error was thrown, useful for debugging',
         difficulty: 'beginner',
       },
       {
-        question: 'Why does a try/catch block fail to catch an error thrown inside a setTimeout callback?',
+        question:
+          'Why does a try/catch block fail to catch an error thrown inside a setTimeout callback?',
         answer:
           'The `try` block finishes executing and is considered complete before the `setTimeout` callback ever runs, since `setTimeout` schedules the callback to run later on the event loop. Because the throw happens outside the lifetime of the `try` block, JavaScript has no surrounding `catch` to hand the error to, and it becomes an uncaught exception.',
         difficulty: 'advanced',
       },
       {
-        question: 'How can you catch multiple different types of errors differently in one try/catch?',
+        question:
+          'How can you catch multiple different types of errors differently in one try/catch?',
         answer:
           'Since JavaScript only supports a single `catch` clause per `try` block, you check the type of the caught error inside that one block using the `instanceof` operator against your different custom error classes, and branch your handling logic based on which type matched.\n\n```js\ntry {\n  doWork();\n} catch (err) {\n  if (err instanceof ValidationError) handleValidation(err);\n  else if (err instanceof NetworkError) handleNetwork(err);\n  else throw err;\n}\n```',
         difficulty: 'intermediate',
       },
     ],
-
-    'event-delegation': [
+  },
+  {
+    slug: 'event-delegation',
+    title: 'Event Delegation',
+    questions: [
       {
-        question: 'What is event delegation, and what browser behavior does it rely on?',
+        question:
+          'What is event delegation, and what browser behavior does it rely on?',
         answer:
           "Event delegation is the pattern of attaching a single event listener to a shared ancestor element instead of separate listeners to each of its children, and using the event object inside that one listener to determine which child the event actually came from. It relies entirely on event bubbling, since that's what carries an event fired on a descendant up to the ancestor where the listener lives.",
         difficulty: 'intermediate',
       },
       {
-        question: 'Why is event delegation particularly useful for dynamically added elements?',
+        question:
+          'Why is event delegation particularly useful for dynamically added elements?',
         answer:
           "A listener attached directly to a specific element only covers that element, so any element added to the page later has no listener of its own unless one is explicitly attached to it. A delegated listener lives on an ancestor that already exists and doesn't change, so any new descendant added underneath it is automatically covered by the same listener, with no extra setup required.",
         difficulty: 'intermediate',
       },
       {
-        question: 'What role does closest() typically play inside a delegated event listener?',
+        question:
+          'What role does closest() typically play inside a delegated event listener?',
         answer:
           '`event.target` is the exact, possibly deeply nested element the user interacted with, which may not be the element you actually care about. `closest(selector)` walks upward from `event.target` (including itself) to find the nearest ancestor matching a given CSS selector.\n\n```js\nlist.addEventListener("click", (e) => {\n  const item = e.target.closest("li");\n  if (item) handleItemClick(item);\n});\n```\n\nThis is how a delegated listener reliably identifies which logical child — such as which `<li>` — the event happened inside of.',
         difficulty: 'intermediate',
       },
       {
-        question: 'Why can delegation improve performance on a page with many similar child elements?',
+        question:
+          'Why can delegation improve performance on a page with many similar child elements?',
         answer:
           'Every attached listener carries some memory and setup overhead, so attaching one to each of hundreds or thousands of similar elements adds up. Delegation replaces all of those with a single listener on a shared ancestor, keeping the cost constant regardless of how many children exist or how frequently they are added or removed.',
         difficulty: 'intermediate',
       },
       {
-        question: 'Why does event delegation fail for focus and blur events, and what is the workaround?',
+        question:
+          'Why does event delegation fail for focus and blur events, and what is the workaround?',
         answer:
           '`focus` and `blur` do not bubble, so an event listener on an ancestor never receives them regardless of which descendant gained or lost focus. The workaround is to use the bubbling equivalents `focusin` and `focusout`, or to attach the listener during the capturing phase (by passing `true` as the third argument to `addEventListener()`), since capturing does reach every descendant on its way down to the target.',
         difficulty: 'advanced',
       },
     ],
-
-    'event-loop': [
+  },
+  {
+    slug: 'event-loop',
+    title: 'The Event Loop',
+    questions: [
       {
         question:
           'Predict the output order of console.log(1); setTimeout(() => console.log(2), 0); Promise.resolve().then(() => console.log(3)); console.log(4);',
@@ -729,25 +819,29 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'advanced',
       },
       {
-        question: 'What is the difference between process.nextTick and setImmediate in Node.js?',
+        question:
+          'What is the difference between process.nextTick and setImmediate in Node.js?',
         answer:
-          "Both schedule callbacks for later, but at different points in the event loop.\n\n- **process.nextTick** — runs immediately after the current operation completes and before the loop continues to the next phase, effectively ahead of the Promise microtask queue and well before any timers.\n- **setImmediate** — runs in the check phase, after I/O callbacks of the current iteration.\n\nSo `process.nextTick` fires sooner, and overusing it can starve the event loop by preventing it from moving on, whereas `setImmediate` yields back to the loop first.",
+          'Both schedule callbacks for later, but at different points in the event loop.\n\n- **process.nextTick** — runs immediately after the current operation completes and before the loop continues to the next phase, effectively ahead of the Promise microtask queue and well before any timers.\n- **setImmediate** — runs in the check phase, after I/O callbacks of the current iteration.\n\nSo `process.nextTick` fires sooner, and overusing it can starve the event loop by preventing it from moving on, whereas `setImmediate` yields back to the loop first.',
         difficulty: 'advanced',
       },
       {
-        question: 'Why can a long synchronous loop freeze the UI, and how does this relate to the event loop?',
+        question:
+          'Why can a long synchronous loop freeze the UI, and how does this relate to the event loop?',
         answer:
           'JavaScript in the browser runs on a single thread that also handles rendering and user input. While a long synchronous loop runs, it occupies the call stack, so the event loop cannot pick up rendering work, click handlers, or any queued callbacks until the loop finishes, making the page appear frozen. The fix is to break long work into smaller chunks scheduled with `setTimeout` or `requestAnimationFrame`, or move heavy computation into a Web Worker so the main thread stays free to keep the UI responsive.',
         difficulty: 'intermediate',
       },
       {
-        question: 'Why can JavaScript run asynchronous operations if it only has one call stack?',
+        question:
+          'Why can JavaScript run asynchronous operations if it only has one call stack?',
         answer:
           'JavaScript itself does not execute the asynchronous operation on the call stack at all — it hands work like timers, network requests, or DOM listeners off to the surrounding environment (Web APIs in a browser, or similar facilities in Node.js), which runs that work outside the call stack and later places the corresponding callback into a queue for the event loop to pick up once the stack is empty.',
         difficulty: 'intermediate',
       },
       {
-        question: 'What is the difference between the microtask queue and the macrotask (callback) queue?',
+        question:
+          'What is the difference between the microtask queue and the macrotask (callback) queue?',
         answer:
           'The **microtask queue** holds callbacks from Promises (`.then`, `.catch`, `.finally`) and `queueMicrotask()`, while the **macrotask queue** holds things like `setTimeout`/`setInterval` callbacks and DOM events. The event loop always drains the entire microtask queue before running even a single task from the macrotask queue, and it drains the microtask queue again after each individual macrotask completes.',
         difficulty: 'intermediate',
@@ -759,40 +853,49 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
       {
-        question: 'Why does a setTimeout callback with a 0ms delay not run immediately?',
+        question:
+          'Why does a setTimeout callback with a 0ms delay not run immediately?',
         answer:
           "A `0ms` delay only means the timer is ready to queue its callback as soon as possible; the callback still has to wait as a macrotask until the current synchronous code finishes running and the entire microtask queue has fully drained, so a Promise's `.then()` callback scheduled at the same time will always run first.",
         difficulty: 'intermediate',
       },
       {
-        question: 'What can happen if a chain of Promise callbacks keeps scheduling more microtasks?',
+        question:
+          'What can happen if a chain of Promise callbacks keeps scheduling more microtasks?',
         answer:
           'Because the event loop fully drains the microtask queue before ever touching the macrotask queue, a microtask that keeps scheduling further microtasks can cause the macrotask queue to be starved indefinitely, delaying things like `setTimeout` callbacks or rendering updates that are waiting their turn.',
         difficulty: 'advanced',
       },
     ],
-
-    events: [
+  },
+  {
+    slug: 'events',
+    title: 'DOM Events',
+    questions: [
       {
-        question: 'Why is addEventListener() generally preferred over assigning a function to an onclick property?',
+        question:
+          'Why is addEventListener() generally preferred over assigning a function to an onclick property?',
         answer:
           '`addEventListener()` allows multiple independent listeners to be attached to the same event on the same element without any of them overwriting each other, while assigning to the `onclick` property can only ever hold one handler at a time — each new assignment silently replaces the previous one.',
         difficulty: 'beginner',
       },
       {
-        question: 'What is the difference between event.target and event.currentTarget?',
+        question:
+          'What is the difference between event.target and event.currentTarget?',
         answer:
           '`event.target` is the specific element where the event actually originated, such as the exact child element the user clicked, while `event.currentTarget` is always the element the listener function is attached to. These can be different elements whenever the event bubbles up from a descendant to an ancestor that has its own listener.',
         difficulty: 'intermediate',
       },
       {
-        question: 'Why can removeEventListener() sometimes fail to remove a listener that was clearly added?',
+        question:
+          'Why can removeEventListener() sometimes fail to remove a listener that was clearly added?',
         answer:
           '`removeEventListener()` only detaches a listener if it is passed the exact same function reference that was originally passed to `addEventListener()`. If the original listener was an anonymous or inline arrow function, there is no way to reference it again afterward, so it can never be removed — the fix is to use a named function or a function stored in a variable.',
         difficulty: 'intermediate',
       },
       {
-        question: 'What is the difference between the input and change events on a text field?',
+        question:
+          'What is the difference between the input and change events on a text field?',
         answer:
           'The `input` event fires immediately on every change to the value, including every keystroke, making it suitable for live feedback like search-as-you-type. The `change` event fires only once, typically when the field loses focus after its value has been modified, making it better suited for reacting to a finalized value.',
         difficulty: 'beginner',
@@ -805,28 +908,35 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
     ],
-
-    'fetch-api': [
+  },
+  {
+    slug: 'fetch-api',
+    title: 'The Fetch API',
+    questions: [
       {
-        question: 'What does fetch() return, and what does that value resolve to?',
+        question:
+          'What does fetch() return, and what does that value resolve to?',
         answer:
           '`fetch()` returns a `Promise` that resolves to a `Response` object representing the HTTP response, including its status code, headers, and body. Reading the actual body content requires an additional step, such as calling `response.json()` or `response.text()`, which themselves return further Promises.',
         difficulty: 'beginner',
       },
       {
-        question: 'Does fetch() reject its promise when the server responds with a 404 or 500 status?',
+        question:
+          'Does fetch() reject its promise when the server responds with a 404 or 500 status?',
         answer:
           "No. `fetch()`'s promise only rejects on a genuine network failure, such as a DNS error or the request never completing. An HTTP error status like 404 or 500 is still treated as a completed request, so the promise resolves normally with a `Response` object whose `.ok` property is `false` and whose `.status` reflects the error — you must check this yourself.",
         difficulty: 'intermediate',
       },
       {
-        question: 'How do you send a POST request with a JSON body using fetch()?',
+        question:
+          'How do you send a POST request with a JSON body using fetch()?',
         answer:
           'You pass a second argument to `fetch()`: an options object with `method` set to `"POST"`, a `headers` object typically including `"Content-Type": "application/json"`, and a `body` containing the payload serialized with `JSON.stringify()`, since the body must be a string rather than a raw JavaScript object.\n\n```js\nawait fetch("/api/users", {\n  method: "POST",\n  headers: { "Content-Type": "application/json" },\n  body: JSON.stringify({ name: "Ada" }),\n});\n```',
         difficulty: 'beginner',
       },
       {
-        question: 'How would you write a fetch() call using async/await with proper error handling?',
+        question:
+          'How would you write a fetch() call using async/await with proper error handling?',
         answer:
           "You await the `fetch()` call inside a `try/catch` block, then manually check `response.ok` immediately afterward and throw an error if it's `false`, since `fetch()` itself won't reject for HTTP error statuses.\n\n```js\ntry {\n  const response = await fetch(url);\n  if (!response.ok) throw new Error(`HTTP ${response.status}`);\n  const data = await response.json();\n} catch (err) {\n  console.error(err);\n}\n```\n\nThe `catch` block then handles both real network failures and the error you threw yourself for a bad status.",
         difficulty: 'intermediate',
@@ -838,30 +948,37 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'advanced',
       },
     ],
-
-    functions: [
+  },
+  {
+    slug: 'functions',
+    title: 'JavaScript Functions',
+    questions: [
       {
-        question: 'What is the difference between rest parameters and the arguments object?',
+        question:
+          'What is the difference between rest parameters and the arguments object?',
         answer:
           'Rest parameters, written as `...args`, collect the remaining arguments into a real array, so array methods like `map` and `filter` work directly on them, and they only capture arguments beyond the named ones. The `arguments` object is an older, array-like object available in regular (non-arrow) functions that holds all passed arguments but is not a true array and lacks array methods. Arrow functions do not have their own `arguments` object at all, which is another reason rest parameters are preferred in modern code.',
         difficulty: 'intermediate',
       },
       {
-        question: 'What is a pure function and why are pure functions desirable?',
+        question:
+          'What is a pure function and why are pure functions desirable?',
         answer:
-          'A pure function always returns the same output for the same inputs and produces no side effects — it does not modify external state, mutate its arguments, or perform I/O. Purity makes functions predictable, easy to test in isolation, safe to cache or memoize, and simple to reason about, since their behavior depends only on their inputs. This is a core principle of functional programming and underpins patterns like React\'s rendering model and state reducers.',
+          "A pure function always returns the same output for the same inputs and produces no side effects — it does not modify external state, mutate its arguments, or perform I/O. Purity makes functions predictable, easy to test in isolation, safe to cache or memoize, and simple to reason about, since their behavior depends only on their inputs. This is a core principle of functional programming and underpins patterns like React's rendering model and state reducers.",
         difficulty: 'intermediate',
       },
       {
-        question: 'What is the difference between a higher-order function and a callback?',
+        question:
+          'What is the difference between a higher-order function and a callback?',
         answer:
           "A **higher-order function** is a function that either takes one or more functions as arguments or returns a function. A **callback** is the function that gets passed into another function to be invoked later. They are two sides of the same relationship: `map`, `filter`, and `addEventListener` are higher-order functions, and the functions you hand them are callbacks. This pattern is what enables much of JavaScript's flexibility, from array iteration to asynchronous APIs.",
         difficulty: 'intermediate',
       },
       {
-        question: 'How do default parameters work, and when does the default actually apply?',
+        question:
+          'How do default parameters work, and when does the default actually apply?',
         answer:
-          "If an argument is not provided, the corresponding parameter is `undefined`. Default parameters let you specify a fallback.\n\n```js\nfunction greet(name = \"Guest\") {\n  return `Hello, ${name}`;\n}\n```\n\nThe default only applies when the argument is `undefined` specifically — passing `null` does not trigger it. Defaults are evaluated at call time and can even reference earlier parameters, making them more flexible than the older pattern of checking and reassigning inside the body.",
+          'If an argument is not provided, the corresponding parameter is `undefined`. Default parameters let you specify a fallback.\n\n```js\nfunction greet(name = "Guest") {\n  return `Hello, ${name}`;\n}\n```\n\nThe default only applies when the argument is `undefined` specifically — passing `null` does not trigger it. Defaults are evaluated at call time and can even reference earlier parameters, making them more flexible than the older pattern of checking and reassigning inside the body.',
         difficulty: 'beginner',
       },
       {
@@ -877,7 +994,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
       {
-        question: 'What is the difference between function declaration and function expression?',
+        question:
+          'What is the difference between function declaration and function expression?',
         answer:
           'A function declaration is hoisted and can be called before it appears in the code, while a function expression is assigned to a variable and is only available after that assignment runs.',
         difficulty: 'beginner',
@@ -907,8 +1025,11 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
     ],
-
-    'generators-iterators': [
+  },
+  {
+    slug: 'generators-iterators',
+    title: 'Generators and Iterators',
+    questions: [
       {
         question: 'What is the iterator protocol?',
         answer:
@@ -916,7 +1037,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'How is the iterable protocol different from the iterator protocol?',
+        question:
+          'How is the iterable protocol different from the iterator protocol?',
         answer:
           'An **iterable** is an object with a method at the key `Symbol.iterator` that, when called, returns an iterator. Being iterable is what allows an object to be used directly with constructs like `for...of`, the spread operator, and `Array.from()`, whereas an **iterator** on its own is only usable by manually calling `next()`.',
         difficulty: 'intermediate',
@@ -929,20 +1051,25 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'How can you pass a value into a generator, and where does that value end up?',
+        question:
+          'How can you pass a value into a generator, and where does that value end up?',
         answer:
           'You pass a value as the argument to `.next(value)`. That value becomes the result of the `yield` expression that the generator was paused on, letting the generator receive input each time it resumes rather than only producing output.',
         difficulty: 'advanced',
       },
       {
-        question: 'Why are generators well suited for representing infinite sequences?',
+        question:
+          'Why are generators well suited for representing infinite sequences?',
         answer:
           'Because a generator only computes the next value when `.next()` is actually called, it can represent a logically infinite sequence — like all natural numbers — without ever computing more values than are actually consumed, avoiding the need to build the entire sequence in memory up front.',
         difficulty: 'advanced',
       },
     ],
-
-    hoisting: [
+  },
+  {
+    slug: 'hoisting',
+    title: 'JavaScript Hoisting',
+    questions: [
       {
         question:
           'What is the difference between calling a function declaration versus a function expression before its definition?',
@@ -963,7 +1090,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
       {
-        question: 'What is the difference between hoisting in var, let, and const?',
+        question:
+          'What is the difference between hoisting in var, let, and const?',
         answer:
           '`var` declarations are hoisted and initialized as `undefined`, while `let` and `const` are hoisted but left uninitialized in the Temporal Dead Zone until their declaration line runs.',
         difficulty: 'beginner',
@@ -987,7 +1115,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
       {
-        question: 'What is the difference between function declaration and function expression during hoisting?',
+        question:
+          'What is the difference between function declaration and function expression during hoisting?',
         answer:
           "Function declarations are fully hoisted, including their body, so they can be called before their definition; function expressions are only hoisted as an uninitialized variable and can't be called beforehand.",
         difficulty: 'beginner',
@@ -999,8 +1128,11 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
     ],
-
-    introduction: [
+  },
+  {
+    slug: 'introduction',
+    title: 'JavaScript Introduction',
+    questions: [
       {
         question: 'What is JavaScript?',
         answer:
@@ -1009,7 +1141,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
       },
       {
         question: 'Who created JavaScript?',
-        answer: 'Brendan Eich created JavaScript in 1995 while working at Netscape.',
+        answer:
+          'Brendan Eich created JavaScript in 1995 while working at Netscape.',
         difficulty: 'beginner',
       },
       {
@@ -1049,8 +1182,11 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
     ],
-
-    'iteration-methods': [
+  },
+  {
+    slug: 'iteration-methods',
+    title: 'Iterating Over Array Elements',
+    questions: [
       {
         question: 'What is the key difference between forEach() and map()?',
         answer:
@@ -1058,13 +1194,15 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
       {
-        question: 'Why is it recommended to always pass an initialValue to reduce()?',
+        question:
+          'Why is it recommended to always pass an initialValue to reduce()?',
         answer:
           "If you omit `initialValue`, `reduce()` uses the array's first element as the starting accumulator and begins iterating from the second element. This can cause confusing bugs — most notably, calling `reduce()` without an `initialValue` on an empty array throws a `TypeError`, since there's no element to use as a starting point. Passing an explicit `initialValue` makes the behavior predictable and safe for empty arrays.",
         difficulty: 'intermediate',
       },
       {
-        question: 'How would you use filter() and map() together, and why chain them in that order?',
+        question:
+          'How would you use filter() and map() together, and why chain them in that order?',
         answer:
           'You can chain them as `array.filter(condition).map(transform)` to first narrow the array down to only the elements you care about, then transform just those elements. Filtering first is generally more efficient because `map()` then only has to run its transformation on the smaller, already-filtered set rather than on every original element.',
         difficulty: 'intermediate',
@@ -1076,7 +1214,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'Can you stop forEach() early, and if not, what should you use instead?',
+        question:
+          'Can you stop forEach() early, and if not, what should you use instead?',
         answer:
           'No — `forEach()` has no built-in way to break out early; `return` inside the callback only skips to the next iteration, it does not stop the loop. If you need to exit early once a condition is met, use a traditional `for` loop or a `for...of` loop (both support `break`), or reach for a method designed to short-circuit, such as `some()`, `every()`, or `find()`.',
         difficulty: 'intermediate',
@@ -1089,22 +1228,28 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'advanced',
       },
     ],
-
-    json: [
+  },
+  {
+    slug: 'json',
+    title: 'Working with JSON',
+    questions: [
       {
-        question: 'What is JSON and how does it relate to JavaScript object literals?',
+        question:
+          'What is JSON and how does it relate to JavaScript object literals?',
         answer:
           "JSON (JavaScript Object Notation) is a text-based data interchange format derived from JavaScript's object literal syntax, but it's stricter and language-independent. Keys must be double-quoted strings, and values are limited to strings, numbers, booleans, `null`, arrays, and objects — functions, `undefined`, and comments are not valid JSON.",
         difficulty: 'beginner',
       },
       {
-        question: 'What does JSON.stringify() do, and what are its three possible arguments?',
+        question:
+          'What does JSON.stringify() do, and what are its three possible arguments?',
         answer:
           '`JSON.stringify()` converts a JavaScript value into a JSON-formatted string.\n\n- **value** — the value to convert\n- **replacer** (optional) — an array of keys to include, or a function to transform/filter values\n- **space** (optional) — controls indentation for pretty-printing\n\n```js\nJSON.stringify({ a: 1, b: 2 }, null, 2);\n```',
         difficulty: 'beginner',
       },
       {
-        question: 'Why do properties with undefined values disappear when you stringify an object?',
+        question:
+          'Why do properties with undefined values disappear when you stringify an object?',
         answer:
           'JSON has no representation for `undefined`, so `JSON.stringify()` simply omits any property whose value is `undefined` from the resulting string, rather than including it as `null` or throwing an error. The same happens with function-valued properties.',
         difficulty: 'intermediate',
@@ -1117,14 +1262,18 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'What happens if you try to JSON.stringify() an object with a circular reference?',
+        question:
+          'What happens if you try to JSON.stringify() an object with a circular reference?',
         answer:
           '`JSON.stringify()` throws a `TypeError`, because a circular reference would require the resulting JSON string to be infinitely long — JSON has no syntax for representing a reference back to a containing object.',
         difficulty: 'advanced',
       },
     ],
-
-    loops: [
+  },
+  {
+    slug: 'loops',
+    title: 'JavaScript Loops',
+    questions: [
       {
         question: 'What are loops in JavaScript?',
         answer:
@@ -1145,7 +1294,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
       },
       {
         question: 'When should you use a do...while loop?',
-        answer: 'Use a `do...while` loop when the code block must run at least once before the condition is checked.',
+        answer:
+          'Use a `do...while` loop when the code block must run at least once before the condition is checked.',
         difficulty: 'beginner',
       },
       {
@@ -1156,7 +1306,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
       },
       {
         question: 'What do break and continue do?',
-        answer: '`break` exits a loop entirely, while `continue` skips the rest of the current iteration and moves to the next one.',
+        answer:
+          '`break` exits a loop entirely, while `continue` skips the rest of the current iteration and moves to the next one.',
         difficulty: 'beginner',
       },
       {
@@ -1166,10 +1317,14 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
     ],
-
-    'map-and-set': [
+  },
+  {
+    slug: 'map-and-set',
+    title: 'Map and Set',
+    questions: [
       {
-        question: 'What is the key difference between a Map and a plain object for storing key-value pairs?',
+        question:
+          'What is the key difference between a Map and a plain object for storing key-value pairs?',
         answer:
           'A `Map` allows keys of any type, including objects, functions, and numbers, while a plain object coerces all keys to strings (or uses symbols). A `Map` also reliably preserves insertion order during iteration and provides a `size` property, whereas checking the number of properties on an object requires something like `Object.keys(obj).length`.',
         difficulty: 'intermediate',
@@ -1182,34 +1337,42 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
       {
-        question: 'How would you remove duplicate values from an array using a Set?',
+        question:
+          'How would you remove duplicate values from an array using a Set?',
         answer:
           'You pass the array into the `Set` constructor, which automatically discards duplicate values while preserving the order of first appearance, and then spread the `Set` back into a new array.\n\n```js\nconst unique = [...new Set(someArray)];\n```',
         difficulty: 'beginner',
       },
       {
-        question: 'Why might you choose a Set instead of an array when checking whether a value exists in a collection?',
+        question:
+          'Why might you choose a Set instead of an array when checking whether a value exists in a collection?',
         answer:
           'A `Set` guarantees unique values and its `has()` method is generally much faster for membership checks than repeatedly calling `includes()` or `indexOf()` on a large array, since a `Set` is optimized specifically for lookups rather than ordered indexed access.',
         difficulty: 'intermediate',
       },
       {
-        question: 'What happens if you try to JSON.stringify() a Map or a Set directly?',
+        question:
+          'What happens if you try to JSON.stringify() a Map or a Set directly?',
         answer:
           '`JSON.stringify()` does not know how to serialize `Map` or `Set` instances, so it produces an empty object, `{}`, silently discarding all the data they contain. To serialize them properly, you need to first convert them into a plain array or object, such as spreading the entries or values, before calling `JSON.stringify()`.',
         difficulty: 'advanced',
       },
     ],
-
-    'memory-management': [
+  },
+  {
+    slug: 'memory-management',
+    title: 'Memory Management & Garbage Collection',
+    questions: [
       {
-        question: 'What are the three steps of the memory lifecycle, and which one does JavaScript automate?',
+        question:
+          'What are the three steps of the memory lifecycle, and which one does JavaScript automate?',
         answer:
           'The memory lifecycle is:\n\n- **Allocate** — reserve the memory\n- **Use** — read and write to it\n- **Release** — free it when no longer needed\n\nJavaScript automates the release step through garbage collection, so you never need to manually free memory the way you would in a language like C.',
         difficulty: 'intermediate',
       },
       {
-        question: 'What does it mean for a value to be "reachable," and why does it matter for garbage collection?',
+        question:
+          'What does it mean for a value to be "reachable," and why does it matter for garbage collection?',
         answer:
           'A value is reachable if it can be reached by following references, directly or through any number of steps, starting from a root such as the global object or a variable currently on the call stack. The garbage collector only reclaims memory from values that are unreachable, since a reachable value might still be used by the program.',
         difficulty: 'advanced',
@@ -1222,22 +1385,28 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'advanced',
       },
       {
-        question: 'Give an example of how a forgotten setInterval() can cause a memory leak.',
+        question:
+          'Give an example of how a forgotten setInterval() can cause a memory leak.',
         answer:
           'If `setInterval()` is never cleared with `clearInterval()`, its callback keeps running forever, and because that callback is a closure, it keeps every variable it references alive for as long as the interval keeps running — even large data structures that are otherwise no longer needed become permanently unreachable-to-collect.',
         difficulty: 'advanced',
       },
       {
-        question: 'How does a WeakMap differ from a Map in terms of memory behavior?',
+        question:
+          'How does a WeakMap differ from a Map in terms of memory behavior?',
         answer:
           'A `Map` holds strong references to its keys, so a key stored in a `Map` cannot be garbage collected as long as the `Map` exists and holds that entry. A `WeakMap` holds weak references to its keys, so if nothing else in the program references a key, it can still be garbage collected, and its entry is automatically removed from the `WeakMap`.',
         difficulty: 'advanced',
       },
     ],
-
-    modules: [
+  },
+  {
+    slug: 'modules',
+    title: 'ES Modules (import/export)',
+    questions: [
       {
-        question: 'What is the difference between a named export and a default export?',
+        question:
+          'What is the difference between a named export and a default export?',
         answer:
           'A module can have many named exports, each imported using curly braces and the exact exported name (or a renamed version using `as`). A module can have only one default export, which is imported without curly braces and can be given any name the importing file chooses, since there is no specific exported name to match.',
         difficulty: 'beginner',
@@ -1249,7 +1418,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'What is the difference between static import and dynamic import()?',
+        question:
+          'What is the difference between static import and dynamic import()?',
         answer:
           'Static `import` statements are hoisted and resolved at load time, and must appear at the top level of a file outside of any conditional or function. Dynamic `import()` is a function-like expression that can be called anywhere in your code, including conditionally, and it returns a `Promise` that resolves to the requested module, making it useful for lazy-loading code.',
         difficulty: 'intermediate',
@@ -1267,10 +1437,14 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
     ],
-
-    'object-destructuring': [
+  },
+  {
+    slug: 'object-destructuring',
+    title: 'Object Destructuring',
+    questions: [
       {
-        question: 'How does object destructuring differ from array destructuring in terms of matching?',
+        question:
+          'How does object destructuring differ from array destructuring in terms of matching?',
         answer:
           'Array destructuring matches values by position, so the order of variables in the pattern must line up with the order of elements in the array. Object destructuring matches values by property name instead, so the order in which properties are listed in the pattern does not matter, as long as the variable names correspond to actual keys on the object.',
         difficulty: 'beginner',
@@ -1288,7 +1462,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'How would you extract one property from an object while collecting the rest into a new object?',
+        question:
+          'How would you extract one property from an object while collecting the rest into a new object?',
         answer:
           'You combine destructuring with the rest pattern, which pulls out `id` into its own variable and gathers every remaining property of `order` into a brand-new object called `details`.\n\n```js\nconst { id, ...details } = order;\n```',
         difficulty: 'intermediate',
@@ -1301,10 +1476,14 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
     ],
-
-    objects: [
+  },
+  {
+    slug: 'objects',
+    title: 'JavaScript Objects',
+    questions: [
       {
-        question: 'What is the difference between a shallow copy and a deep copy of an object?',
+        question:
+          'What is the difference between a shallow copy and a deep copy of an object?',
         answer:
           'A **shallow copy**, made with the spread operator or `Object.assign`, duplicates only the top-level properties; nested objects and arrays are still shared by reference, so changing a nested value affects both copies.\n\nA **deep copy** duplicates every level so the two objects share nothing, which you can achieve with `structuredClone` for most data or `JSON.parse(JSON.stringify(obj))` for plain JSON-safe data. Choosing the right one matters whenever an object contains nested structures you intend to modify independently.',
         difficulty: 'intermediate',
@@ -1316,25 +1495,30 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'What is the difference between Object.keys, Object.values, and Object.entries?',
+        question:
+          'What is the difference between Object.keys, Object.values, and Object.entries?',
         answer:
           'All three take an object and return an array based on its own enumerable properties.\n\n- **Object.keys** — returns the property names\n- **Object.values** — returns the corresponding values\n- **Object.entries** — returns an array of `[key, value]` pairs\n\n`Object.entries` is especially useful for iterating with `for...of` and destructuring, or for converting an object into a `Map`, and all three ignore inherited and non-enumerable properties.',
         difficulty: 'beginner',
       },
       {
-        question: 'How do optional chaining and nullish coalescing help when working with objects?',
+        question:
+          'How do optional chaining and nullish coalescing help when working with objects?',
         answer:
-          "Optional chaining, written with `?.`, lets you safely access deeply nested properties: if any link in the chain is `null` or `undefined`, the expression short-circuits to `undefined` instead of throwing a `TypeError`. Nullish coalescing, written with `??`, provides a fallback only when the left side is `null` or `undefined`, unlike `||` which also falls back on other falsy values like `0` or the empty string.\n\n```js\nconst name = user?.profile?.name ?? \"Anonymous\";\n```\n\nTogether, this reads a nested value safely and supplies a default only when it is truly missing.",
+          'Optional chaining, written with `?.`, lets you safely access deeply nested properties: if any link in the chain is `null` or `undefined`, the expression short-circuits to `undefined` instead of throwing a `TypeError`. Nullish coalescing, written with `??`, provides a fallback only when the left side is `null` or `undefined`, unlike `||` which also falls back on other falsy values like `0` or the empty string.\n\n```js\nconst name = user?.profile?.name ?? "Anonymous";\n```\n\nTogether, this reads a nested value safely and supplies a default only when it is truly missing.',
         difficulty: 'intermediate',
       },
       {
         question: 'What is an object in JavaScript?',
-        answer: 'An object is a collection of key-value pairs used to store related data.',
+        answer:
+          'An object is a collection of key-value pairs used to store related data.',
         difficulty: 'beginner',
       },
       {
-        question: 'What is the difference between dot notation and bracket notation?',
-        answer: 'Dot notation accesses properties directly, while bracket notation is useful for dynamic property names.',
+        question:
+          'What is the difference between dot notation and bracket notation?',
+        answer:
+          'Dot notation accesses properties directly, while bracket notation is useful for dynamic property names.',
         difficulty: 'beginner',
       },
       {
@@ -1348,13 +1532,17 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
       {
-        question: 'What is the purpose of the this keyword inside an object method?',
+        question:
+          'What is the purpose of the this keyword inside an object method?',
         answer: 'It refers to the current object that owns the method.',
         difficulty: 'beginner',
       },
     ],
-
-    operators: [
+  },
+  {
+    slug: 'operators',
+    title: 'JavaScript Operators',
+    questions: [
       {
         question: 'What are operators in JavaScript?',
         answer:
@@ -1375,7 +1563,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
       },
       {
         question: 'What is the modulus operator?',
-        answer: 'The modulus operator (`%`) returns the remainder of a division between two numbers.',
+        answer:
+          'The modulus operator (`%`) returns the remainder of a division between two numbers.',
         difficulty: 'beginner',
       },
       {
@@ -1385,7 +1574,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
       },
       {
         question: 'What are logical operators?',
-        answer: 'Logical operators (`&&`, `||`, `!`) combine or invert boolean expressions to build more complex conditions.',
+        answer:
+          'Logical operators (`&&`, `||`, `!`) combine or invert boolean expressions to build more complex conditions.',
         difficulty: 'beginner',
       },
       {
@@ -1395,8 +1585,11 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
     ],
-
-    'optional-chaining-nullish-coalescing': [
+  },
+  {
+    slug: 'optional-chaining-nullish-coalescing',
+    title: 'Optional Chaining & Nullish Coalescing',
+    questions: [
       {
         question: 'What problem does optional chaining (?.) solve?',
         answer:
@@ -1410,34 +1603,42 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'How do you use optional chaining with a function call that might not exist?',
+        question:
+          'How do you use optional chaining with a function call that might not exist?',
         answer:
           'You add `?.` before the call parentheses.\n\n```js\noptions.onComplete?.();\n```\n\nIf `onComplete` is `null` or `undefined`, the call is skipped entirely and the expression evaluates to `undefined`, rather than throwing an error for trying to call something that is not a function.',
         difficulty: 'intermediate',
       },
       {
-        question: 'What happens if a value in the middle of an optional chain is null?',
+        question:
+          'What happens if a value in the middle of an optional chain is null?',
         answer:
           'The chain short-circuits at that point and the entire expression immediately evaluates to `undefined`. Any further property accesses, index lookups, or function calls later in the chain are skipped and never evaluated.',
         difficulty: 'intermediate',
       },
       {
-        question: 'Why does JavaScript disallow mixing ?? directly with && or || without parentheses?',
+        question:
+          'Why does JavaScript disallow mixing ?? directly with && or || without parentheses?',
         answer:
           'Because the relative precedence between `??` and the logical operators would be ambiguous and error-prone to reason about, JavaScript requires you to make the grouping explicit with parentheses, such as `(a && b) ?? c`, rather than allowing an implicit and potentially confusing interpretation.',
         difficulty: 'advanced',
       },
     ],
-
-    promises: [
+  },
+  {
+    slug: 'promises',
+    title: 'Promises',
+    questions: [
       {
-        question: 'What is the difference between Promise.all, Promise.race, Promise.any, and Promise.allSettled?',
+        question:
+          'What is the difference between Promise.all, Promise.race, Promise.any, and Promise.allSettled?',
         answer:
           'All four take an iterable of promises but resolve differently.\n\n- **Promise.all** — waits for every promise to fulfill and rejects immediately if any one rejects, giving you an array of all results.\n- **Promise.allSettled** — waits for every promise to settle and never rejects, returning a status plus value or reason for each.\n- **Promise.race** — settles as soon as the first promise settles, whether it fulfills or rejects, adopting that outcome.\n- **Promise.any** — resolves with the first promise that fulfills and only rejects, with an `AggregateError`, if every promise rejects.\n\nUse `all` when everything must succeed, `allSettled` when you want every outcome regardless of failures, `race` for timeouts, and `any` for the first successful result.',
         difficulty: 'intermediate',
       },
       {
-        question: 'How do you convert a callback-based function into one that returns a promise?',
+        question:
+          'How do you convert a callback-based function into one that returns a promise?',
         answer:
           'You wrap it in a `new Promise` and call `resolve` or `reject` from inside the original callback.\n\n```js\nfunction readFilePromise(path) {\n  return new Promise((resolve, reject) => {\n    fs.readFile(path, (error, data) => {\n      if (error) reject(error);\n      else resolve(data);\n    });\n  });\n}\n```\n\nThis technique, called promisification, lets older callback APIs be used with `then`/`catch` and `async`/`await`. Node.js even ships a `util.promisify` helper that does exactly this for functions following the error-first callback convention.',
         difficulty: 'intermediate',
@@ -1450,7 +1651,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'How would you implement a delay or sleep function using promises?',
+        question:
+          'How would you implement a delay or sleep function using promises?',
         answer:
           'You return a new `Promise` whose executor calls `setTimeout`, and inside that timeout you call `resolve` after the desired number of milliseconds.\n\n```js\nconst sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));\nawait sleep(1000); // waits one second\n```\n\nBecause the promise only resolves once the timer fires, awaiting it pauses an async function for that duration without blocking the main thread.',
         difficulty: 'intermediate',
@@ -1468,28 +1670,35 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
       {
-        question: 'What happens if you forget to return a promise from inside a .then() callback?',
+        question:
+          'What happens if you forget to return a promise from inside a .then() callback?',
         answer:
           'The chain stops waiting for that inner operation to complete. The next `.then()` in the chain runs immediately with `undefined` as its value instead of the eventual result of the un-returned promise, which is a common source of bugs where asynchronous work appears to be skipped.',
         difficulty: 'advanced',
       },
       {
-        question: 'How does Promise.all() behave if one of the promises passed to it rejects?',
+        question:
+          'How does Promise.all() behave if one of the promises passed to it rejects?',
         answer:
           'It immediately rejects with that same error as soon as any one of the input promises rejects, without waiting for the remaining promises to settle. This makes it suitable only when you need every operation to succeed together.',
         difficulty: 'intermediate',
       },
       {
-        question: 'When would you use Promise.allSettled() instead of Promise.all()?',
+        question:
+          'When would you use Promise.allSettled() instead of Promise.all()?',
         answer:
           'You would use `Promise.allSettled()` when you want to know the outcome of every promise regardless of whether some of them fail, since it waits for all promises to settle and returns a status and value or reason for each one, rather than short-circuiting on the first rejection like `Promise.all()` does.',
         difficulty: 'intermediate',
       },
     ],
-
-    prototype: [
+  },
+  {
+    slug: 'prototype',
+    title: 'The Prototype Chain',
+    questions: [
       {
-        question: 'What is the difference between __proto__, prototype, and Object.getPrototypeOf?',
+        question:
+          'What is the difference between __proto__, prototype, and Object.getPrototypeOf?',
         answer:
           "`prototype` is a property that exists only on functions and holds the object that will become the prototype of instances created with `new`. `__proto__` is a legacy but widely supported accessor present on objects that exposes that object's actual internal `[[Prototype]]` link. `Object.getPrototypeOf(obj)` is the standard, recommended way to read that same internal link. In short, a function's `prototype` becomes the `__proto__` of its instances, and `Object.getPrototypeOf` is the clean API for reading it.",
         difficulty: 'advanced',
@@ -1501,7 +1710,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'advanced',
       },
       {
-        question: 'What is prototypal inheritance and how does it differ from classical inheritance?',
+        question:
+          'What is prototypal inheritance and how does it differ from classical inheritance?',
         answer:
           'Prototypal inheritance means objects inherit directly from other objects through a live prototype chain: when a property is not found on an object, the engine looks it up on its prototype, and so on up the chain. Classical inheritance, found in languages like Java, is based on classes acting as blueprints from which instances are stamped out, with inheritance defined between classes. JavaScript only truly has prototypal inheritance; its class syntax is sugar that sets up prototype links behind the scenes rather than introducing a separate class-based object model.',
         difficulty: 'intermediate',
@@ -1514,7 +1724,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'advanced',
       },
       {
-        question: 'How does JavaScript resolve obj.someProperty when someProperty is not an own property of obj?',
+        question:
+          'How does JavaScript resolve obj.someProperty when someProperty is not an own property of obj?',
         answer:
           "The engine checks whether `obj` has an own property called `someProperty`; if not, it follows `obj`'s `[[Prototype]]` link to its prototype and checks there, repeating this walk up the chain of linked objects until it either finds a matching property or reaches an object whose prototype is `null`, at which point it returns `undefined`.",
         difficulty: 'intermediate',
@@ -1527,22 +1738,28 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'advanced',
       },
       {
-        question: 'How does Object.create() differ from using a constructor function with new?',
+        question:
+          'How does Object.create() differ from using a constructor function with new?',
         answer:
-          "`Object.create(proto)` directly creates a new object whose `[[Prototype]]` is set to whatever object you pass in, with no constructor logic and no `new` keyword involved. Using `new Fn()` instead creates the object, runs the constructor function to initialize it, and sets its `[[Prototype]]` to `Fn.prototype` — `Object.create()` is the more explicit, lower-level tool for setting up a prototype link.",
+          '`Object.create(proto)` directly creates a new object whose `[[Prototype]]` is set to whatever object you pass in, with no constructor logic and no `new` keyword involved. Using `new Fn()` instead creates the object, runs the constructor function to initialize it, and sets its `[[Prototype]]` to `Fn.prototype` — `Object.create()` is the more explicit, lower-level tool for setting up a prototype link.',
         difficulty: 'intermediate',
       },
       {
-        question: 'In what sense is JavaScript\'s class syntax "just" syntactic sugar over prototypes?',
+        question:
+          'In what sense is JavaScript\'s class syntax "just" syntactic sugar over prototypes?',
         answer:
           "Writing a method inside a class body places that method on `ClassName.prototype`, exactly as if it had been manually assigned to a constructor function's `.prototype` property, and calling `new ClassName()` creates an object, links its `[[Prototype]]` to `ClassName.prototype`, and runs the constructor — identical steps to the older constructor-function pattern. `class` doesn't add a new object model to the language; it adds cleaner syntax and stricter rules (like requiring `new`) around the prototype chain that already existed.",
         difficulty: 'advanced',
       },
     ],
-
-    'regular-expressions': [
+  },
+  {
+    slug: 'regular-expressions',
+    title: 'Regular Expressions',
+    questions: [
       {
-        question: 'What are the two ways to create a regular expression in JavaScript, and when would you use each?',
+        question:
+          'What are the two ways to create a regular expression in JavaScript, and when would you use each?',
         answer:
           "You can use the literal syntax, `/pattern/flags`, or the `RegExp` constructor, `new RegExp('pattern', 'flags')`. The literal form is the common choice for fixed, known-in-advance patterns. The constructor form is necessary when the pattern needs to be built dynamically at runtime, for example from a variable holding user input.",
         difficulty: 'beginner',
@@ -1554,26 +1771,32 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'What does the g flag do, and what happens if you forget it with replace() or match()?',
+        question:
+          'What does the g flag do, and what happens if you forget it with replace() or match()?',
         answer:
           'The `g` (global) flag makes the regex find every match in the string instead of stopping at the first one. Without it, `replace()` only replaces the first occurrence, and `match()` returns detailed information about just the first match instead of an array of every match found.',
         difficulty: 'intermediate',
       },
       {
-        question: 'What is a capture group, and how do named groups improve on numbered ones?',
+        question:
+          'What is a capture group, and how do named groups improve on numbered ones?',
         answer:
           'A capture group is a parenthesized part of a pattern that lets you extract that specific piece of the matched text. Numbered groups are accessed by position, like `match[1]`, which becomes hard to track once there are several groups. Named groups, written as `(?<name>...)`, let you access the same captured text by a descriptive name via `match.groups.name` instead.',
         difficulty: 'intermediate',
       },
       {
-        question: 'Why is fully validating an email address with a single regex considered impractical?',
+        question:
+          'Why is fully validating an email address with a single regex considered impractical?',
         answer:
           'The full email specification (RFC 5322) allows for an enormous range of valid but unusual formats, and encoding all of those rules into one regex produces a pattern that is huge and hard to maintain. In practice, most applications use a loose regex to catch obvious formatting mistakes and rely on sending a confirmation email to verify the address actually works.',
         difficulty: 'advanced',
       },
     ],
-
-    'rest-parameters': [
+  },
+  {
+    slug: 'rest-parameters',
+    title: 'Rest Parameters',
+    questions: [
       {
         question: 'What do rest parameters do, and how do you write them?',
         answer:
@@ -1587,26 +1810,32 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'Why must a rest parameter always be the last parameter in a function signature?',
+        question:
+          'Why must a rest parameter always be the last parameter in a function signature?',
         answer:
           'A rest parameter collects all remaining arguments, so it only makes sense as the final parameter — there would be no arguments left over for any parameter placed after it. JavaScript enforces this rule and throws a `SyntaxError` if a rest parameter is followed by another parameter.',
         difficulty: 'beginner',
       },
       {
-        question: 'What is the difference between rest and spread, given they share the same ... syntax?',
+        question:
+          'What is the difference between rest and spread, given they share the same ... syntax?',
         answer:
           'Rest and spread use identical syntax but perform opposite operations depending on where they appear. **Rest** appears in a function parameter list or a destructuring pattern and gathers multiple individual values into a single array or object. **Spread** appears inside an array literal, object literal, or function call and expands a single array, object, or iterable out into its individual elements or properties.',
         difficulty: 'intermediate',
       },
       {
-        question: 'Can a rest element be used in destructuring, and how does that differ from a rest parameter?',
+        question:
+          'Can a rest element be used in destructuring, and how does that differ from a rest parameter?',
         answer:
           'Yes, rest can appear in both array destructuring and object destructuring, where it collects whatever elements or properties were not explicitly named.\n\n```js\nconst [first, ...rest] = arr;\nconst { id, ...rest } = obj;\n```\n\nA rest parameter refers specifically to the same gathering behavior applied to a function\'s parameter list rather than to a destructuring assignment, but the underlying "collect what is left" behavior is the same in both cases.',
         difficulty: 'intermediate',
       },
     ],
-
-    scope: [
+  },
+  {
+    slug: 'scope',
+    title: 'JavaScript Scope',
+    questions: [
       {
         question: 'What is the scope chain and how does variable lookup work?',
         answer:
@@ -1614,7 +1843,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'What is an IIFE and why was it commonly used before ES6 modules?',
+        question:
+          'What is an IIFE and why was it commonly used before ES6 modules?',
         answer:
           'An IIFE, or Immediately Invoked Function Expression, is a function that is defined and called at once.\n\n```js\n(function () {\n  // private scope\n})();\n```\n\nBefore block-scoped `let`/`const` and ES6 modules existed, developers used IIFEs to create a private scope so their variables would not leak into or collide with the global scope, and to emulate module-style encapsulation. Any variables declared inside the IIFE stayed local to it, exposing only what the function chose to return.',
         difficulty: 'intermediate',
@@ -1626,7 +1856,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
       {
-        question: 'What is the difference between global scope and local scope?',
+        question:
+          'What is the difference between global scope and local scope?',
         answer:
           'Global scope variables are accessible anywhere in the program, while local scope variables are only accessible within the function or block where they are declared.',
         difficulty: 'beginner',
@@ -1662,8 +1893,11 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
     ],
-
-    'searching-methods': [
+  },
+  {
+    slug: 'searching-methods',
+    title: 'Searching Array Elements',
+    questions: [
       {
         question: 'What is the difference between indexOf() and includes()?',
         answer:
@@ -1671,7 +1905,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
       {
-        question: 'How does find() differ from filter(), and what does find() return if nothing matches?',
+        question:
+          'How does find() differ from filter(), and what does find() return if nothing matches?',
         answer:
           '`find()` returns only the first element that satisfies the callback and stops iterating as soon as it finds one, whereas `filter()` checks every element and returns a new array containing all matches. If no element satisfies the condition, `find()` returns `undefined`, while `filter()` would return an empty array.',
         difficulty: 'beginner',
@@ -1683,7 +1918,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
       {
-        question: 'What does every() return when called on an empty array, and why?',
+        question:
+          'What does every() return when called on an empty array, and why?',
         answer:
           "`every()` returns `true` on an empty array. This is because `every()` is only `false` if it finds an element that fails the condition; with no elements to check, there's nothing to fail, so the check is vacuously true. This is a common source of confusion and worth testing explicitly.",
         difficulty: 'intermediate',
@@ -1702,8 +1938,11 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
     ],
-
-    setup: [
+  },
+  {
+    slug: 'setup',
+    title: 'Setup & Running JavaScript',
+    questions: [
       {
         question: 'Do we need to install JavaScript?',
         answer:
@@ -1718,7 +1957,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
       },
       {
         question: 'What is the purpose of the <script> tag?',
-        answer: 'The `<script>` tag is used to embed or link JavaScript code within an HTML document so the browser can execute it.',
+        answer:
+          'The `<script>` tag is used to embed or link JavaScript code within an HTML document so the browser can execute it.',
         difficulty: 'beginner',
       },
       {
@@ -1734,22 +1974,28 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
     ],
-
-    'spread-operator': [
+  },
+  {
+    slug: 'spread-operator',
+    title: 'The Spread Operator',
+    questions: [
       {
-        question: 'What does the spread operator do, and how is it different from the rest pattern?',
+        question:
+          'What does the spread operator do, and how is it different from the rest pattern?',
         answer:
           'The spread operator expands an iterable, such as an array, string, or object, into its individual elements or properties wherever it is used, for example inside a new array literal, object literal, or function call. The rest pattern uses the identical `...` syntax but does the opposite job — it gathers multiple individual values back together into a single array or object, rather than expanding a collection outward.',
         difficulty: 'beginner',
       },
       {
-        question: 'How would you merge two arrays into one using spread, and how does that compare to concat()?',
+        question:
+          'How would you merge two arrays into one using spread, and how does that compare to concat()?',
         answer:
           'You place both arrays inside a new array literal with spread in front of each.\n\n```js\nconst merged = [...arrayA, ...arrayB];\n```\n\nThis reads more naturally than `arrayA.concat(arrayB)` and lets you freely interleave extra standalone values or more than two arrays in the same expression.',
         difficulty: 'beginner',
       },
       {
-        question: 'When merging two objects with overlapping keys using spread, which value wins?',
+        question:
+          'When merging two objects with overlapping keys using spread, which value wins?',
         answer:
           'The value from whichever object was spread later in the object literal wins, since later properties overwrite earlier ones with the same key. This means you should spread your base or default values first and spread any overrides after them so the overrides take priority.',
         difficulty: 'intermediate',
@@ -1761,16 +2007,21 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'How can spread be used to pass array elements as separate arguments to a function?',
+        question:
+          'How can spread be used to pass array elements as separate arguments to a function?',
         answer:
           'By writing `fn(...argsArray)`, which expands each element of `argsArray` into its own positional argument in the function call.\n\n```js\nMath.max(...numbers); // finds the largest value in the array\n```\n\nThis replaces the older pattern of using `Function.prototype.apply()` to achieve the same result.',
         difficulty: 'intermediate',
       },
     ],
-
-    'static-array-methods': [
+  },
+  {
+    slug: 'static-array-methods',
+    title: 'Static Array Methods',
+    questions: [
       {
-        question: 'Why is Array.isArray() preferred over typeof for checking if something is an array?',
+        question:
+          'Why is Array.isArray() preferred over typeof for checking if something is an array?',
         answer:
           '`typeof` returns `"object"` for arrays, plain objects, and `null` alike, so it cannot distinguish an array from other object types. `Array.isArray()` specifically checks whether the value is an array and returns a proper boolean, making it the reliable way to perform this check.',
         difficulty: 'beginner',
@@ -1788,23 +2039,29 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'How would you generate an array of numbers from 0 to 4 using Array.from()?',
+        question:
+          'How would you generate an array of numbers from 0 to 4 using Array.from()?',
         answer:
           'You can call `Array.from()` with an array-like object and a map function.\n\n```js\nArray.from({ length: 5 }, (_, index) => index);\n// [0, 1, 2, 3, 4]\n```',
         difficulty: 'intermediate',
       },
       {
-        question: 'Can you use Array.from() to remove duplicate values from an array?',
+        question:
+          'Can you use Array.from() to remove duplicate values from an array?',
         answer:
           'Yes — by first converting the array into a `Set` (which automatically discards duplicates) and then passing that `Set` into `Array.from()`.\n\n```js\nArray.from(new Set(someArray));\n```\n\nThe result is a new array containing only the unique values, in their original insertion order.',
         difficulty: 'beginner',
       },
     ],
-
-    strings: [
+  },
+  {
+    slug: 'strings',
+    title: 'JavaScript Strings',
+    questions: [
       {
         question: 'What is a string in JavaScript?',
-        answer: 'A string is a sequence of characters used to represent textual data.',
+        answer:
+          'A string is a sequence of characters used to represent textual data.',
         difficulty: 'beginner',
       },
       {
@@ -1814,12 +2071,14 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
       },
       {
         question: 'What is the difference between slice() and split()?',
-        answer: '`slice()` extracts a portion of a string, whereas `split()` converts a string into an array.',
+        answer:
+          '`slice()` extracts a portion of a string, whereas `split()` converts a string into an array.',
         difficulty: 'beginner',
       },
       {
         question: 'What are template literals?',
-        answer: 'Template literals are strings enclosed in backticks that support interpolation and multi-line strings.',
+        answer:
+          'Template literals are strings enclosed in backticks that support interpolation and multi-line strings.',
         difficulty: 'beginner',
       },
       {
@@ -1828,8 +2087,11 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
     ],
-
-    'template-literals': [
+  },
+  {
+    slug: 'template-literals',
+    title: 'Template Literals',
+    questions: [
       {
         question: 'What are template literals and how do you write one?',
         answer:
@@ -1837,66 +2099,79 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
       {
-        question: 'How does string interpolation with ${} improve on string concatenation?',
+        question:
+          'How does string interpolation with ${} improve on string concatenation?',
         answer:
           'With concatenation, you have to break out of the string repeatedly with `+` to splice in each variable, which becomes hard to read and easy to get wrong as more variables are involved.\n\n```js\nconst greeting = `Hello, ${name}! You are ${age} years old.`;\n```\n\nWith `${}`, you write the variable or expression directly inside the string where it belongs, and JavaScript evaluates it and inserts the result automatically, keeping the whole string in one readable piece.',
         difficulty: 'beginner',
       },
       {
-        question: 'Can you put more than a simple variable name inside ${}? Give an example.',
+        question:
+          'Can you put more than a simple variable name inside ${}? Give an example.',
         answer:
           'Yes, `${}` accepts any valid JavaScript expression, not just a bare variable.\n\n```js\n`${price * quantity}`\n`${shout("hi")}`\n`${stock > 0 ? "In Stock" : "Out of Stock"}`\n```\n\nArithmetic, function calls, ternaries, and property access all work, since the expression is evaluated first and only its final result is inserted into the string.',
         difficulty: 'intermediate',
       },
       {
-        question: 'How do multi-line strings work with template literals compared to regular strings?',
+        question:
+          'How do multi-line strings work with template literals compared to regular strings?',
         answer:
-          "Regular single- or double-quoted strings need an escape sequence like `\\n`, or several strings joined together, to represent multiple lines. Template literals can contain an actual line break typed directly inside the backticks, and that line break becomes part of the resulting string with no escaping needed.",
+          'Regular single- or double-quoted strings need an escape sequence like `\\n`, or several strings joined together, to represent multiple lines. Template literals can contain an actual line break typed directly inside the backticks, and that line break becomes part of the resulting string with no escaping needed.',
         difficulty: 'beginner',
       },
       {
-        question: 'What is a tagged template, and what does the tag function receive?',
+        question:
+          'What is a tagged template, and what does the tag function receive?',
         answer:
           'A tagged template is created by placing a function name immediately before a template literal, with no parentheses.\n\n```js\nhighlight`The ${item} costs ${price}`;\n```\n\nThe tag function receives an array of the literal string segments as its first argument, followed by the evaluated value of each `${}` expression as the remaining arguments, letting the function reconstruct or transform the string however it needs to.',
         difficulty: 'advanced',
       },
     ],
-
-    'this-keyword': [
+  },
+  {
+    slug: 'this-keyword',
+    title: 'The \"this\" Keyword',
+    questions: [
       {
-        question: 'What does obj.method() log versus const m = obj.method; m() — and why?',
+        question:
+          'What does obj.method() log versus const m = obj.method; m() — and why?',
         answer:
-          "`obj.method()` sees the object as `this` because `this` is bound by the call site: the part before the dot becomes `this`. But `const m = obj.method; m()` calls the same function as a plain, standalone function, so there is no object before a dot and `this` defaults to `undefined` in strict mode or the global object otherwise. This detaching of a method from its receiver is the single most common source of `this` bugs, and it is why methods passed as callbacks lose their intended `this`.",
+          '`obj.method()` sees the object as `this` because `this` is bound by the call site: the part before the dot becomes `this`. But `const m = obj.method; m()` calls the same function as a plain, standalone function, so there is no object before a dot and `this` defaults to `undefined` in strict mode or the global object otherwise. This detaching of a method from its receiver is the single most common source of `this` bugs, and it is why methods passed as callbacks lose their intended `this`.',
         difficulty: 'advanced',
       },
       {
-        question: 'What is the value of this in the global scope, inside a module, and inside a DOM event handler?',
+        question:
+          'What is the value of this in the global scope, inside a module, and inside a DOM event handler?',
         answer:
-          "- **Global scope** of a normal script — `this` is the global object (`window` in the browser).\n- **Top level of an ES module** — `this` is `undefined`, because modules run in strict mode.\n- **A regular-function DOM event handler** added with `addEventListener` — `this` refers to the element the listener is attached to.\n\nHowever, if you use an arrow function as the handler, `this` is inherited from the surrounding lexical scope instead of the element, which is a common gotcha.",
+          '- **Global scope** of a normal script — `this` is the global object (`window` in the browser).\n- **Top level of an ES module** — `this` is `undefined`, because modules run in strict mode.\n- **A regular-function DOM event handler** added with `addEventListener` — `this` refers to the element the listener is attached to.\n\nHowever, if you use an arrow function as the handler, `this` is inherited from the surrounding lexical scope instead of the element, which is a common gotcha.',
         difficulty: 'intermediate',
       },
       {
-        question: 'How do arrow functions solve the lost-this problem in nested callbacks?',
+        question:
+          'How do arrow functions solve the lost-this problem in nested callbacks?',
         answer:
           'Because an arrow function has no `this` of its own and captures `this` lexically from where it is defined, using an arrow function for an inner callback lets it keep the `this` of the enclosing method rather than getting its own. Before arrow functions, developers worked around this by saving `const self = this` at the top of a method and referencing `self` inside the callback, or by calling `.bind(this)`. An arrow function makes that boilerplate unnecessary because it permanently inherits the outer `this`.',
         difficulty: 'intermediate',
       },
       {
-        question: 'What determines the value of this in a regular JavaScript function?',
+        question:
+          'What determines the value of this in a regular JavaScript function?',
         answer:
           'The value of `this` is determined by how the function is called — its call site — not by where the function is defined. The same function can have a different `this` each time it is invoked, depending on whether it is called standalone, as an object method, with `new`, or with `call()`/`apply()`/`bind()`.',
         difficulty: 'intermediate',
       },
       {
-        question: 'How does this behave differently inside an arrow function compared to a regular function?',
+        question:
+          'How does this behave differently inside an arrow function compared to a regular function?',
         answer:
           'A regular function gets its own `this` determined fresh at call time based on how it was invoked. An arrow function has no `this` of its own; instead it lexically inherits `this` from the scope in which it was defined, and that value never changes regardless of how the arrow function is later called.',
         difficulty: 'beginner',
       },
       {
-        question: 'Why does this become undefined or incorrect when a method is passed as a callback?',
+        question:
+          'Why does this become undefined or incorrect when a method is passed as a callback?',
         answer:
-          "When a method is extracted from its object and passed elsewhere, such as to `setTimeout()` or an event listener, it is no longer being called in the form `obj.method()`. It is called as a plain function instead, so `this` no longer refers to the original object and defaults to `undefined` in strict mode or the global object otherwise.",
+          'When a method is extracted from its object and passed elsewhere, such as to `setTimeout()` or an event listener, it is no longer being called in the form `obj.method()`. It is called as a plain function instead, so `this` no longer refers to the original object and defaults to `undefined` in strict mode or the global object otherwise.',
         difficulty: 'intermediate',
       },
       {
@@ -1906,22 +2181,28 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
       {
-        question: 'How can you prevent a class method from losing its this when passed as a callback?',
+        question:
+          'How can you prevent a class method from losing its this when passed as a callback?',
         answer:
           "You can bind the method to the instance inside the constructor, for example `this.method = this.method.bind(this)`, or define the method as an arrow function class field, since arrow functions capture `this` lexically from the constructor's scope and keep it locked to the instance no matter how the method is later called.",
         difficulty: 'advanced',
       },
     ],
-
-    'transforming-methods': [
+  },
+  {
+    slug: 'transformation-methods',
+    title: 'Transforming Arrays',
+    questions: [
       {
-        question: 'Why does numbers.sort() sometimes produce unexpected results with numeric arrays?',
+        question:
+          'Why does numbers.sort() sometimes produce unexpected results with numeric arrays?',
         answer:
           'By default, `sort()` converts every element to a string and compares them based on their UTF-16 code unit values, not their numeric value. This means numbers are sorted lexicographically (as text) rather than numerically, so an array like `[40, 1, 5, 200]` can come out in an order that looks wrong at first glance.\n\n```js\n[40, 1, 5, 200].sort((a, b) => a - b);\n// [1, 5, 40, 200]\n```\n\nTo sort numbers correctly, you must pass a comparator function like the one above.',
         difficulty: 'intermediate',
       },
       {
-        question: 'Do sort() and reverse() mutate the original array? How would you avoid that if needed?',
+        question:
+          'Do sort() and reverse() mutate the original array? How would you avoid that if needed?',
         answer:
           'Yes, both `sort()` and `reverse()` mutate the array in place and also return a reference to that same (now-modified) array. To avoid mutating the original — for example when working with immutable state — make a shallow copy first, such as with the spread operator (`[...array].sort(...)`) or `array.slice()`, and call the method on the copy instead.',
         difficulty: 'intermediate',
@@ -1933,7 +2214,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'intermediate',
       },
       {
-        question: 'How would you flatten a deeply, arbitrarily nested array in one call?',
+        question:
+          'How would you flatten a deeply, arbitrarily nested array in one call?',
         answer:
           'Call `flat(Infinity)` — passing `Infinity` as the depth argument tells `flat()` to keep flattening no matter how many levels of nesting exist, rather than being limited to a specific number of levels.',
         difficulty: 'beginner',
@@ -1948,14 +2230,18 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         question:
           'If you need to sort an array of objects by a numeric property in descending order, how would you write the comparator?',
         answer:
-          'You\'d pass a comparator like this, where `"property"` is the numeric field you\'re sorting by.\n\n```js\narray.sort((a, b) => b.property - a.property);\n```\n\nSubtracting `a`\'s value from `b`\'s value (rather than the other way around) produces descending order, since it returns a positive number whenever `a`\'s value is smaller than `b`\'s, telling `sort()` to place `b` first.',
+          "You'd pass a comparator like this, where `\"property\"` is the numeric field you're sorting by.\n\n```js\narray.sort((a, b) => b.property - a.property);\n```\n\nSubtracting `a`'s value from `b`'s value (rather than the other way around) produces descending order, since it returns a positive number whenever `a`'s value is smaller than `b`'s, telling `sort()` to place `b` first.",
         difficulty: 'intermediate',
       },
     ],
-
-    'type-conversion': [
+  },
+  {
+    slug: 'type-conversion',
+    title: 'JavaScript Type Conversion',
+    questions: [
       {
-        question: 'Explain the surprising results of [] + [] and [] + {}, and how JavaScript arrives at them.',
+        question:
+          'Explain the surprising results of [] + [] and [] + {}, and how JavaScript arrives at them.',
         answer:
           'With the `+` operator, if either operand is not a primitive, JavaScript first converts it to a primitive, and for arrays and plain objects that means converting to a string.\n\n```js\n[] + [];  // "" — an empty array becomes the empty string\n[] + {};  // "[object Object]" — an empty object becomes that string\n```\n\nThese outcomes follow directly from `+` preferring string concatenation once an operand stringifies, and they are a favorite interview question for probing understanding of coercion rules.',
         difficulty: 'advanced',
@@ -1963,22 +2249,25 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
       {
         question: 'Why is 0.1 + 0.2 not exactly equal to 0.3 in JavaScript?',
         answer:
-          "JavaScript numbers are IEEE 754 double-precision floating point, which stores values in binary. Fractions like `0.1` and `0.2` cannot be represented exactly in binary, so they are stored as tiny approximations, and adding them yields `0.30000000000000004` rather than exactly `0.3`. This is not a JavaScript-specific flaw but a property of binary floating point. To compare such values you check that the absolute difference is smaller than a tiny epsilon, or work in integers such as cents instead of dollars.",
+          'JavaScript numbers are IEEE 754 double-precision floating point, which stores values in binary. Fractions like `0.1` and `0.2` cannot be represented exactly in binary, so they are stored as tiny approximations, and adding them yields `0.30000000000000004` rather than exactly `0.3`. This is not a JavaScript-specific flaw but a property of binary floating point. To compare such values you check that the absolute difference is smaller than a tiny epsilon, or work in integers such as cents instead of dollars.',
         difficulty: 'advanced',
       },
       {
-        question: 'What are the rules when comparing with == against null and undefined?',
+        question:
+          'What are the rules when comparing with == against null and undefined?',
         answer:
           'With loose equality, `null` and `undefined` are equal to each other and to nothing else — `null == undefined` is `true`, but `null == 0` and `undefined == 0` are `false`, and neither is loosely equal to the empty string or `false`. This makes `value == null` a handy shorthand to check for either `null` or `undefined` in one comparison. Strict equality, by contrast, treats them as distinct, so `null === undefined` is `false`.',
         difficulty: 'advanced',
       },
       {
         question: 'What is type conversion in JavaScript?',
-        answer: 'Type conversion is the process of converting a value from one data type to another, such as a string to a number.',
+        answer:
+          'Type conversion is the process of converting a value from one data type to another, such as a string to a number.',
         difficulty: 'beginner',
       },
       {
-        question: 'What is the difference between implicit and explicit conversion?',
+        question:
+          'What is the difference between implicit and explicit conversion?',
         answer:
           'Implicit conversion (coercion) happens automatically, e.g. during an operation like `"5" + 1`, while explicit conversion is done deliberately using functions like `Number()` or `String()`.',
         difficulty: 'beginner',
@@ -1991,7 +2280,8 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
       },
       {
         question: 'What is the difference between == and ===?',
-        answer: '`==` compares values after coercing them to the same type, while `===` compares both value and type without any conversion.',
+        answer:
+          '`==` compares values after coercing them to the same type, while `===` compares both value and type without any conversion.',
         difficulty: 'beginner',
       },
       {
@@ -2002,17 +2292,22 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
       },
       {
         question: 'What does Number("abc") return?',
-        answer: 'It returns `NaN` (Not a Number), since `"abc"` can\'t be converted into a valid number.',
+        answer:
+          'It returns `NaN` (Not a Number), since `"abc"` can\'t be converted into a valid number.',
         difficulty: 'beginner',
       },
       {
         question: 'How do you convert a number into a string?',
-        answer: 'By using `String(number)`, `number.toString()`, or template literals like `` `${number}` ``.',
+        answer:
+          'By using `String(number)`, `number.toString()`, or template literals like `` `${number}` ``.',
         difficulty: 'beginner',
       },
     ],
-
-    variables: [
+  },
+  {
+    slug: 'variables',
+    title: 'JavaScript Variables',
+    questions: [
       {
         question: 'What is a variable?',
         answer:
@@ -2044,4 +2339,5 @@ export const javascriptInterviewQuestions: Record<string, InterviewQuestion[]> =
         difficulty: 'beginner',
       },
     ],
-  };
+  },
+];
