@@ -1,4 +1,5 @@
 import ProfileDropdown from '../profile/ProfileDropdown';
+import SignUpModal from '../auth/SignUpModal';
 import Logo from './Logo';
 import MobileMenu from './MobileMenu';
 import NavLinks from './NavLinks';
@@ -22,7 +23,7 @@ export default function Navbar() {
           <SearchDialog items={searchIndex} />
           <ThemeToggle />
 
-          {/* <Button variant="ghost">Sign In</Button> */}
+          <SignUpModal />
           <ProfileDropdown />
         </div>
 
