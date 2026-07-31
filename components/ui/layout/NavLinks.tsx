@@ -25,10 +25,10 @@ const links = [
   //   href: '/resources',
   // },
 
-  // {
-  //   title: 'About',
-  //   href: '/about',
-  // },
+  {
+    title: 'About',
+    href: '/about',
+  },
 ];
 
 export default function NavLinks() {

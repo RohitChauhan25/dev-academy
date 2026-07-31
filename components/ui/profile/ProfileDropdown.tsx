@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { Trophy, User, LogOut, ChevronRight } from 'lucide-react';
+import { signOut } from 'next-auth/react';
 
 import {
   DropdownMenu,
@@ -12,20 +13,24 @@ import {
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
-export default function ProfileDropdown() {
-  const user = {
-    name: 'Rohit Chauhan',
-    email: 'rohit@gmail.com',
-    image: '/avatar.jpg',
+interface ProfileDropdownProps {
+  user: {
+    name?: string | null;
+    email?: string | null;
+    image?: string | null;
   };
+}
+
+export default function ProfileDropdown({ user }: ProfileDropdownProps) {
+  const initials = (user.name ?? user.email ?? '?').charAt(0).toUpperCase();
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button className="rounded-full ring-2 ring-primary/30 transition hover:ring-primary">
           <Avatar className="h-10 w-10">
-            <AvatarImage src={user.image} />
-            <AvatarFallback>RC</AvatarFallback>
+            <AvatarImage src={user.image ?? undefined} />
+            <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
         </button>
       </DropdownMenuTrigger>
@@ -37,8 +42,8 @@ export default function ProfileDropdown() {
         {/* Header */}
         <div className="flex items-center gap-4 p-3 px-5">
           <Avatar className="h-10 w-10">
-            <AvatarImage src={user.image} />
-            <AvatarFallback>RC</AvatarFallback>
+            <AvatarImage src={user.image ?? undefined} />
+            <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
 
           <div>
@@ -85,7 +90,10 @@ export default function ProfileDropdown() {
 
         <DropdownMenuSeparator />
 
-        <button className="flex w-full  items-center gap-3 px-5 py-2 text-red-500 transition hover:bg-red-500/10">
+        <button
+          onClick={() => signOut()}
+          className="flex w-full  items-center gap-3 px-5 py-2 text-red-500 transition hover:bg-red-500/10"
+        >
           <div className="rounded-lg bg-red-500/10 p-2">
             <LogOut className="h-5 w-5" />
           </div>

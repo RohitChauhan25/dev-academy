@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Sparkles, BrainCircuit, Code2, Building2, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -122,59 +122,6 @@ export default function Hero() {
             >
               <Link href="/roadmaps">Explore Roadmaps</Link>
             </Button>
-          </motion.div>
-          {/* Stats */}
-
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="mt-16 flex flex-wrap justify-center gap-6"
-          >
-            {[
-              {
-                icon: BrainCircuit,
-                color: 'text-violet-400',
-                text: 'AI Mock Interviews',
-              },
-              {
-                icon: Code2,
-                color: 'text-cyan-400',
-                text: '5000+ Questions',
-              },
-              {
-                icon: Building2,
-                color: 'text-green-400',
-                text: '250+ Companies',
-              },
-              {
-                icon: CheckCircle2,
-                color: 'text-yellow-400',
-                text: '50K+ Learners',
-              },
-            ].map((item) => {
-              const Icon = item.icon;
-
-              return (
-                <motion.div
-                  key={item.text}
-                  variants={fadeUp}
-                  whileHover={{
-                    y: -8,
-                    scale: 1.05,
-                  }}
-                  transition={{
-                    type: 'spring',
-                    stiffness: 250,
-                  }}
-                  className="flex items-center gap-3 rounded-xl border border-border bg-card/70 px-5 py-3 backdrop-blur-md"
-                >
-                  <Icon className={`h-5 w-5 ${item.color}`} />
-                  <span className="font-semibold">{item.text}</span>
-                </motion.div>
-              );
-            })}
           </motion.div>
 
           {/* Tech Tags */}

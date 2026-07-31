@@ -9,6 +9,10 @@ const interviewQuestions = {
   javascript: javascriptInterviewQuestions,
 };
 
+const technologyLabels: Record<string, string> = {
+  javascript: 'JavaScript',
+};
+
 export function getTutorial(technology: string, topic: string) {
   return tutorials[technology as keyof typeof tutorials]?.[
     topic as keyof typeof javascriptTutorials

@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { ChevronDown, Mail, BookOpen, FileText, Briefcase, Sparkles, Loader2 } from 'lucide-react';
 import { FcGoogle } from 'react-icons/fc';
+import { signIn } from 'next-auth/react';
 
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
@@ -16,6 +17,11 @@ interface SignInModalProps {
   onGoogleSignIn?: () => Promise<void> | void;
   onMagicLinkSignIn?: (email: string) => Promise<void> | void;
 }
+
+// Client ID
+//
+
+//     Client secret -
 
 const BENEFITS = [
   {
@@ -43,7 +49,7 @@ const BENEFITS = [
 export default function SignInModal({
   trigger,
   userAvatarUrl,
-  userName = 'there',
+  userName,
   userEmail,
   onGoogleSignIn,
   onMagicLinkSignIn,
@@ -65,8 +71,12 @@ export default function SignInModal({
   const handleGoogleSignIn = async () => {
     setIsGoogleSubmitting(true);
     try {
-      await onGoogleSignIn?.();
-      handleOpenChange(false);
+      if (onGoogleSignIn) {
+        await onGoogleSignIn();
+        handleOpenChange(false);
+      } else {
+        await signIn('google');
+      }
     } finally {
       setIsGoogleSubmitting(false);
     }
@@ -85,11 +95,9 @@ export default function SignInModal({
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogTrigger asChild>
-        {trigger ?? <Button variant="outline">Sign In</Button>}
-      </DialogTrigger>
+      <DialogTrigger asChild>{trigger ?? <Button variant="outline">Sign In</Button>}</DialogTrigger>
 
-      <DialogContent className="max-w-5xl gap-0 overflow-hidden border-white/10 bg-[#0b0b12] p-0 sm:rounded-2xl">
+      <DialogContent className="max-w-4xl gap-0 overflow-hidden border-white/10 bg-[#0b0b12] p-0 sm:max-w-3xl sm:rounded-2xl">
         <div className="grid md:grid-cols-2">
           {/* Left: brand / benefits panel */}
           <div className="relative hidden flex-col justify-center overflow-hidden px-10 py-8 md:flex">
@@ -140,20 +148,30 @@ export default function SignInModal({
                 className="mt-5 h-auto w-full justify-between rounded-lg border-white/10 bg-white px-3 py-2 text-black hover:bg-white/90"
               >
                 <span className="flex items-center gap-2 text-left">
-                  {userAvatarUrl ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={userAvatarUrl} alt="" className="size-7 rounded-full object-cover" />
+                  {userName ? (
+                    <>
+                      {userAvatarUrl ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={userAvatarUrl}
+                          alt=""
+                          className="size-7 rounded-full object-cover"
+                        />
+                      ) : (
+                        <span className="flex size-7 items-center justify-center rounded-full bg-muted text-xs font-medium">
+                          {userName.charAt(0).toUpperCase()}
+                        </span>
+                      )}
+                      <span className="flex flex-col leading-tight">
+                        <span className="text-xs font-medium">Continue as {userName}</span>
+                        {userEmail && (
+                          <span className="text-[11px] text-muted-foreground">{userEmail}</span>
+                        )}
+                      </span>
+                    </>
                   ) : (
-                    <span className="flex size-7 items-center justify-center rounded-full bg-muted text-xs font-medium">
-                      {userName.charAt(0).toUpperCase()}
-                    </span>
+                    <span className="text-xs font-medium">Continue with Google</span>
                   )}
-                  <span className="flex flex-col leading-tight">
-                    <span className="text-xs font-medium">Continue as {userName}</span>
-                    {userEmail && (
-                      <span className="text-[11px] text-muted-foreground">{userEmail}</span>
-                    )}
-                  </span>
                 </span>
                 {isGoogleSubmitting ? (
                   <Loader2 className="size-4 animate-spin" />
@@ -196,7 +214,9 @@ export default function SignInModal({
                 className="mt-3 flex w-full items-center justify-between text-sm text-white/70 hover:text-white"
               >
                 Why is sign in required?
-                <ChevronDown className={`size-4 transition-transform ${showWhy ? 'rotate-180' : ''}`} />
+                <ChevronDown
+                  className={`size-4 transition-transform ${showWhy ? 'rotate-180' : ''}`}
+                />
               </button>
               {showWhy && (
                 <p className="mt-2 text-xs leading-relaxed text-white/45">

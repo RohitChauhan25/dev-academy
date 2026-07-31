@@ -6,9 +6,11 @@ import NavLinks from './NavLinks';
 import SearchDialog from './SearchDialog';
 import ThemeToggle from './ThemeToggle';
 import { getSearchIndex } from '@/lib/search-index';
+import { auth } from '@/auth';
 
-export default function Navbar() {
+export default async function Navbar() {
   const searchIndex = getSearchIndex();
+  const session = await auth();
 
   return (
     <header className="fixed top-0 z-50 border-b bg-background/80 backdrop-blur shadow w-full">
@@ -23,8 +25,11 @@ export default function Navbar() {
           <SearchDialog items={searchIndex} />
           <ThemeToggle />
 
-          <SignUpModal />
-          <ProfileDropdown />
+          {session?.user ? (
+            <ProfileDropdown user={session.user} />
+          ) : (
+            <SignUpModal />
+          )}
         </div>
 
         <div className="lg:hidden flex items-center gap-2">
