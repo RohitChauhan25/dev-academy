@@ -34,8 +34,11 @@ const technologies = [
     title: 'TypeScript',
     icon: SiTypescript,
     color: '#3178C6',
+    tutorials: 30,
     level: 'Beginner',
-    href: null,
+    href: '/learn/typescript',
+    interviewHref: '/interview-questions/typescript',
+    interviewQuestions: '90+',
   },
   {
     title: 'React',

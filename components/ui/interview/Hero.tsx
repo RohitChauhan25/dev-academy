@@ -81,10 +81,11 @@ const questionSets = [
   {
     title: 'TypeScript Interview Questions & Answers',
     description: 'Generics, Utility Types, Interfaces, Advanced Types.',
-    questions: '60+',
+    questions: '90+',
     icon: FileCode2,
     color: 'text-blue-400',
-    status: 'coming-soon' as const,
+    href: '/interview-questions/typescript',
+    status: 'live' as const,
   },
   {
     title: 'Next.js Interview Questions & Answers',

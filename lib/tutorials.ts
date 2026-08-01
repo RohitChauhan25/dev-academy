@@ -4,23 +4,28 @@ import { htmlTutorials } from '@/content/html';
 import { htmlInterviewQuestions } from '@/content/html/interview-questions';
 import { cssTutorials } from '@/content/css';
 import { cssInterviewQuestions } from '@/content/css/interview-questions';
+import { typescriptTutorials } from '@/content/typescript';
+import { typescriptInterviewQuestions } from '@/content/typescript/interview-questions';
 
 const tutorials = {
   javascript: javascriptTutorials,
   html: htmlTutorials,
   css: cssTutorials,
+  typescript: typescriptTutorials,
 };
 
 const interviewQuestions = {
   javascript: javascriptInterviewQuestions,
   html: htmlInterviewQuestions,
   css: cssInterviewQuestions,
+  typescript: typescriptInterviewQuestions,
 };
 
 const technologyLabels: Record<string, string> = {
   javascript: 'JavaScript',
   html: 'HTML',
   css: 'CSS',
+  typescript: 'TypeScript',
 };
 
 export function getTutorial(technology: string, topic: string) {

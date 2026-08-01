@@ -224,8 +224,65 @@ const cssSidebar: SidebarSection[] = [
   },
 ];
 
+const typescriptSidebar: SidebarSection[] = [
+  {
+    title: 'Getting Started',
+    lessons: [
+      { slug: 'introduction', title: 'Introduction' },
+      { slug: 'setup', title: 'Setup' },
+      { slug: 'basic-types', title: 'Basic Types' },
+      { slug: 'arrays-and-tuples', title: 'Arrays & Tuples' },
+      { slug: 'enums', title: 'Enums' },
+      { slug: 'any-unknown-never', title: 'any, unknown, never & void' },
+    ],
+  },
+
+  {
+    title: 'Core Types',
+    lessons: [
+      { slug: 'type-inference', title: 'Type Inference' },
+      { slug: 'type-aliases', title: 'Type Aliases' },
+      { slug: 'interfaces', title: 'Interfaces' },
+      { slug: 'functions', title: 'Function Types' },
+      { slug: 'union-and-intersection-types', title: 'Union & Intersection Types' },
+      { slug: 'literal-types', title: 'Literal Types' },
+    ],
+  },
+
+  {
+    title: 'Working with Types',
+    lessons: [
+      { slug: 'objects', title: 'Object Types' },
+      { slug: 'optional-and-readonly', title: 'Optional & Readonly' },
+      { slug: 'type-assertions', title: 'Type Assertions' },
+      { slug: 'classes', title: 'Classes' },
+      { slug: 'access-modifiers', title: 'Access Modifiers' },
+      { slug: 'interfaces-vs-types', title: 'Interfaces vs Type Aliases' },
+      { slug: 'generics', title: 'Generics' },
+      { slug: 'generic-constraints', title: 'Generic Constraints' },
+      { slug: 'narrowing', title: 'Type Narrowing' },
+    ],
+  },
+
+  {
+    title: 'Advanced TypeScript',
+    lessons: [
+      { slug: 'utility-types', title: 'Utility Types' },
+      { slug: 'mapped-types', title: 'Mapped Types' },
+      { slug: 'conditional-types', title: 'Conditional Types' },
+      { slug: 'type-guards', title: 'Custom Type Guards' },
+      { slug: 'modules', title: 'Modules' },
+      { slug: 'declaration-files', title: 'Declaration Files' },
+      { slug: 'decorators', title: 'Decorators' },
+      { slug: 'tsconfig-deep-dive', title: 'tsconfig Deep Dive' },
+      { slug: 'best-practices', title: 'Best Practices' },
+    ],
+  },
+];
+
 export const sidebars: Record<string, SidebarSection[]> = {
   javascript: javascriptSidebar,
   html: htmlSidebar,
   css: cssSidebar,
+  typescript: typescriptSidebar,
 };
