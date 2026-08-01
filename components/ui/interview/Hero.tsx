@@ -65,10 +65,11 @@ const questionSets = [
   {
     title: 'React.js Interview Questions & Answers',
     description: 'Hooks, Lifecycle, Performance, Context API, Redux, React 19.',
-    questions: '100+',
+    questions: '120+',
     icon: Atom,
     color: 'text-cyan-400',
-    status: 'coming-soon' as const,
+    href: '/interview-questions/react',
+    status: 'live' as const,
   },
   {
     title: 'Node.js Interview Questions & Answers',

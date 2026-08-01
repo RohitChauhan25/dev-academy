@@ -280,9 +280,83 @@ const typescriptSidebar: SidebarSection[] = [
   },
 ];
 
+const reactSidebar: SidebarSection[] = [
+  {
+    title: 'Getting Started',
+    lessons: [
+      { slug: 'introduction', title: 'Introduction' },
+      { slug: 'setup', title: 'Setup' },
+      { slug: 'jsx', title: 'JSX' },
+      { slug: 'components-and-props', title: 'Components & Props' },
+      { slug: 'rendering-lists', title: 'Rendering Lists & Keys' },
+      { slug: 'conditional-rendering', title: 'Conditional Rendering' },
+    ],
+  },
+
+  {
+    title: 'Interactivity',
+    lessons: [
+      { slug: 'event-handling', title: 'Handling Events' },
+      { slug: 'forms', title: 'Forms & Controlled Inputs' },
+      { slug: 'component-composition', title: 'Component Composition' },
+      { slug: 'styling', title: 'Styling in React' },
+      { slug: 'fragments-and-portals', title: 'Fragments & Portals' },
+    ],
+  },
+
+  {
+    title: 'Hooks & Data Flow',
+    lessons: [
+      { slug: 'lifecycle', title: 'Component Lifecycle' },
+      { slug: 'lifting-state-up', title: 'Lifting State Up' },
+      {
+        slug: 'hooks-overview',
+        title: 'Hooks',
+        children: [
+          { slug: 'state', title: 'useState' },
+          { slug: 'use-effect', title: 'useEffect' },
+          { slug: 'use-layout-effect', title: 'useLayoutEffect' },
+          { slug: 'context-api', title: 'useContext (Context API)' },
+          { slug: 'use-reducer', title: 'useReducer' },
+          { slug: 'refs', title: 'useRef' },
+          { slug: 'use-imperative-handle', title: 'useImperativeHandle' },
+          { slug: 'memoization', title: 'useMemo & useCallback' },
+          { slug: 'use-transition', title: 'useTransition' },
+          { slug: 'use-deferred-value', title: 'useDeferredValue' },
+          { slug: 'use-id', title: 'useId' },
+          { slug: 'use-sync-external-store', title: 'useSyncExternalStore' },
+          { slug: 'use-debug-value', title: 'useDebugValue' },
+          { slug: 'use', title: 'use()' },
+          { slug: 'use-optimistic', title: 'useOptimistic' },
+          { slug: 'use-action-state', title: 'useActionState' },
+          { slug: 'use-form-status', title: 'useFormStatus' },
+          { slug: 'custom-hooks', title: 'Custom Hooks' },
+        ],
+      },
+      { slug: 'error-boundaries', title: 'Error Boundaries' },
+    ],
+  },
+
+  {
+    title: 'Advanced React',
+    lessons: [
+      { slug: 'react-router', title: 'React Router' },
+      { slug: 'performance-optimization', title: 'Performance Optimization' },
+      { slug: 'suspense-and-lazy', title: 'Suspense & Lazy Loading' },
+      { slug: 'server-vs-client-components', title: 'Server vs Client Components' },
+      { slug: 'data-fetching', title: 'Data Fetching Patterns' },
+      { slug: 'testing-react', title: 'Testing React Components' },
+      { slug: 'react-19-features', title: 'React 19 Features' },
+      { slug: 'state-management', title: 'State Management Libraries' },
+      { slug: 'best-practices', title: 'Best Practices' },
+    ],
+  },
+];
+
 export const sidebars: Record<string, SidebarSection[]> = {
   javascript: javascriptSidebar,
   html: htmlSidebar,
   css: cssSidebar,
   typescript: typescriptSidebar,
+  react: reactSidebar,
 };

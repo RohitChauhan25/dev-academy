@@ -44,8 +44,11 @@ const technologies = [
     title: 'React',
     icon: SiReact,
     color: '#61DAFB',
+    tutorials: 42,
     level: 'Intermediate',
-    href: null,
+    href: '/learn/react',
+    interviewHref: '/interview-questions/react',
+    interviewQuestions: '120+',
   },
   {
     title: 'Next.js',

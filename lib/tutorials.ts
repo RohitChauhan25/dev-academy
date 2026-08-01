@@ -6,12 +6,15 @@ import { cssTutorials } from '@/content/css';
 import { cssInterviewQuestions } from '@/content/css/interview-questions';
 import { typescriptTutorials } from '@/content/typescript';
 import { typescriptInterviewQuestions } from '@/content/typescript/interview-questions';
+import { reactTutorials } from '@/content/react';
+import { reactInterviewQuestions } from '@/content/react/interview-questions';
 
 const tutorials = {
   javascript: javascriptTutorials,
   html: htmlTutorials,
   css: cssTutorials,
   typescript: typescriptTutorials,
+  react: reactTutorials,
 };
 
 const interviewQuestions = {
@@ -19,6 +22,7 @@ const interviewQuestions = {
   html: htmlInterviewQuestions,
   css: cssInterviewQuestions,
   typescript: typescriptInterviewQuestions,
+  react: reactInterviewQuestions,
 };
 
 const technologyLabels: Record<string, string> = {
@@ -26,6 +30,7 @@ const technologyLabels: Record<string, string> = {
   html: 'HTML',
   css: 'CSS',
   typescript: 'TypeScript',
+  react: 'React',
 };
 
 export function getTutorial(technology: string, topic: string) {
