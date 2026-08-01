@@ -313,7 +313,30 @@ export default function InterviewQuestionsView({
       <div className="absolute inset-0 bg-background" />
       <div className="absolute left-1/2 top-0 h-[400px] w-[400px] -translate-x-1/2 rounded-full bg-violet-600/10 blur-[140px]" />
 
-      <div className="container relative mx-auto px-6">
+      <div className="container relative mx-auto flex items-start gap-8 px-6">
+        <aside className="hidden w-64 shrink-0 lg:block">
+          <div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto border-r pr-4">
+            <h3 className="mb-3 px-1 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+              Topics
+            </h3>
+            <nav className="space-y-1 pb-6">
+              {topics.map((topic) => (
+                <a
+                  key={topic.slug}
+                  href={`#${topic.slug}`}
+                  className="flex items-center justify-between gap-2 rounded-md px-3 py-2 text-sm text-muted-foreground transition hover:bg-muted hover:text-foreground"
+                >
+                  <span className="truncate">{topic.title}</span>
+                  <span className="shrink-0 text-xs text-muted-foreground/70">
+                    {topic.questions.length}
+                  </span>
+                </a>
+              ))}
+            </nav>
+          </div>
+        </aside>
+
+        <div className="min-w-0 flex-1">
         <Link
           href="/interview-questions"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground transition hover:text-foreground"
@@ -409,7 +432,15 @@ export default function InterviewQuestionsView({
           {listExpanded && (
             <div className="mt-10 space-y-2">
               {filteredTopics.map((topic) => (
-                <div key={topic.slug}>
+                <div
+                  key={topic.slug}
+                  id={topic.slug}
+                  className="scroll-mt-24 pt-8 first:pt-0"
+                >
+                  <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-violet-600 dark:text-violet-400">
+                    {topic.title}
+                  </h2>
+
                   {topic.questions.map((item, i) => {
                     const questionNumber = topicStartIndex[topic.slug] + i + 1;
                     const anchor = `${topic.slug}-q${questionNumber}`;
@@ -471,6 +502,7 @@ export default function InterviewQuestionsView({
               )}
             </div>
           )}
+        </div>
         </div>
       </div>
     </section>
