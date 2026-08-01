@@ -1,3 +1,4 @@
+import { codeToHtml } from 'shiki';
 import { slugify } from '@/lib/utils';
 
 interface CodeSectionProps {
@@ -6,16 +7,33 @@ interface CodeSectionProps {
   language?: string;
 }
 
-export default function CodeSection({ title, code, language }: CodeSectionProps) {
+const SUPPORTED_LANGUAGES = new Set([
+  'html',
+  'css',
+  'javascript',
+  'typescript',
+  'jsx',
+  'json',
+  'bash',
+]);
+
+export default async function CodeSection({ title, code, language }: CodeSectionProps) {
   const isHtml = language === 'html';
+  const lang = language && SUPPORTED_LANGUAGES.has(language) ? language : 'text';
+
+  const highlighted = await codeToHtml(code, {
+    lang,
+    theme: 'dark-plus',
+  });
 
   return (
     <section id={slugify(title)} className="mt-12 scroll-mt-24">
       <h2 className="text-3xl font-bold">{title}</h2>
 
-      <pre className="mt-5 overflow-auto rounded-xl bg-zinc-950 p-5 text-green-400">
-        <code>{code}</code>
-      </pre>
+      <div
+        className="tutorial-code mt-5 overflow-hidden rounded-xl border border-white/10"
+        dangerouslySetInnerHTML={{ __html: highlighted }}
+      />
 
       {isHtml && (
         <div className="mt-4 overflow-hidden rounded-xl border">
