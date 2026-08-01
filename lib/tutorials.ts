@@ -1,22 +1,31 @@
 import { javascriptTutorials } from '@/content/javascript';
 import { javascriptInterviewQuestions } from '@/content/javascript/interview-questions';
+import { htmlTutorials } from '@/content/html';
+import { htmlInterviewQuestions } from '@/content/html/interview-questions';
+import { cssTutorials } from '@/content/css';
+import { cssInterviewQuestions } from '@/content/css/interview-questions';
 
 const tutorials = {
   javascript: javascriptTutorials,
+  html: htmlTutorials,
+  css: cssTutorials,
 };
 
 const interviewQuestions = {
   javascript: javascriptInterviewQuestions,
+  html: htmlInterviewQuestions,
+  css: cssInterviewQuestions,
 };
 
 const technologyLabels: Record<string, string> = {
   javascript: 'JavaScript',
+  html: 'HTML',
+  css: 'CSS',
 };
 
 export function getTutorial(technology: string, topic: string) {
-  return tutorials[technology as keyof typeof tutorials]?.[
-    topic as keyof typeof javascriptTutorials
-  ];
+  const technologyTutorials = tutorials[technology as keyof typeof tutorials];
+  return technologyTutorials?.[topic as keyof typeof technologyTutorials];
 }
 
 export function getTechnologyTutorials(technology: string) {

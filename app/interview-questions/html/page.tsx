@@ -8,14 +8,14 @@ import {
 } from '@/lib/tutorials';
 
 export const metadata: Metadata = {
-  title: 'JavaScript Interview Questions & Answers',
+  title: 'HTML Interview Questions & Answers',
   description:
-    'Curated JavaScript interview questions with detailed answers — closures, promises, event loop, DOM, async/await, hoisting and more.',
+    'Curated HTML interview questions with detailed answers — semantic markup, forms, accessibility, tables, media and more.',
 };
 
-export default function JavaScriptInterviewQuestionsPage() {
-  const tutorials = getTechnologyTutorials('javascript') ?? {};
-  const topicList = getTechnologyInterviewQuestions('javascript') ?? [];
+export default function HtmlInterviewQuestionsPage() {
+  const tutorials = getTechnologyTutorials('html') ?? {};
+  const topicList = getTechnologyInterviewQuestions('html') ?? [];
   const tutorialSlugs = new Set(Object.keys(tutorials));
 
   const topics: InterviewTopic[] = topicList
@@ -34,8 +34,8 @@ export default function JavaScriptInterviewQuestionsPage() {
 
   return (
     <InterviewQuestionsView
-      technology="JavaScript"
-      technologySlug="javascript"
+      technology="HTML"
+      technologySlug="html"
       topics={topics}
       totalQuestions={totalQuestions}
     />

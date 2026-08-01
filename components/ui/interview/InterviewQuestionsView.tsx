@@ -262,12 +262,14 @@ export interface InterviewTopic {
 
 interface InterviewQuestionsViewProps {
   technology: string;
+  technologySlug: string;
   topics: InterviewTopic[];
   totalQuestions: number;
 }
 
 export default function InterviewQuestionsView({
   technology,
+  technologySlug,
   topics,
   totalQuestions,
 }: InterviewQuestionsViewProps) {
@@ -447,7 +449,7 @@ export default function InterviewQuestionsView({
                           </Badge>
                           {topic.hasTutorial && (
                             <Link
-                              href={`/learn/javascript/${topic.slug}`}
+                              href={`/learn/${technologySlug}/${topic.slug}`}
                               className="text-xs font-medium text-violet-600 dark:text-violet-400 transition hover:translate-x-0.5"
                             >
                               Learn topic →

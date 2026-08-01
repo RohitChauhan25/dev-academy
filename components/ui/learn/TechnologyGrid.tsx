@@ -17,7 +17,7 @@ import {
   SiMysql,
 } from 'react-icons/si';
 
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, MessageCircleQuestion } from 'lucide-react';
 
 const technologies = [
   {
@@ -27,94 +27,91 @@ const technologies = [
     tutorials: 45,
     level: 'Beginner',
     href: '/learn/javascript',
+    interviewHref: '/interview-questions/javascript',
+    interviewQuestions: '150+',
   },
   {
     title: 'TypeScript',
     icon: SiTypescript,
     color: '#3178C6',
-    tutorials: 30,
     level: 'Beginner',
-    href: '/learn/typescript',
+    href: null,
   },
   {
     title: 'React',
     icon: SiReact,
     color: '#61DAFB',
-    tutorials: 40,
     level: 'Intermediate',
-    href: '/learn/react',
+    href: null,
   },
   {
     title: 'Next.js',
     icon: SiNextdotjs,
     color: '#ffffff',
-    tutorials: 25,
     level: 'Intermediate',
-    href: '/learn/nextjs',
+    href: null,
   },
   {
     title: 'Node.js',
     icon: SiNodedotjs,
     color: '#5FA04E',
-    tutorials: 35,
     level: 'Intermediate',
-    href: '/learn/nodejs',
+    href: null,
   },
   {
     title: 'HTML',
     icon: SiHtml5,
     color: '#E34F26',
-    tutorials: 20,
+    tutorials: 27,
     level: 'Beginner',
     href: '/learn/html',
+    interviewHref: '/interview-questions/html',
+    interviewQuestions: '90+',
   },
   {
     title: 'CSS',
     icon: SiCss,
     color: '#1572B6',
-    tutorials: 25,
+    tutorials: 30,
     level: 'Beginner',
     href: '/learn/css',
+    interviewHref: '/interview-questions/css',
+    interviewQuestions: '90+',
   },
   {
     title: 'Tailwind CSS',
     icon: SiTailwindcss,
     color: '#06B6D4',
-    tutorials: 22,
     level: 'Intermediate',
-    href: '/learn/tailwindcss',
+    href: null,
   },
   {
     title: 'Git',
     icon: SiGit,
     color: '#F05032',
-    tutorials: 15,
     level: 'Beginner',
-    href: '/learn/git',
+    href: null,
   },
   {
     title: 'Docker',
     icon: SiDocker,
     color: '#2496ED',
-    tutorials: 18,
     level: 'Advanced',
-    href: '/learn/docker',
+    href: null,
   },
   {
     title: 'MongoDB',
     icon: SiMongodb,
     color: '#47A248',
-    tutorials: 24,
     level: 'Intermediate',
-    href: '/learn/mongodb',
+    href: null,
   },
   {
     title: 'SQL',
     icon: SiMysql,
     color: '#4479A1',
-    tutorials: 28,
     level: 'Beginner',
-    href: '/learn/sql',
+    href: null,
   },
 ];
 
@@ -124,44 +121,43 @@ export default function TechnologyGrid() {
       <div className="container mx-auto px-6">
         <div className="text-center">
           <p className="text-blue-500 font-semibold">Technologies</p>
-
           <h2 className="mt-2 text-4xl font-bold">Choose Your Learning Path</h2>
-
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Browse tutorials for the most popular technologies used in modern web development.
+            Browse tutorials for the most popular technologies used in modern
+            web development.
           </p>
         </div>
 
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {technologies.map((tech, index) => {
             const Icon = tech.icon;
+            const isAvailable = Boolean(tech.href);
 
-            return (
-              <motion.div
-                key={tech.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  delay: index * 0.05,
-                }}
+            const card = (
+              <div
+                className={`group relative h-full rounded-2xl border bg-card p-6 transition-all duration-300 ${
+                  isAvailable
+                    ? 'hover:-translate-y-2 hover:border-blue-500 hover:shadow-xl'
+                    : 'opacity-60'
+                }`}
               >
-                <Link href={tech.href}>
-                  <div className="group rounded-2xl border bg-card p-6 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500 hover:shadow-xl">
+                {!isAvailable && (
+                  <span className="absolute right-4 top-4 rounded-full border bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground">
+                    Coming Soon
+                  </span>
+                )}
+
+                {isAvailable ? (
+                  <Link href={tech.href!} className="block">
                     <Icon
-                      size={46}
+                      size={26}
                       color={tech.color}
-                      className="transition-transform duration-300  group-hover:scale-110"
+                      className="transition-transform duration-300 group-hover:scale-110"
                     />
-
                     <h3 className="mt-6 text-xl font-semibold">{tech.title}</h3>
-
-                    <p className="mt-2 text-sm text-muted-foreground">{tech.tutorials} Tutorials</p>
-
-                    {/* <div className="mt-4 inline-flex rounded-full bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-500">
-                      {tech.level}
-                    </div> */}
-
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      {tech.tutorials} Tutorials
+                    </p>
                     <div className="mt-6 flex items-center gap-2 text-sm font-medium text-violet-400">
                       Start Learning
                       <ArrowRight
@@ -169,8 +165,45 @@ export default function TechnologyGrid() {
                         className="transition-transform group-hover:translate-x-1"
                       />
                     </div>
+                  </Link>
+                ) : (
+                  <>
+                    <Icon
+                      size={26}
+                      color={tech.color}
+                      className="transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <h3 className="mt-6 text-xl font-semibold">{tech.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground">Tutorials coming soon</p>
+                  </>
+                )}
+
+                {tech.interviewHref ? (
+                  <Link
+                    href={tech.interviewHref}
+                    className="relative z-10 mt-4 flex items-center gap-1.5 border-t pt-4 text-xs font-medium text-muted-foreground transition-colors hover:text-blue-500"
+                  >
+                    <MessageCircleQuestion size={14} />
+                    {tech.interviewQuestions} Interview Questions
+                  </Link>
+                ) : (
+                  <div className="mt-4 flex items-center gap-1.5 border-t pt-4 text-xs font-medium text-muted-foreground/60">
+                    <MessageCircleQuestion size={14} />
+                    Interview questions coming soon
                   </div>
-                </Link>
+                )}
+              </div>
+            );
+
+            return (
+              <motion.div
+                key={tech.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+              >
+                {card}
               </motion.div>
             );
           })}

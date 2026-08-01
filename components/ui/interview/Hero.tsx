@@ -11,9 +11,10 @@ import {
   Network,
   FileCode2,
   Atom,
+  Rocket,
 } from 'lucide-react';
 import { RiNextjsFill } from 'react-icons/ri';
-import { SiMongodb } from 'react-icons/si';
+import { SiMongodb, SiHtml5, SiCss } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useInView } from 'react-intersection-observer';
@@ -41,6 +42,24 @@ const questionSets = [
     icon: Code2,
     color: 'text-yellow-400',
     href: '/interview-questions/javascript',
+    status: 'live' as const,
+  },
+  {
+    title: 'HTML Interview Questions & Answers',
+    description: 'Semantic markup, forms, accessibility, tables, media and more.',
+    questions: '90+',
+    icon: SiHtml5,
+    color: 'text-orange-500',
+    href: '/interview-questions/html',
+    status: 'live' as const,
+  },
+  {
+    title: 'CSS Interview Questions & Answers',
+    description: 'Box model, Flexbox, Grid, specificity, responsive design and more.',
+    questions: '90+',
+    icon: SiCss,
+    color: 'text-blue-500',
+    href: '/interview-questions/css',
     status: 'live' as const,
   },
   {
@@ -171,6 +190,13 @@ export default function Hero() {
             <span className="bg-gradient-to-r from-indigo-500 via-violet-500 to-sky-400  bg-clip-text text-transparent">
               Technical Interview Rounds
             </span>
+            <motion.span
+              animate={{ y: [0, -8, 0] }}
+              transition={{ repeat: Infinity, duration: 2.5 }}
+              className="ml-3 inline-flex align-middle"
+            >
+              <Rocket className="h-10 w-10 text-violet-400 md:h-14 md:w-14" />
+            </motion.span>
           </motion.h1>
 
           {/* Description */}

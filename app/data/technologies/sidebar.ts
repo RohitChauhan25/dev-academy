@@ -1,4 +1,15 @@
-export const javascriptSidebar = [
+export interface SidebarLesson {
+  slug: string;
+  title: string;
+  children?: { slug: string; title: string }[];
+}
+
+export interface SidebarSection {
+  title: string;
+  lessons: SidebarLesson[];
+}
+
+const javascriptSidebar: SidebarSection[] = [
   {
     title: 'Getting Started',
     lessons: [
@@ -98,3 +109,123 @@ export const javascriptSidebar = [
     ],
   },
 ];
+
+const htmlSidebar: SidebarSection[] = [
+  {
+    title: 'Getting Started',
+    lessons: [
+      { slug: 'introduction', title: 'Introduction' },
+      { slug: 'setup', title: 'Setup' },
+      { slug: 'basic-structure', title: 'Document Structure' },
+      { slug: 'elements-and-tags', title: 'Elements & Tags' },
+      { slug: 'attributes', title: 'Attributes' },
+      { slug: 'comments', title: 'Comments' },
+    ],
+  },
+
+  {
+    title: 'Text & Content',
+    lessons: [
+      { slug: 'headings-and-paragraphs', title: 'Headings & Paragraphs' },
+      { slug: 'text-formatting', title: 'Text Formatting' },
+      { slug: 'links', title: 'Links' },
+      { slug: 'images', title: 'Images' },
+      { slug: 'lists', title: 'Lists' },
+      { slug: 'div-and-span', title: 'Div & Span' },
+    ],
+  },
+
+  {
+    title: 'Structure & Forms',
+    lessons: [
+      { slug: 'tables', title: 'Tables' },
+      {
+        slug: 'forms',
+        title: 'Forms',
+        children: [
+          { slug: 'form-input-types', title: 'Input Types' },
+          { slug: 'form-validation', title: 'Form Validation' },
+        ],
+      },
+      { slug: 'semantic-html', title: 'Semantic HTML' },
+      { slug: 'block-vs-inline', title: 'Block vs Inline' },
+      { slug: 'classes-and-ids', title: 'Classes & IDs' },
+      { slug: 'html-entities', title: 'HTML Entities' },
+      { slug: 'head-elements', title: 'Head Elements' },
+    ],
+  },
+
+  {
+    title: 'Advanced HTML',
+    lessons: [
+      { slug: 'iframes', title: 'IFrames' },
+      { slug: 'audio-and-video', title: 'Audio & Video' },
+      { slug: 'meta-tags', title: 'Meta Tags & SEO' },
+      { slug: 'data-attributes', title: 'Data Attributes' },
+      { slug: 'svg-basics', title: 'SVG Basics' },
+      { slug: 'accessibility', title: 'Accessibility' },
+    ],
+  },
+];
+
+const cssSidebar: SidebarSection[] = [
+  {
+    title: 'Getting Started',
+    lessons: [
+      { slug: 'introduction', title: 'Introduction' },
+      { slug: 'setup', title: 'Setup' },
+      { slug: 'syntax', title: 'Syntax' },
+      { slug: 'selectors', title: 'Selectors' },
+      { slug: 'colors', title: 'Colors' },
+      { slug: 'units', title: 'Units & Values' },
+    ],
+  },
+
+  {
+    title: 'Box Model & Basics',
+    lessons: [
+      { slug: 'box-model', title: 'The Box Model' },
+      { slug: 'text-and-fonts', title: 'Text & Fonts' },
+      { slug: 'backgrounds', title: 'Backgrounds' },
+      { slug: 'borders', title: 'Borders & Border Radius' },
+      { slug: 'margin-and-padding', title: 'Margin & Padding' },
+      { slug: 'display', title: 'The display Property' },
+    ],
+  },
+
+  {
+    title: 'Layout & Cascade',
+    lessons: [
+      { slug: 'position', title: 'Positioning' },
+      { slug: 'flexbox', title: 'Flexbox' },
+      { slug: 'grid', title: 'CSS Grid' },
+      { slug: 'overflow', title: 'Overflow & Visibility' },
+      { slug: 'z-index-and-stacking', title: 'z-index & Stacking' },
+      { slug: 'pseudo-classes', title: 'Pseudo-classes' },
+      { slug: 'pseudo-elements', title: 'Pseudo-elements' },
+      { slug: 'specificity-and-cascade', title: 'Specificity & Cascade' },
+      { slug: 'combinators', title: 'Combinators' },
+    ],
+  },
+
+  {
+    title: 'Advanced CSS',
+    lessons: [
+      { slug: 'responsive-design', title: 'Responsive Design' },
+      { slug: 'css-variables', title: 'CSS Variables' },
+      { slug: 'transitions', title: 'Transitions' },
+      { slug: 'animations', title: 'Animations' },
+      { slug: 'transforms', title: 'Transforms' },
+      { slug: 'shadows-and-filters', title: 'Shadows & Filters' },
+      { slug: 'gradients', title: 'Gradients' },
+      { slug: 'css-functions', title: 'CSS Functions' },
+      { slug: 'best-practices', title: 'Best Practices' },
+    ],
+  },
+];
+
+export const sidebars: Record<string, SidebarSection[]> = {
+  javascript: javascriptSidebar,
+  html: htmlSidebar,
+  css: cssSidebar,
+};

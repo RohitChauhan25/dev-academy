@@ -6,10 +6,12 @@ import { usePathname } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { javascriptSidebar } from '@/app/data/technologies/sidebar';
+import { sidebars } from '@/app/data/technologies/sidebar';
 
 export default function MobileSidebar() {
   const pathname = usePathname();
+  const technology = pathname.split('/')[2];
+  const sidebarSections = technology ? sidebars[technology] : undefined;
 
   return (
     <div className="lg:hidden">
@@ -23,31 +25,29 @@ export default function MobileSidebar() {
 
         <SheetContent side="left" className="w-80 overflow-y-auto p-0">
           <SheetHeader className="border-b px-6 py-4">
-            <SheetTitle>JavaScript Course</SheetTitle>
+            <SheetTitle className="capitalize">{technology} Course</SheetTitle>
           </SheetHeader>
 
           <div className="space-y-8 p-6">
-            {javascriptSidebar.map((section: any) => (
+            {sidebarSections?.map((section) => (
               <div key={section.title}>
                 <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                   {section.title}
                 </h3>
 
                 <div className="space-y-1">
-                  {section.lessons.map((lesson: any) => {
-                    const active = pathname === `/learn/javascript/${lesson}`;
+                  {section.lessons.map((lesson) => {
+                    const active = pathname === `/learn/${technology}/${lesson.slug}`;
 
                     return (
                       <Link
-                        key={lesson}
-                        href={`/learn/javascript/${lesson}`}
+                        key={lesson.slug}
+                        href={`/learn/${technology}/${lesson.slug}`}
                         className={`block rounded-lg px-3 py-2 text-sm transition ${
                           active ? 'bg-primary text-primary-foreground' : 'hover:bg-muted'
                         }`}
                       >
-                        {lesson
-                          .replace(/-/g, ' ')
-                          .replace(/\b\w/g, (char: any) => char.toUpperCase())}
+                        {lesson.title}
                       </Link>
                     );
                   })}

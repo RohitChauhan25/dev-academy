@@ -8,14 +8,14 @@ import {
 } from '@/lib/tutorials';
 
 export const metadata: Metadata = {
-  title: 'JavaScript Interview Questions & Answers',
+  title: 'CSS Interview Questions & Answers',
   description:
-    'Curated JavaScript interview questions with detailed answers — closures, promises, event loop, DOM, async/await, hoisting and more.',
+    'Curated CSS interview questions with detailed answers — box model, Flexbox, Grid, specificity, responsive design, animations and more.',
 };
 
-export default function JavaScriptInterviewQuestionsPage() {
-  const tutorials = getTechnologyTutorials('javascript') ?? {};
-  const topicList = getTechnologyInterviewQuestions('javascript') ?? [];
+export default function CssInterviewQuestionsPage() {
+  const tutorials = getTechnologyTutorials('css') ?? {};
+  const topicList = getTechnologyInterviewQuestions('css') ?? [];
   const tutorialSlugs = new Set(Object.keys(tutorials));
 
   const topics: InterviewTopic[] = topicList
@@ -34,8 +34,8 @@ export default function JavaScriptInterviewQuestionsPage() {
 
   return (
     <InterviewQuestionsView
-      technology="JavaScript"
-      technologySlug="javascript"
+      technology="CSS"
+      technologySlug="css"
       topics={topics}
       totalQuestions={totalQuestions}
     />
