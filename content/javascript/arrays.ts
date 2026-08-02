@@ -10,7 +10,7 @@ export const arrays = {
 
   readingTime: '15 min',
 
-  lesson: 'Lesson 10 of 48',
+  lesson: 'Lesson 13 of 48',
 
   sections: [
     {
@@ -135,7 +135,7 @@ console.log(numbers);`,
     },
   ],
 
-  previous: 'objects',
 
-  next: 'array-methods',
+  previous: 'hoisting',
+  next: 'objects',
 };

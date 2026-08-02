@@ -265,7 +265,7 @@ console.log(typeof {});`,
     },
   ],
 
-  previous: 'variables',
 
+  previous: 'variables',
   next: 'type-conversion',
 };

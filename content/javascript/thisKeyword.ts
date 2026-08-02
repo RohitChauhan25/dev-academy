@@ -10,7 +10,7 @@ export const thisKeyword = {
 
   readingTime: '18 min',
 
-  lesson: 'Lesson 30 of 48',
+  lesson: 'Lesson 37 of 48',
 
   sections: [
     {
@@ -326,5 +326,5 @@ new Person("Rahul");`,
   ],
 
   previous: 'closures',
-  next: 'classes',
+  next: 'prototype',
 };

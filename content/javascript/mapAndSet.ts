@@ -10,7 +10,7 @@ export const mapAndSet = {
 
   readingTime: '16 min',
 
-  lesson: 'Lesson 35 of 48',
+  lesson: 'Lesson 44 of 48',
 
   sections: [
     {
@@ -285,6 +285,6 @@ console.log(Array.from(new Set(numbers)));
     },
   ],
 
-  previous: 'modules',
+  previous: 'regular-expressions',
   next: 'json',
 };

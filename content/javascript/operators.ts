@@ -298,7 +298,7 @@ console.log("5" * 2); // 10`,
     },
   ],
 
-  previous: 'type-conversion',
 
+  previous: 'type-conversion',
   next: 'conditionals',
 };

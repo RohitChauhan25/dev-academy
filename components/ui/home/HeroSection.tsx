@@ -12,8 +12,6 @@ const technologies = [
   'Node.js',
   'Java',
   'Python',
-  'Docker',
-  'AWS',
   'SQL',
   'MongoDB',
   'System Design',

@@ -24,7 +24,7 @@ const technologies = [
     title: 'JavaScript',
     icon: SiJavascript,
     color: '#F7DF1E',
-    tutorials: 45,
+    tutorials: 48,
     level: 'Beginner',
     href: '/learn/javascript',
     interviewHref: '/interview-questions/javascript',

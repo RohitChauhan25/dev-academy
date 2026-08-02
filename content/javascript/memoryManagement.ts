@@ -245,5 +245,4 @@ element = null;
   ],
 
   previous: 'event-loop',
-  next: 'fetch-api',
 };

@@ -10,7 +10,7 @@ export const classes = {
 
   readingTime: '20 min',
 
-  lesson: 'Lesson 31 of 48',
+  lesson: 'Lesson 39 of 48',
 
   sections: [
     {
@@ -287,6 +287,6 @@ console.log(Object.getPrototypeOf(b) === AnimalFn.prototype); // true`,
     },
   ],
 
-  previous: 'this-keyword',
+  previous: 'prototype',
   next: 'class-inheritance',
 };

@@ -10,7 +10,7 @@ export const modules = {
 
   readingTime: '16 min',
 
-  lesson: 'Lesson 34 of 48',
+  lesson: 'Lesson 28 of 48',
 
   sections: [
     {
@@ -240,6 +240,6 @@ console.log(MathUtils.add(1, 1));
     },
   ],
 
-  previous: 'async-await',
-  next: 'map-and-set',
+  previous: 'optional-chaining-nullish-coalescing',
+  next: 'error-handling',
 };

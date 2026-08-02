@@ -100,9 +100,9 @@ export default function PracticeTechnologyGrid({
                 )}
 
                 <Icon
-                  size={46}
+                  size={26}
                   color={tech.color}
-                  className="transition-transform duration-300 group-hover:scale-110"
+                  className="transition-transform duration-300 rounded--md group-hover:scale-110"
                 />
 
                 <h3 className="mt-6 text-xl font-semibold">{tech.title}</h3>

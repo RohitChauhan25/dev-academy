@@ -10,7 +10,7 @@ export const closures = {
 
   readingTime: '18 min',
 
-  lesson: 'Lesson 29 of 48',
+  lesson: 'Lesson 36 of 48',
 
   sections: [
     {
@@ -319,6 +319,6 @@ console.log(counter2());`,
     },
   ],
 
-  previous: 'template-literals',
+  previous: 'event-delegation',
   next: 'this-keyword',
 };

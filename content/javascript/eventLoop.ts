@@ -257,6 +257,6 @@ console.log("end");`,
     },
   ],
 
-  previous: 'prototype',
+  previous: 'date-and-time',
   next: 'memory-management',
 };

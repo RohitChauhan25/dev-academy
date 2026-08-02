@@ -10,7 +10,7 @@ export const events = {
 
   readingTime: '16 min',
 
-  lesson: 'Lesson 38 of 48',
+  lesson: 'Lesson 34 of 48',
 
   sections: [
     {

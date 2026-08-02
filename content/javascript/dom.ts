@@ -10,7 +10,7 @@ export const dom = {
 
   readingTime: '18 min',
 
-  lesson: 'Lesson 37 of 48',
+  lesson: 'Lesson 33 of 48',
 
   sections: [
     {
@@ -278,6 +278,6 @@ renderFruits(fruits);
     },
   ],
 
-  previous: 'date-and-time',
+  previous: 'fetch-api',
   next: 'events',
 };

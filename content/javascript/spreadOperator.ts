@@ -10,7 +10,7 @@ export const spreadOperator = {
 
   readingTime: '14 min',
 
-  lesson: 'Lesson 18 of 48',
+  lesson: 'Lesson 24 of 48',
 
   sections: [
     {

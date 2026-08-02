@@ -10,7 +10,7 @@ export const arrayDestructuring = {
 
   readingTime: '14 min',
 
-  lesson: 'Lesson 16 of 48',
+  lesson: 'Lesson 22 of 48',
 
   sections: [
     {

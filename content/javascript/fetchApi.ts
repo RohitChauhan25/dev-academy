@@ -10,7 +10,7 @@ export const fetchApi = {
 
   readingTime: '18 min',
 
-  lesson: 'Lesson 39 of 48',
+  lesson: 'Lesson 32 of 48',
 
   sections: [
     {
@@ -289,5 +289,6 @@ searchWithTimeout("javascript", 3000);`,
     },
   ],
 
-  previous: 'memory-management',
+  previous: 'async-await',
+  next: 'dom',
 };

@@ -233,7 +233,7 @@ while (i <= 5) {
     },
   ],
 
-  previous: 'conditionals',
 
+  previous: 'conditionals',
   next: 'functions',
 };

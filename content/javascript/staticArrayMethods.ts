@@ -10,7 +10,7 @@ export const staticArrayMethods = {
 
   readingTime: '15 min',
 
-  lesson: 'Lesson 28 of 48',
+  lesson: 'Lesson 21 of 48',
 
   sections: [
     {

@@ -10,7 +10,7 @@ export const templateLiterals = {
 
   readingTime: '13 min',
 
-  lesson: 'Lesson 20 of 48',
+  lesson: 'Lesson 26 of 48',
 
   sections: [
     {
@@ -278,5 +278,5 @@ console.log(output);
   ],
 
   previous: 'rest-parameters',
-  next: 'closures',
+  next: 'optional-chaining-nullish-coalescing',
 };

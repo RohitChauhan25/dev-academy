@@ -10,7 +10,7 @@ export const classFeatures = {
 
   readingTime: '18 min',
 
-  lesson: 'Lesson 40 of 48',
+  lesson: 'Lesson 41 of 48',
 
   sections: [
     {
@@ -305,5 +305,5 @@ temp.celsius = "hot"; // Error: Temperature must be a number`,
   ],
 
   previous: 'class-inheritance',
-  next: 'error-handling',
+  next: 'generators-iterators',
 };

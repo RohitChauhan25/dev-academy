@@ -10,7 +10,7 @@ export const scope = {
 
   readingTime: '18 min',
 
-  lesson: 'Lesson 13 of 48',
+  lesson: 'Lesson 11 of 48',
 
   sections: [
     {
@@ -223,7 +223,7 @@ console.log(language);`,
     },
   ],
 
-  previous: 'functions',
 
+  previous: 'functions',
   next: 'hoisting',
 };

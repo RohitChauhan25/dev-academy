@@ -12,7 +12,7 @@ export const functions: Tutorial = {
 
   readingTime: '24 min',
 
-  lesson: 'Lesson 11 of 48',
+  lesson: 'Lesson 10 of 48',
 
   sections: [
     {
@@ -272,7 +272,7 @@ function sayHello() {
     },
   ],
 
-  previous: 'loops',
 
+  previous: 'loops',
   next: 'scope',
 };

@@ -285,6 +285,6 @@ console.log(emailRegex.test('missing@dot'));
     },
   ],
 
-  previous: 'json',
-  next: 'optional-chaining-nullish-coalescing',
+  previous: 'generators-iterators',
+  next: 'map-and-set',
 };

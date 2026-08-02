@@ -10,7 +10,7 @@ export const restParameters = {
 
   readingTime: '12 min',
 
-  lesson: 'Lesson 19 of 48',
+  lesson: 'Lesson 25 of 48',
 
   sections: [
     {

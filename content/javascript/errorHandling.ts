@@ -10,7 +10,7 @@ export const errorHandling = {
 
   readingTime: '16 min',
 
-  lesson: 'Lesson 33 of 48',
+  lesson: 'Lesson 29 of 48',
 
   sections: [
     {
@@ -306,6 +306,6 @@ console.log("try/catch block has already finished by the time the error is throw
     },
   ],
 
-  previous: 'class-features',
+  previous: 'modules',
   next: 'promises',
 };

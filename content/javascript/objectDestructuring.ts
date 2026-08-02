@@ -10,7 +10,7 @@ export const objectDestructuring = {
 
   readingTime: '15 min',
 
-  lesson: 'Lesson 17 of 48',
+  lesson: 'Lesson 23 of 48',
 
   sections: [
     {

@@ -10,7 +10,7 @@ export const arrayMethods = {
 
   readingTime: '12 min',
 
-  lesson: 'Lesson 23 of 48',
+  lesson: 'Lesson 16 of 48',
 
   sections: [
     {
@@ -106,7 +106,7 @@ console.log(fruits);`,
     },
   ],
 
-  previous: 'strings',
 
+  previous: 'strings',
   next: 'adding-removing-methods',
 };

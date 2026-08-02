@@ -10,7 +10,7 @@ export const classInheritance = {
 
   readingTime: '18 min',
 
-  lesson: 'Lesson 32 of 48',
+  lesson: 'Lesson 40 of 48',
 
   sections: [
     {

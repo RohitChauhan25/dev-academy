@@ -12,7 +12,7 @@ export const hoisting: Tutorial = {
 
   readingTime: '20 min',
 
-  lesson: 'Lesson 14 of 48',
+  lesson: 'Lesson 12 of 48',
 
   sections: [
     {
@@ -247,7 +247,7 @@ let b = 10;`,
     },
   ],
 
-  previous: 'scope',
 
-  next: 'strict-mode',
+  previous: 'scope',
+  next: 'arrays',
 };

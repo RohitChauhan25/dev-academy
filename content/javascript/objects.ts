@@ -10,7 +10,7 @@ export const objects = {
 
   readingTime: '18 min',
 
-  lesson: 'Lesson 12 of 48',
+  lesson: 'Lesson 14 of 48',
 
   sections: [
     {
@@ -235,7 +235,7 @@ for (const key in person) {
     },
   ],
 
-  previous: 'arrays',
 
+  previous: 'arrays',
   next: 'strings',
 };

@@ -186,7 +186,7 @@ export const setup: Tutorial = {
     },
   ],
 
-  previous: 'introduction',
 
+  previous: 'introduction',
   next: 'comments',
 };

@@ -10,7 +10,7 @@ export const promises = {
 
   readingTime: '20 min',
 
-  lesson: 'Lesson 41 of 48',
+  lesson: 'Lesson 30 of 48',
 
   sections: [
     {

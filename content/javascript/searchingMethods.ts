@@ -10,7 +10,7 @@ export const searchingMethods = {
 
   readingTime: '20 min',
 
-  lesson: 'Lesson 25 of 48',
+  lesson: 'Lesson 18 of 48',
 
   sections: [
     {
@@ -287,7 +287,7 @@ console.log([].every((n) => n > 100));
     },
   ],
 
-  previous: 'adding-removing-methods',
 
-  next: 'transforming-methods',
+  previous: 'adding-removing-methods',
+  next: 'iteration-methods',
 };

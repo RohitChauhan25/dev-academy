@@ -201,7 +201,7 @@ console.log(1 + "1");`,
     },
   ],
 
-  previous: 'data-types',
 
+  previous: 'data-types-in-javascript',
   next: 'operators',
 };

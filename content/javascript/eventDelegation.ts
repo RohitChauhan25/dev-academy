@@ -10,7 +10,7 @@ export const eventDelegation = {
 
   readingTime: '16 min',
 
-  lesson: 'Lesson 45 of 48',
+  lesson: 'Lesson 35 of 48',
 
   sections: [
     {
@@ -259,5 +259,5 @@ form.addEventListener('focusin', (event) => {
   ],
 
   previous: 'events',
-  next: 'prototype',
+  next: 'closures',
 };

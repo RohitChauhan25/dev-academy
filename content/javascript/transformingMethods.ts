@@ -10,7 +10,7 @@ export const transformingMethods = {
 
   readingTime: '20 min',
 
-  lesson: 'Lesson 27 of 48',
+  lesson: 'Lesson 20 of 48',
 
   sections: [
     {
@@ -248,7 +248,7 @@ console.log(fruits.join(""));
     },
   ],
 
-  previous: 'iteration-methods',
 
+  previous: 'iteration-methods',
   next: 'static-array-methods',
 };

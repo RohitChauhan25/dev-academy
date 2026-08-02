@@ -184,7 +184,7 @@ console.log(\`\${firstName} \${lastName}\`);`,
     },
   ],
 
-  previous: 'objects',
 
+  previous: 'objects',
   next: 'array-methods',
 };

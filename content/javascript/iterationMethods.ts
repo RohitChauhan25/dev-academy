@@ -10,7 +10,7 @@ export const iterationMethods = {
 
   readingTime: '22 min',
 
-  lesson: 'Lesson 26 of 48',
+  lesson: 'Lesson 19 of 48',
 
   sections: [
     {
@@ -256,7 +256,7 @@ console.log(parts.reduceRight((acc, part) => acc + " " + part));
     },
   ],
 
-  previous: 'searching-methods',
 
+  previous: 'searching-methods',
   next: 'transformation-methods',
 };

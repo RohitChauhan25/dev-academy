@@ -10,7 +10,7 @@ export const addingRemovingMethods = {
 
   readingTime: '18 min',
 
-  lesson: 'Lesson 24 of 48',
+  lesson: 'Lesson 17 of 48',
 
   sections: [
     {
@@ -291,7 +291,7 @@ console.log(letters);
     },
   ],
 
-  previous: 'array-methods',
 
+  previous: 'array-methods',
   next: 'searching-methods',
 };

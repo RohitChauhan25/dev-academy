@@ -10,7 +10,7 @@ export const dateAndTime = {
 
   readingTime: '16 min',
 
-  lesson: 'Lesson 36 of 48',
+  lesson: 'Lesson 46 of 48',
 
   sections: [
     {
@@ -276,6 +276,6 @@ console.log(sameMomentA.getTime() === sameMomentB.getTime());
     },
   ],
 
-  previous: 'generators-iterators',
-  next: 'dom',
+  previous: 'json',
+  next: 'event-loop',
 };

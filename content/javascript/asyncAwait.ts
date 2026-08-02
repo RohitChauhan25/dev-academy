@@ -10,7 +10,7 @@ export const asyncAwait = {
 
   readingTime: '20 min',
 
-  lesson: 'Lesson 42 of 48',
+  lesson: 'Lesson 31 of 48',
 
   sections: [
     {
@@ -282,5 +282,5 @@ console.log("end");`,
   ],
 
   previous: 'promises',
-  next: 'modules',
+  next: 'fetch-api',
 };

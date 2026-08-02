@@ -10,7 +10,7 @@ export const json = {
 
   readingTime: '12 min',
 
-  lesson: 'Lesson 21 of 48',
+  lesson: 'Lesson 45 of 48',
 
   sections: [
     {
@@ -252,5 +252,5 @@ try {
   ],
 
   previous: 'map-and-set',
-  next: 'regular-expressions',
+  next: 'date-and-time',
 };

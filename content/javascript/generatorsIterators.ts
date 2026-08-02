@@ -10,7 +10,7 @@ export const generatorsIterators = {
 
   readingTime: '20 min',
 
-  lesson: 'Lesson 44 of 48',
+  lesson: 'Lesson 42 of 48',
 
   sections: [
     {
@@ -333,6 +333,6 @@ for (const n of naturalNumbers()) {
     },
   ],
 
-  previous: 'optional-chaining-nullish-coalescing',
-  next: 'date-and-time',
+  previous: 'class-features',
+  next: 'regular-expressions',
 };

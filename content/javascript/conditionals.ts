@@ -285,7 +285,7 @@ if (age === 18) {
     },
   ],
 
-  previous: 'operators',
 
+  previous: 'operators',
   next: 'loops',
 };

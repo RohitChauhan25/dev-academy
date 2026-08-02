@@ -10,7 +10,7 @@ export const optionalChainingNullishCoalescing = {
 
   readingTime: '13 min',
 
-  lesson: 'Lesson 22 of 48',
+  lesson: 'Lesson 27 of 48',
 
   sections: [
     {
@@ -237,6 +237,6 @@ console.log(api?.fetchData(logCall()));
     },
   ],
 
-  previous: 'regular-expressions',
-  next: 'generators-iterators',
+  previous: 'template-literals',
+  next: 'modules',
 };

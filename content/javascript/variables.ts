@@ -12,7 +12,7 @@ export const variables: Tutorial = {
 
   readingTime: '12 min',
 
-  lesson: 'Lesson 3 of 48',
+  lesson: 'Lesson 4 of 48',
 
   sections: [
     {
@@ -112,7 +112,7 @@ console.log(age);`,
     },
   ],
 
-  previous: 'introduction',
 
+  previous: 'comments',
   next: 'data-types-in-javascript',
 };

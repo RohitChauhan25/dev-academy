@@ -12,7 +12,7 @@ export const comments: Tutorial = {
 
   readingTime: '8 min',
 
-  lesson: 'Lesson 4 of 48',
+  lesson: 'Lesson 3 of 48',
 
   sections: [
     {
@@ -166,7 +166,7 @@ i++;`,
     },
   ],
 
-  previous: 'setup',
 
+  previous: 'setup',
   next: 'variables',
 };

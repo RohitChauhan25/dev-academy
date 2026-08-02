@@ -10,7 +10,7 @@ export const prototype = {
 
   readingTime: '18 min',
 
-  lesson: 'Lesson 46 of 48',
+  lesson: 'Lesson 38 of 48',
 
   sections: [
     {
@@ -356,6 +356,6 @@ console.log(dog.hasOwnProperty("speak"));`,
     },
   ],
 
-  previous: 'event-delegation',
-  next: 'event-loop',
+  previous: 'this-keyword',
+  next: 'classes',
 };

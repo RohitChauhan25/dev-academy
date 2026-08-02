@@ -1,5 +1,6 @@
 import { codeToHtml } from 'shiki';
 import { slugify } from '@/lib/utils';
+import JsPlayground from './JsPlayground';
 
 interface CodeSectionProps {
   title: string;
@@ -19,21 +20,26 @@ const SUPPORTED_LANGUAGES = new Set([
 
 export default async function CodeSection({ title, code, language }: CodeSectionProps) {
   const isHtml = language === 'html';
+  const isJavaScript = language === 'javascript';
   const lang = language && SUPPORTED_LANGUAGES.has(language) ? language : 'text';
 
-  const highlighted = await codeToHtml(code, {
-    lang,
-    theme: 'dark-plus',
-  });
+  const highlighted = isJavaScript
+    ? null
+    : await codeToHtml(code, {
+        lang,
+        theme: 'dark-plus',
+      });
 
   return (
     <section id={slugify(title)} className="mt-12 scroll-mt-24">
       <h2 className="text-3xl font-bold">{title}</h2>
 
-      <div
-        className="tutorial-code mt-5 overflow-hidden rounded-xl border border-white/10"
-        dangerouslySetInnerHTML={{ __html: highlighted }}
-      />
+      {highlighted && (
+        <div
+          className="tutorial-code mt-5 overflow-hidden rounded-xl border border-white/10"
+          dangerouslySetInnerHTML={{ __html: highlighted }}
+        />
+      )}
 
       {isHtml && (
         <div className="mt-4 overflow-hidden rounded-xl border">
@@ -49,6 +55,8 @@ export default async function CodeSection({ title, code, language }: CodeSection
           />
         </div>
       )}
+
+      {isJavaScript && <JsPlayground code={code} />}
     </section>
   );
 }
