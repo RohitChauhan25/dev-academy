@@ -9,37 +9,37 @@ const categories = [
     title: 'Frontend',
     description: 'HTML, CSS, JavaScript, React, Next.js',
     icon: Monitor,
-    href: '/learn/frontend',
+    href: '/learn#technologies',
   },
   {
     title: 'Backend',
     description: 'Node.js, Express, APIs, Authentication',
     icon: Server,
-    href: '/learn/backend',
+    href: '/learn#technologies',
   },
   {
     title: 'Programming',
     description: 'JavaScript, TypeScript, Python, Java',
     icon: Code2,
-    href: '/learn/programming',
+    href: '/learn#technologies',
   },
   {
     title: 'Database',
     description: 'MongoDB, MySQL, PostgreSQL',
     icon: Database,
-    href: '/learn/database',
+    href: '/learn#technologies',
   },
   {
     title: 'DSA',
     description: 'Arrays, Trees, Graphs, Dynamic Programming',
     icon: BrainCircuit,
-    href: '/learn/dsa',
+    href: '/learn#technologies',
   },
   {
     title: 'Tools',
     description: 'Git, Docker, VS Code, npm',
     icon: Boxes,
-    href: '/learn/tools',
+    href: '/learn#technologies',
   },
 ];
 

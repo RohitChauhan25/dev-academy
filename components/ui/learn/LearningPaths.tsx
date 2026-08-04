@@ -10,34 +10,34 @@ const learningPaths = [
     icon: Monitor,
     description: 'Learn everything required to build modern and responsive web applications.',
     topics: ['HTML', 'CSS', 'JavaScript', 'React', 'Next.js'],
-    href: '/learn/frontend',
+    href: '/learn#technologies',
   },
   {
     title: 'Backend Developer',
     icon: Server,
     description: 'Build secure and scalable APIs with modern backend technologies.',
     topics: ['Node.js', 'Express', 'MongoDB', 'Authentication', 'Deployment'],
-    href: '/learn/backend',
+    href: '/learn#technologies',
   },
   {
     title: 'Database',
     icon: Database,
     description: 'Understand relational and NoSQL databases with practical examples.',
     topics: ['SQL', 'MySQL', 'PostgreSQL', 'MongoDB', 'Redis'],
-    href: '/learn/database',
+    href: '/learn#technologies',
   },
   {
     title: 'Version Control',
     icon: GitBranch,
     description: 'Master Git and GitHub for collaboration and project management.',
     topics: ['Git Basics', 'Branches', 'Merge', 'Pull Requests', 'GitHub'],
-    href: '/learn/git',
+    href: '/learn#technologies',
   },
 ];
 
 export default function LearningPaths() {
   return (
-    <section className="py-24">
+    <section id="learning-paths" className="py-24">
       <div className="container mx-auto px-6">
         <div className="text-center">
           <p className="font-semibold text-blue-500">Learning Paths</p>

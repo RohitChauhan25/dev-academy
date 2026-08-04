@@ -17,7 +17,7 @@ export default function Footer() {
     },
     {
       title: 'Roadmaps',
-      href: '/roadmaps',
+      href: '/learn#learning-paths',
     },
     {
       title: 'Blogs',
@@ -28,19 +28,19 @@ export default function Footer() {
   const resources = [
     {
       title: 'Frontend',
-      href: '/questions/frontend',
+      href: '/interview-questions',
     },
     {
       title: 'Backend',
-      href: '/questions/backend',
+      href: '/interview-questions',
     },
     {
       title: 'System Design',
-      href: '/questions/system-design',
+      href: '/interview-questions',
     },
     {
       title: 'Machine Coding',
-      href: '/questions/machine-coding',
+      href: '/interview-questions',
     },
   ];
 
@@ -184,7 +184,7 @@ export default function Footer() {
         {/* Bottom */}
 
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t pt-8 text-sm text-muted-foreground md:flex-row">
-          <p>© {new Date().getFullYear()} InterviewHub. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} DevAcademy. All rights reserved.</p>
 
           {/* <p>Built with ❤️ using Next.js, Tailwind CSS & shadcn/ui</p> */}
         </div>

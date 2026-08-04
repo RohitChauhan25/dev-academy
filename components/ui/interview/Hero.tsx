@@ -240,7 +240,7 @@ export default function Hero() {
           >
             <Button size="lg" className="rounded-xl px-8 transition hover:scale-105" asChild>
               <Link href="/practice">
-                Explore Interview Rounds
+                Start Practicing
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
