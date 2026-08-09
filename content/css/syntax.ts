@@ -60,7 +60,7 @@ export const syntax: Tutorial = {
 
     {
       type: 'code',
-      title: 'Multiple Declarations',
+      title: 'Multiple Declarations Example',
       language: 'html',
       code: `<style>
   .card {

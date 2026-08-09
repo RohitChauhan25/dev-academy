@@ -31,7 +31,7 @@ export default function PrivacyPolicyPage() {
         <div className={`mt-10 ${PROSE_CLASS}`}>
           <p>
             Dev Academy (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) operates this website
-            to help developers practice interview questions, follow roadmaps, and learn through
+            to help developers practice interview questions and learn through
             tutorials and blogs. This Privacy Policy explains what information we collect, how we
             use it, and the choices you have.
           </p>

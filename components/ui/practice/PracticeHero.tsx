@@ -19,15 +19,15 @@ const fadeUp = {
   },
 };
 
-export default function PracticeHero({ javascriptQuestionCount }: { javascriptQuestionCount: number }) {
+export default function PracticeHero({ totalQuestionCount }: { totalQuestionCount: number }) {
   const stats = [
     {
       icon: Code2,
-      title: 'JavaScript Available Now',
+      title: '5 Technologies Available',
     },
     {
       icon: BrainCircuit,
-      title: `${javascriptQuestionCount}+ Practice Questions`,
+      title: `${totalQuestionCount}+ Practice Questions`,
     },
     {
       icon: Trophy,
@@ -52,7 +52,7 @@ export default function PracticeHero({ javascriptQuestionCount }: { javascriptQu
               variant="outline"
               className="rounded-full border-violet-500/30 bg-violet-500/10 px-4 py-2 text-violet-400"
             >
-              🧠 Test What You've Learned
+              🧠 Test What You&apos;ve Learned
             </Badge>
           </motion.div>
 

@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
+import Link from "next/link";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   Sparkles,
@@ -12,113 +12,129 @@ import {
   FileCode2,
   Atom,
   Rocket,
-} from 'lucide-react';
-import { RiNextjsFill } from 'react-icons/ri';
-import { SiMongodb, SiHtml5, SiCss } from 'react-icons/si';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { useInView } from 'react-intersection-observer';
+  Flame,
+} from "lucide-react";
+import { RiNextjsFill } from "react-icons/ri";
+import { SiMongodb, SiHtml5, SiCss } from "react-icons/si";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { useInView } from "react-intersection-observer";
 
 const categories = [
-  'Frontend',
-  'Backend',
-  'Full Stack',
-  'JavaScript',
-  'React',
-  'Node.js',
-  'Java',
-  'Python',
-  'System Design',
-  'Machine Coding',
-  'DSA',
-  'SQL',
+  "Frontend",
+  "Backend",
+  "Full Stack",
+  "JavaScript",
+  "React",
+  "Node.js",
+  "Java",
+  "Python",
+  "System Design",
+  "Machine Coding",
+  "DSA",
+  "SQL",
 ];
 
 const questionSets = [
   {
-    title: 'JavaScript Interview Questions & Answers',
-    description: 'Closures, Promises, Event Loop, DOM, Async/Await, Hoisting and more.',
-    questions: '150+',
+    title:
+      "Most frequently asked JavaScript interview questions with detailed explanations",
+    description:
+      "Hoisting, closures, this, the event loop, promises, prototypal inheritance and more — the questions you're most likely to be asked.",
+    questions: "",
+    icon: Flame,
+    color: "text-violet-400",
+    href: "/interview-questions/most-asked-javascript",
+    status: "live" as const,
+  },
+  {
+    title: "JavaScript Interview Questions & Answers",
+    description:
+      "Closures, Promises, Event Loop, DOM, Async/Await, Hoisting and more.",
+    questions: "150+",
     icon: Code2,
-    color: 'text-yellow-400',
-    href: '/interview-questions/javascript',
-    status: 'live' as const,
+    color: "text-yellow-400",
+    href: "/interview-questions/javascript",
+    status: "live" as const,
   },
   {
-    title: 'HTML Interview Questions & Answers',
-    description: 'Semantic markup, forms, accessibility, tables, media and more.',
-    questions: '90+',
+    title: "HTML Interview Questions & Answers",
+    description:
+      "Semantic markup, forms, accessibility, tables, media and more.",
+    questions: "90+",
     icon: SiHtml5,
-    color: 'text-orange-500',
-    href: '/interview-questions/html',
-    status: 'live' as const,
+    color: "text-orange-500",
+    href: "/interview-questions/html",
+    status: "live" as const,
   },
   {
-    title: 'CSS Interview Questions & Answers',
-    description: 'Box model, Flexbox, Grid, specificity, responsive design and more.',
-    questions: '90+',
+    title: "CSS Interview Questions & Answers",
+    description:
+      "Box model, Flexbox, Grid, specificity, responsive design and more.",
+    questions: "90+",
     icon: SiCss,
-    color: 'text-blue-500',
-    href: '/interview-questions/css',
-    status: 'live' as const,
+    color: "text-blue-500",
+    href: "/interview-questions/css",
+    status: "live" as const,
   },
   {
-    title: 'React.js Interview Questions & Answers',
-    description: 'Hooks, Lifecycle, Performance, Context API, Redux, React 19.',
-    questions: '120+',
+    title: "React.js Interview Questions & Answers",
+    description: "Hooks, Lifecycle, Performance, Context API, Redux, React 19.",
+    questions: "120+",
     icon: Atom,
-    color: 'text-cyan-400',
-    href: '/interview-questions/react',
-    status: 'live' as const,
+    color: "text-cyan-400",
+    href: "/interview-questions/react",
+    status: "live" as const,
   },
   {
-    title: 'Node.js Interview Questions & Answers',
-    description: 'Express, Authentication, Streams, Event Loop, REST APIs.',
-    questions: '80+',
+    title: "Node.js Interview Questions & Answers",
+    description: "Express, Authentication, Streams, Event Loop, REST APIs.",
+    questions: "25+",
     icon: Server,
-    color: 'text-green-400',
-    status: 'coming-soon' as const,
+    color: "text-green-400",
+    href: "/interview-questions/nodejs",
+    status: "live" as const,
   },
   {
-    title: 'TypeScript Interview Questions & Answers',
-    description: 'Generics, Utility Types, Interfaces, Advanced Types.',
-    questions: '90+',
+    title: "TypeScript Interview Questions & Answers",
+    description: "Generics, Utility Types, Interfaces, Advanced Types.",
+    questions: "90+",
     icon: FileCode2,
-    color: 'text-blue-400',
-    href: '/interview-questions/typescript',
-    status: 'live' as const,
+    color: "text-blue-400",
+    href: "/interview-questions/typescript",
+    status: "live" as const,
   },
   {
-    title: 'Next.js Interview Questions & Answers',
-    description: 'Routing, Rendering Strategies, Server Actions, Middleware.',
-    questions: '50+',
+    title: "Next.js Interview Questions & Answers",
+    description: "Routing, Rendering Strategies, Server Actions, Middleware.",
+    questions: "50+",
     icon: RiNextjsFill,
-    color: 'text-foreground',
-    status: 'coming-soon' as const,
+    color: "text-foreground",
+    status: "coming-soon" as const,
   },
   {
-    title: 'SQL Interview Questions & Answers',
-    description: 'Joins, Indexing, Transactions, Window Functions.',
-    questions: '70+',
+    title: "SQL Interview Questions & Answers",
+    description: "Joins, Indexing, Transactions, Window Functions.",
+    questions: "70+",
     icon: Database,
-    color: 'text-pink-400',
-    status: 'coming-soon' as const,
+    color: "text-pink-400",
+    status: "coming-soon" as const,
   },
   {
-    title: 'MongoDB Interview Questions & Answers',
-    description: 'Aggregation, Indexing, Schema Design, Replication.',
-    questions: '40+',
+    title: "MongoDB Interview Questions & Answers",
+    description: "Aggregation, Indexing, Schema Design, Replication.",
+    questions: "40+",
     icon: SiMongodb,
-    color: 'text-green-400',
-    status: 'coming-soon' as const,
+    color: "text-green-400",
+    status: "coming-soon" as const,
   },
   {
-    title: 'System Design Concepts',
-    description: 'Scalability, Caching, Load Balancer, CAP, Queues.',
-    questions: '30+',
+    title: "System Design Concepts",
+    description: "Scalability, Caching, Load Balancer, CAP, Queues.",
+    questions: "30+",
     icon: Network,
-    color: 'text-violet-400',
-    status: 'coming-soon' as const,
+    color: "text-violet-400",
+    status: "coming-soon" as const,
   },
 ];
 
@@ -217,9 +233,9 @@ export default function Hero() {
             }}
             className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-muted-foreground"
           >
-            Practice interview questions for Frontend, Backend, Full Stack, System Design, Machine
-            Coding and DSA. Explore curated interview rounds, company questions and developer
-            blogs—all in one place.
+            Practice interview questions for Frontend, Backend, Full Stack,
+            System Design, Machine Coding and DSA. Explore curated interview
+            rounds, company questions and developer blogs—all in one place.
           </motion.p>
 
           {/* Buttons */}
@@ -238,7 +254,11 @@ export default function Hero() {
             }}
             className="mt-10 flex flex-col justify-center gap-4 sm:flex-row"
           >
-            <Button size="lg" className="rounded-xl px-8 transition hover:scale-105" asChild>
+            <Button
+              size="lg"
+              className="rounded-xl px-8 transition hover:scale-105"
+              asChild
+            >
               <Link href="/practice">
                 Start Practicing
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -257,7 +277,7 @@ export default function Hero() {
 
           {/* Categories */}
 
-          <motion.div
+          {/* <motion.div
             initial={{
               opacity: 0,
             }}
@@ -277,14 +297,17 @@ export default function Hero() {
                 {item}
               </span>
             ))}
-          </motion.div>
+          </motion.div> */}
 
           {/* Cards */}
         </div>
 
-        <div ref={ref} className="mx-auto mt-20 grid max-w-full gap-6 md:grid-cols-3">
+        <div
+          ref={ref}
+          className="mx-auto mt-20 grid max-w-full gap-6 md:grid-cols-3"
+        >
           {questionSets.map((item, index) => {
-            const isLive = item.status === 'live';
+            const isLive = item.status === "live";
             const Card = (
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
@@ -295,12 +318,14 @@ export default function Hero() {
                 }}
                 whileHover={isLive ? { y: -6 } : undefined}
                 className={`group relative h-full overflow-hidden rounded-2xl border bg-card p-6 transition-colors duration-300 ${
-                  isLive ? 'hover:border-violet-500' : 'opacity-80'
+                  isLive ? "hover:border-violet-500" : "opacity-80"
                 }`}
               >
                 <div className="flex items-center gap-4">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10">
-                    {item.icon && <item.icon className={`h-6 w-6 ${item.color}`} />}
+                    {item.icon && (
+                      <item.icon className={`h-6 w-6 ${item.color}`} />
+                    )}
                   </div>
 
                   <h3 className="text-lg font-bold">
@@ -308,7 +333,9 @@ export default function Hero() {
                   </h3>
                 </div>
 
-                <p className="mt-4 text-sm leading-6 text-muted-foreground">{item.description}</p>
+                <p className="mt-4 text-sm leading-6 text-muted-foreground">
+                  {item.description}
+                </p>
 
                 <div className="mt-5">
                   {isLive ? (
@@ -316,7 +343,10 @@ export default function Hero() {
                       View questions →
                     </span>
                   ) : (
-                    <Badge variant="secondary" className="uppercase tracking-wide">
+                    <Badge
+                      variant="secondary"
+                      className="uppercase tracking-wide"
+                    >
                       Coming soon
                     </Badge>
                   )}

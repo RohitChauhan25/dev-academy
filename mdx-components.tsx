@@ -8,7 +8,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <h1 className="mt-12 scroll-mt-24 text-3xl font-black leading-tight md:text-4xl" {...props} />
     ),
     h2: (props) => (
-      <h2 className="mt-12 scroll-mt-24 text-2xl font-bold leading-tight" {...props} />
+      <h2
+        className="mt-12 inline-block scroll-mt-24 rounded bg-lime-300 px-3 py-1.5 text-xl font-bold leading-tight text-zinc-900"
+        {...props}
+      />
     ),
     h3: (props) => (
       <h3 className="mt-8 scroll-mt-24 text-xl font-bold leading-tight" {...props} />
@@ -43,18 +46,22 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     table: (props) => (
       <div className="mt-6 overflow-x-auto rounded-xl border">
-        <table className="w-full text-left text-sm" {...props} />
+        <table className="w-full border-collapse text-left text-sm" {...props} />
       </div>
     ),
     thead: (props) => <thead className="bg-muted/50" {...props} />,
-    th: (props) => <th className="px-4 py-2.5 font-semibold" {...props} />,
-    td: (props) => <td className="border-t px-4 py-2.5 text-muted-foreground" {...props} />,
+    th: (props) => (
+      <th className="border-b px-4 py-2.5 font-semibold text-foreground" {...props} />
+    ),
+    td: (props) => (
+      <td className="border-b px-4 py-2.5 text-muted-foreground [tr:last-child_&]:border-b-0" {...props} />
+    ),
     code: ({ className, ...props }) =>
       className ? (
         <code className={className} {...props} />
       ) : (
         <code
-          className="rounded bg-violet-500/10 px-1.5 py-0.5 font-mono text-[0.85em] text-violet-700 dark:text-violet-300"
+          className="rounded-md border border-rose-500/20 bg-rose-500/10 px-1.5 py-0.5 font-mono text-[0.85em] text-rose-600 dark:text-rose-400"
           {...props}
         />
       ),

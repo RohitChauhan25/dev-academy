@@ -77,7 +77,7 @@ console.log(dynamicRegex.test('Hello World'));
 
     {
       type: 'code',
-      title: 'Character Classes and Quantifiers',
+      title: 'Character Classes and Quantifiers Example',
       language: 'javascript',
       code: `console.log(/\\d+/.test('Order #482'));
 // true — one or more digits found

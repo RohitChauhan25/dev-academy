@@ -42,10 +42,13 @@ export default async function TutorialPage({ params }: Props) {
 
       <InterviewSection questions={interviewQuestions} />
 
-      {tutorial.quiz && <QuizSection quiz={tutorial.quiz} />}
+      {tutorial.quiz && (
+        <QuizSection quiz={tutorial.quiz} technology={technology} topic={topic} />
+      )}
 
       <NavigationSection
         technology={technology}
+        topic={topic}
         previous={tutorial.previous}
         next={tutorial.next}
       />

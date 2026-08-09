@@ -1,49 +1,53 @@
 'use client';
 
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Monitor, Server, BrainCircuit, Database, Boxes, Code2 } from 'lucide-react';
 
-const categories = [
+export const categories = [
   {
     title: 'Frontend',
+    slug: 'frontend',
     description: 'HTML, CSS, JavaScript, React, Next.js',
     icon: Monitor,
-    href: '/learn#technologies',
   },
   {
     title: 'Backend',
+    slug: 'backend',
     description: 'Node.js, Express, APIs, Authentication',
     icon: Server,
-    href: '/learn#technologies',
   },
   {
     title: 'Programming',
+    slug: 'programming',
     description: 'JavaScript, TypeScript, Python, Java',
     icon: Code2,
-    href: '/learn#technologies',
   },
   {
     title: 'Database',
+    slug: 'database',
     description: 'MongoDB, MySQL, PostgreSQL',
     icon: Database,
-    href: '/learn#technologies',
   },
   {
     title: 'DSA',
+    slug: 'dsa',
     description: 'Arrays, Trees, Graphs, Dynamic Programming',
     icon: BrainCircuit,
-    href: '/learn#technologies',
   },
   {
     title: 'Tools',
+    slug: 'tools',
     description: 'Git, Docker, VS Code, npm',
     icon: Boxes,
-    href: '/learn#technologies',
   },
 ];
 
 export default function CategorySection() {
+  const searchParams = useSearchParams();
+  const activeCategory = searchParams.get('category');
+
   return (
     <section className="py-24">
       <div className="container mx-auto px-6">
@@ -60,6 +64,7 @@ export default function CategorySection() {
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((category, index) => {
             const Icon = category.icon;
+            const isActive = activeCategory === category.slug;
 
             return (
               <motion.div
@@ -69,8 +74,12 @@ export default function CategorySection() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
               >
-                <Link href={category.href}>
-                  <div className="group rounded-2xl border bg-card p-6 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500 hover:shadow-xl">
+                <Link href={`/learn?category=${category.slug}#technologies`}>
+                  <div
+                    className={`group rounded-2xl border bg-card p-6 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500 hover:shadow-xl ${
+                      isActive ? 'border-blue-500 ring-1 ring-blue-500/40' : ''
+                    }`}
+                  >
                     <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-blue-500/10">
                       <Icon className="h-7 w-7 text-blue-500 transition-transform group-hover:scale-110" />
                     </div>

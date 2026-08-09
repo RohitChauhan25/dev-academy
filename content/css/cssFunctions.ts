@@ -59,7 +59,7 @@ export const cssFunctions: Tutorial = {
 
     {
       type: 'code',
-      title: 'min() and max()',
+      title: 'min() and max() Example',
       language: 'html',
       code: `<style>
   .box {

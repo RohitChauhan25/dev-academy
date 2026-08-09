@@ -65,7 +65,7 @@ export const selectors: Tutorial = {
 
     {
       type: 'code',
-      title: 'Attribute Selectors',
+      title: 'Attribute Selectors Example',
       language: 'html',
       code: `<style>
   input[type="email"] {

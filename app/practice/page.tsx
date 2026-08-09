@@ -2,18 +2,34 @@ import PracticeHero from '@/components/ui/practice/PracticeHero';
 import PracticeTechnologyGrid from '@/components/ui/practice/PracticeTechnologyGrid';
 import { getTechnologyTutorials } from '@/lib/tutorials';
 
-export default function PracticePage() {
-  const javascriptTutorials = getTechnologyTutorials('javascript') ?? {};
+const AVAILABLE_TECHNOLOGIES = [
+  'javascript',
+  'typescript',
+  'react',
+  'html',
+  'css',
+  'nodejs',
+] as const;
 
-  const javascriptQuestionCount = Object.values(javascriptTutorials).reduce(
-    (total: number, tutorial: any) => total + (tutorial.quiz?.length ?? 0),
+function countQuestions(technology: string): number {
+  const tutorials = getTechnologyTutorials(technology) ?? {};
+  return Object.values(tutorials).reduce(
+    (total: number, tutorial: { quiz?: unknown[] }) => total + (tutorial.quiz?.length ?? 0),
     0,
   );
+}
+
+export default function PracticePage() {
+  const questionCounts = Object.fromEntries(
+    AVAILABLE_TECHNOLOGIES.map((tech) => [tech, countQuestions(tech)]),
+  );
+
+  const totalQuestionCount = Object.values(questionCounts).reduce((sum, count) => sum + count, 0);
 
   return (
     <div>
-      <PracticeHero javascriptQuestionCount={javascriptQuestionCount} />
-      <PracticeTechnologyGrid javascriptQuestionCount={javascriptQuestionCount} />
+      <PracticeHero totalQuestionCount={totalQuestionCount} />
+      <PracticeTechnologyGrid questionCounts={questionCounts} />
     </div>
   );
 }

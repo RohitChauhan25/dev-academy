@@ -77,7 +77,7 @@ function App({ userPromise }) {
 
     {
       type: 'code',
-      title: 'useActionState',
+      title: 'useActionState Example',
       language: 'jsx',
       code: `import { useActionState } from "react";
 

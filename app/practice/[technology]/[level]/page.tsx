@@ -63,7 +63,7 @@ export default async function PracticeLevelPage({ params }: Props) {
         {quiz.length} questions covering {section.items.length} {data.title} topics.
       </p>
 
-      <QuizSection quiz={quiz} />
+      <QuizSection quiz={quiz} technology={technology} topic={level} />
     </main>
   );
 }

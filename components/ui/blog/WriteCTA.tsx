@@ -11,8 +11,8 @@ export default function WriteCTA() {
       <h2 className="mt-4 text-2xl font-bold">Have something to teach?</h2>
 
       <p className="mx-auto mt-2 max-w-lg text-muted-foreground">
-        Write an article for the Dev Academy blog — draft it with a live preview, then export it
-        as a ready-to-publish post.
+        Write an article for the Dev Academy blog — draft it with a live preview, then publish it
+        straight to the site.
       </p>
 
       <Link

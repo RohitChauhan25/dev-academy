@@ -66,7 +66,7 @@ export const classesAndIds: Tutorial = {
 
     {
       type: 'code',
-      title: 'Multiple Classes',
+      title: 'Multiple Classes Example',
       language: 'html',
       code: `<button class="btn btn-primary btn-large">Sign Up</button>`,
     },

@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { Trophy, User, LogOut, ChevronRight } from 'lucide-react';
-import { signOut } from 'next-auth/react';
 
 import {
   DropdownMenu,
@@ -12,16 +11,15 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { useAuth } from '@/components/providers/AuthProvider';
+import type { AuthUser } from '@/lib/auth-api';
 
 interface ProfileDropdownProps {
-  user: {
-    name?: string | null;
-    email?: string | null;
-    image?: string | null;
-  };
+  user: AuthUser;
 }
 
 export default function ProfileDropdown({ user }: ProfileDropdownProps) {
+  const { logout } = useAuth();
   const initials = (user.name ?? user.email ?? '?').charAt(0).toUpperCase();
 
   return (
@@ -29,10 +27,11 @@ export default function ProfileDropdown({ user }: ProfileDropdownProps) {
       <DropdownMenuTrigger asChild>
         <button className="rounded-full ring-2 ring-primary/30 transition hover:ring-primary">
           <Avatar className="h-10 w-10">
-            <AvatarImage src={user.image ?? undefined} />
+            <AvatarImage src={user.profilePicture || undefined} />
             <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
         </button>
+        
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
@@ -41,14 +40,18 @@ export default function ProfileDropdown({ user }: ProfileDropdownProps) {
       >
         {/* Header */}
         <div className="flex items-center gap-4 p-3 px-5">
-          <Avatar className="h-10 w-10">
-            <AvatarImage src={user.image ?? undefined} />
+          <Avatar className="h-10 w-10 shrink-0">
+            <AvatarImage src={user.profilePicture || undefined} />
             <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
 
-          <div>
-            <h3 className="font-semibold">{user.name}</h3>
-            <p className="text-sm text-muted-foreground">{user.email}</p>
+          <div className="min-w-0 flex-1">
+            <h3 className="truncate font-semibold" title={user.name}>
+              {user.name}
+            </h3>
+            <p className="truncate text-sm text-muted-foreground" title={user.email}>
+              {user.email}
+            </p>
           </div>
         </div>
 
@@ -91,7 +94,7 @@ export default function ProfileDropdown({ user }: ProfileDropdownProps) {
         <DropdownMenuSeparator />
 
         <button
-          onClick={() => signOut()}
+          onClick={() => logout()}
           className="flex w-full  items-center gap-3 px-5 py-2 text-red-500 transition hover:bg-red-500/10"
         >
           <div className="rounded-lg bg-red-500/10 p-2">

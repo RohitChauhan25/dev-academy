@@ -81,7 +81,7 @@ function Button({ label }) {
 
     {
       type: 'code',
-      title: 'Inline Styles',
+      title: 'Inline Styles Example',
       language: 'jsx',
       code: `function Box() {
   return (

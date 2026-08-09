@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { sidebars } from '@/app/data/technologies/sidebar';
+import { getTechnologyLabel } from '@/lib/tutorials';
 
 export default function MobileSidebar() {
   const pathname = usePathname();
@@ -25,7 +26,7 @@ export default function MobileSidebar() {
 
         <SheetContent side="left" className="w-80 overflow-y-auto p-0">
           <SheetHeader className="border-b px-6 py-4">
-            <SheetTitle className="capitalize">{technology} Course</SheetTitle>
+            <SheetTitle>{getTechnologyLabel(technology)} Course</SheetTitle>
           </SheetHeader>
 
           <div className="space-y-8 p-6">

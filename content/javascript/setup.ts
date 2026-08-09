@@ -90,7 +90,7 @@ export const setup: Tutorial = {
 
     {
       type: 'code',
-      title: 'index.html',
+      title: 'index.html (External Script)',
       language: 'html',
       code: `<script src="script.js"></script>`,
     },

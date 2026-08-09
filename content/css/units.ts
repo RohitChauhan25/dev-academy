@@ -62,7 +62,7 @@ export const units: Tutorial = {
 
     {
       type: 'code',
-      title: 'Viewport Units',
+      title: 'Viewport Units Example',
       language: 'html',
       code: `<style>
   .hero {

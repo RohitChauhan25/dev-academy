@@ -2,10 +2,9 @@ import Link from 'next/link';
 import { ArrowRight, Calendar, Clock } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
-import { formatBlogDate } from '@/lib/blog';
-import type { BlogPost } from '@/content/blog';
+import { formatBlogDate, type DisplayBlogPost } from '@/lib/blog';
 
-export default function BlogCard({ post }: { post: BlogPost }) {
+export default function BlogCard({ post }: { post: DisplayBlogPost }) {
   return (
     <Link
       href={`/blogs/${post.slug}`}

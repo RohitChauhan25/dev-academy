@@ -15,31 +15,45 @@ import {
 import { ArrowRight } from 'lucide-react';
 
 interface PracticeTechnologyGridProps {
-  javascriptQuestionCount: number;
+  questionCounts: Record<string, number>;
 }
 
-export default function PracticeTechnologyGrid({
-  javascriptQuestionCount,
-}: PracticeTechnologyGridProps) {
+export default function PracticeTechnologyGrid({ questionCounts }: PracticeTechnologyGridProps) {
   const technologies = [
     {
       title: 'JavaScript',
       icon: SiJavascript,
       color: '#F7DF1E',
-      questions: javascriptQuestionCount,
+      questions: questionCounts.javascript,
       href: '/practice/javascript',
     },
     {
       title: 'TypeScript',
       icon: SiTypescript,
       color: '#3178C6',
-      href: null,
+      questions: questionCounts.typescript,
+      href: '/practice/typescript',
     },
     {
       title: 'React',
       icon: SiReact,
       color: '#61DAFB',
-      href: null,
+      questions: questionCounts.react,
+      href: '/practice/react',
+    },
+    {
+      title: 'HTML',
+      icon: SiHtml5,
+      color: '#E34F26',
+      questions: questionCounts.html,
+      href: '/practice/html',
+    },
+    {
+      title: 'CSS',
+      icon: SiCss,
+      color: '#1572B6',
+      questions: questionCounts.css,
+      href: '/practice/css',
     },
     {
       title: 'Next.js',
@@ -51,19 +65,8 @@ export default function PracticeTechnologyGrid({
       title: 'Node.js',
       icon: SiNodedotjs,
       color: '#5FA04E',
-      href: null,
-    },
-    {
-      title: 'HTML',
-      icon: SiHtml5,
-      color: '#E34F26',
-      href: null,
-    },
-    {
-      title: 'CSS',
-      icon: SiCss,
-      color: '#1572B6',
-      href: null,
+      questions: questionCounts.nodejs,
+      href: '/practice/nodejs',
     },
   ];
 
@@ -76,7 +79,7 @@ export default function PracticeTechnologyGrid({
           <h2 className="mt-2 text-4xl font-bold">Choose What to Practice</h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            More technologies are on the way — start with JavaScript today.
+            Next.js practice is on the way — six technologies are ready today.
           </p>
         </div>
 

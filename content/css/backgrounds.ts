@@ -24,7 +24,7 @@ export const backgrounds: Tutorial = {
 
     {
       type: 'code',
-      title: 'Background Color',
+      title: 'Background Color Example',
       language: 'html',
       code: `<style>
   .box {

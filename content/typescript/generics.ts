@@ -61,7 +61,7 @@ const str = firstElement(["a", "b", "c"]); // inferred as string`,
 
     {
       type: 'code',
-      title: 'Multiple Type Parameters',
+      title: 'Multiple Type Parameters Example',
       language: 'typescript',
       code: `function pair<A, B>(first: A, second: B): [A, B] {
   return [first, second];

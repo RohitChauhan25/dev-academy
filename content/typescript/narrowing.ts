@@ -43,7 +43,7 @@ export const narrowing: Tutorial = {
 
     {
       type: 'code',
-      title: 'Truthiness Narrowing',
+      title: 'Truthiness Narrowing Example',
       language: 'typescript',
       code: `function printLength(value?: string) {
   if (value) {
@@ -61,7 +61,7 @@ export const narrowing: Tutorial = {
 
     {
       type: 'code',
-      title: 'instanceof Narrowing',
+      title: 'instanceof Narrowing Example',
       language: 'typescript',
       code: `class ApiError extends Error {
   constructor(public statusCode: number, message: string) {
@@ -85,7 +85,7 @@ function handle(error: Error | ApiError) {
 
     {
       type: 'code',
-      title: 'in Narrowing',
+      title: 'in Narrowing Example',
       language: 'typescript',
       code: `interface Cat { meow(): void; }
 interface Dog { bark(): void; }

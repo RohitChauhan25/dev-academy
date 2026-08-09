@@ -24,7 +24,7 @@ export const setup: Tutorial = {
 
     {
       type: 'code',
-      title: 'Installing TypeScript',
+      title: 'Installing TypeScript Example',
       language: 'bash',
       code: `npm install typescript --save-dev
 

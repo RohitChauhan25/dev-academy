@@ -50,6 +50,8 @@ import { CheckCircle2, XCircle } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { useAuth } from '@/components/providers/AuthProvider';
+import { recordQuizResult } from '@/lib/auth-api';
 
 interface Quiz {
   question: string;
@@ -60,9 +62,12 @@ interface Quiz {
 
 interface QuizSectionProps {
   quiz: Quiz[];
+  technology: string;
+  topic: string;
 }
 
-export default function QuizSection({ quiz }: QuizSectionProps) {
+export default function QuizSection({ quiz, technology, topic }: QuizSectionProps) {
+  const { accessToken } = useAuth();
   const [answers, setAnswers] = useState<number[]>(Array(quiz.length).fill(-1));
 
   const [submitted, setSubmitted] = useState(false);
@@ -161,7 +166,15 @@ export default function QuizSection({ quiz }: QuizSectionProps) {
 
       {!submitted ? (
         <div className="mt-8 text-center">
-          <Button size="lg" onClick={() => setSubmitted(true)}>
+          <Button
+            size="lg"
+            onClick={() => {
+              setSubmitted(true);
+              if (accessToken) {
+                recordQuizResult(accessToken, technology, topic, quiz.length, score).catch(() => {});
+              }
+            }}
+          >
             Submit Quiz
           </Button>
         </div>

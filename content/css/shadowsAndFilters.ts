@@ -24,7 +24,7 @@ export const shadowsAndFilters: Tutorial = {
 
     {
       type: 'code',
-      title: 'box-shadow',
+      title: 'box-shadow Example',
       language: 'html',
       code: `<style>
   .card {
@@ -91,7 +91,7 @@ export const shadowsAndFilters: Tutorial = {
 
     {
       type: 'code',
-      title: 'text-shadow',
+      title: 'text-shadow Example',
       language: 'html',
       code: `<style>
   .glow {

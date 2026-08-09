@@ -66,7 +66,7 @@ export const gradients: Tutorial = {
 
     {
       type: 'code',
-      title: 'radial-gradient',
+      title: 'radial-gradient Example',
       language: 'html',
       code: `<style>
   .spot {
@@ -87,7 +87,7 @@ export const gradients: Tutorial = {
 
     {
       type: 'code',
-      title: 'conic-gradient',
+      title: 'conic-gradient Example',
       language: 'html',
       code: `<style>
   .wheel {

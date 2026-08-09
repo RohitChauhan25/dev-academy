@@ -16,10 +16,6 @@ export default function Footer() {
       href: '/interview-questions',
     },
     {
-      title: 'Roadmaps',
-      href: '/learn#learning-paths',
-    },
-    {
       title: 'Blogs',
       href: '/blogs',
     },
@@ -73,7 +69,7 @@ export default function Footer() {
             <Logo />
 
             <p className="mt-5 max-w-sm leading-7 text-muted-foreground">
-              Practice real interview questions, prepare for technical interviews, explore roadmaps,
+              Practice real interview questions, prepare for technical interviews,
               and learn through developer-focused blogs—all in one place.
             </p>
 

@@ -93,7 +93,7 @@ let mutableStatus = "active"; // inferred more broadly as string`,
 
     {
       type: 'code',
-      title: 'as const',
+      title: 'as const Example',
       language: 'typescript',
       code: `const config = {
   theme: "dark",

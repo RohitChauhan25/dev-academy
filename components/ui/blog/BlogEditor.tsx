@@ -1,13 +1,16 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { Calendar, Clock, Download, Eye, PenLine, User } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { Eye, Loader2, PenLine } from 'lucide-react';
 
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { htmlToMarkdown } from '@/lib/html-to-markdown';
+import { Button } from '@/components/ui/button';
 import { formatBlogDate } from '@/lib/blog';
-import CodeBlock from './CodeBlock';
+import { createBlog } from '@/lib/auth-api';
+import { useAuth } from '@/components/providers/AuthProvider';
+import SignUpModal from '@/components/ui/auth/SignUpModal';
 import RichTextEditor from './RichTextEditor';
 import { PROSE_CLASS } from './proseClass';
 
@@ -22,37 +25,19 @@ const SAMPLE_CONTENT = `
   </ul>
 `;
 
-function slugify(value: string) {
-  return value
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
-
-function pascalCase(slug: string) {
-  return slug
-    .split('-')
-    .filter(Boolean)
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join('');
-}
-
-function camelCase(slug: string) {
-  const pascal = pascalCase(slug);
-  return pascal.charAt(0).toLowerCase() + pascal.slice(1);
-}
-
 export default function BlogEditor() {
+  const router = useRouter();
+  const { user, accessToken, status } = useAuth();
+
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [author, setAuthor] = useState('');
   const [tagsInput, setTagsInput] = useState('');
   const [content, setContent] = useState(SAMPLE_CONTENT);
   const [wordCount, setWordCount] = useState(0);
   const [mode, setMode] = useState<'write' | 'preview'>('write');
+  const [publishing, setPublishing] = useState<'draft' | 'published' | null>(null);
+  const [error, setError] = useState('');
 
-  const slug = useMemo(() => slugify(title) || 'untitled-post', [title]);
   const tags = useMemo(
     () =>
       tagsInput
@@ -64,43 +49,60 @@ export default function BlogEditor() {
 
   const readingTime = `${Math.max(1, Math.round(wordCount / 200))} min read`;
 
-  const registrationSnippet = useMemo(() => {
-    const importName = pascalCase(slug) || 'Post';
-    const metaName = `${camelCase(slug) || 'post'}Meta`;
+  const publish = async (targetStatus: 'draft' | 'published') => {
+    if (!accessToken) return;
+    setError('');
 
-    return `import ${importName}, { metadata as ${metaName} } from './${slug}.mdx';
+    const plainTextLength = content.replace(/<[^>]*>/g, '').trim().length;
+    if (title.trim().length < 3) {
+      setError('Title must be at least 3 characters.');
+      return;
+    }
+    if (description.trim().length < 10) {
+      setError('Description must be at least 10 characters.');
+      return;
+    }
+    if (plainTextLength < 20) {
+      setError('Write a bit more before publishing — at least 20 characters of content.');
+      return;
+    }
 
-// then add this entry to the \`posts\` array:
-{
-  slug: '${slug}',
-  meta: ${metaName} as unknown as BlogPostMeta,
-  Content: ${importName},
-},`;
-  }, [slug]);
-
-  const handleDownload = () => {
-    const metadata = {
-      title: title || 'Untitled Post',
-      description,
-      date: new Date().toISOString().slice(0, 10),
-      author: author || 'Guest Author',
-      tags,
-      readingTime,
-    };
-
-    const fileContents = `export const metadata = ${JSON.stringify(metadata, null, 2)};
-
-${htmlToMarkdown(content)}
-`;
-
-    const blob = new Blob([fileContents], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${slug}.mdx`;
-    a.click();
-    URL.revokeObjectURL(url);
+    setPublishing(targetStatus);
+    try {
+      const { data } = await createBlog(accessToken, {
+        title: title.trim(),
+        shortDescription: description.trim(),
+        content,
+        tags,
+        status: targetStatus,
+      });
+      if (!data) throw new Error('Something went wrong. Please try again.');
+      router.push(`/blogs/${data.blog.slug}`);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+      setPublishing(null);
+    }
   };
+
+  if (status === 'loading') {
+    return (
+      <div className="flex min-h-[40vh] items-center justify-center">
+        <Loader2 className="size-8 animate-spin text-muted-foreground" />
+      </div>
+    );
+  }
+
+  if (status === 'unauthenticated') {
+    return (
+      <div className="flex min-h-[40vh] flex-col items-center justify-center gap-4 rounded-2xl border bg-card text-center">
+        <h2 className="text-xl font-semibold">Sign in to write a post</h2>
+        <p className="max-w-sm text-sm text-muted-foreground">
+          Your post is published under your DevAcademy profile.
+        </p>
+        <SignUpModal trigger={<Button>Sign In</Button>} />
+      </div>
+    );
+  }
 
   return (
     <div className="grid gap-8">
@@ -114,9 +116,6 @@ ${htmlToMarkdown(content)}
             placeholder="Understanding Closures in JavaScript"
             className="h-11 rounded-lg"
           />
-          <p className="mt-1.5 text-xs text-muted-foreground">
-            Slug: <span className="font-mono text-violet-600 dark:text-violet-400">{slug}</span>
-          </p>
         </div>
 
         <div className="sm:col-span-2">
@@ -129,17 +128,7 @@ ${htmlToMarkdown(content)}
           />
         </div>
 
-        <div>
-          <label className="mb-1.5 block text-sm font-medium">Author</label>
-          <Input
-            value={author}
-            onChange={(e) => setAuthor(e.target.value)}
-            placeholder="Your name"
-            className="h-11 rounded-lg"
-          />
-        </div>
-
-        <div>
+        <div className="sm:col-span-2">
           <label className="mb-1.5 block text-sm font-medium">Tags</label>
           <Input
             value={tagsInput}
@@ -223,18 +212,9 @@ ${htmlToMarkdown(content)}
             )}
 
             <div className="mt-5 flex flex-wrap items-center gap-5 border-b pb-6 text-sm text-muted-foreground">
-              <span className="flex items-center gap-1.5">
-                <User className="h-4 w-4" />
-                {author || 'Guest Author'}
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Calendar className="h-4 w-4" />
-                {formatBlogDate(new Date().toISOString().slice(0, 10))}
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Clock className="h-4 w-4" />
-                {readingTime}
-              </span>
+              <span>{user?.name ?? 'You'}</span>
+              <span>{formatBlogDate(new Date().toISOString())}</span>
+              <span>{readingTime}</span>
             </div>
 
             <div className={PROSE_CLASS} dangerouslySetInnerHTML={{ __html: content }} />
@@ -242,40 +222,29 @@ ${htmlToMarkdown(content)}
         )}
       </div>
 
-      {/* Export */}
+      {/* Publish */}
       <div className="rounded-2xl border bg-card p-6">
         <h3 className="text-lg font-bold">Publish this post</h3>
         <p className="mt-1.5 text-sm text-muted-foreground">
-          This editor doesn&apos;t save to a server — posts are plain{' '}
-          <code className="rounded bg-violet-500/10 px-1.5 py-0.5 font-mono text-[0.85em] text-violet-700 dark:text-violet-300">
-            .mdx
-          </code>{' '}
-          files in the repo. Download the file, drop it into{' '}
-          <code className="rounded bg-violet-500/10 px-1.5 py-0.5 font-mono text-[0.85em] text-violet-700 dark:text-violet-300">
-            content/blog/
-          </code>
-          , then register it in{' '}
-          <code className="rounded bg-violet-500/10 px-1.5 py-0.5 font-mono text-[0.85em] text-violet-700 dark:text-violet-300">
-            content/blog/index.ts
-          </code>{' '}
-          using the snippet below.
+          Publish it live on the blog, or save it as a draft you can come back to and publish
+          later.
         </p>
 
-        <button
-          onClick={handleDownload}
-          className="mt-5 inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 via-violet-500 to-sky-400 px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
-        >
-          <Download className="h-4 w-4" />
-          Download {slug}.mdx
-        </button>
+        {error && <p className="mt-3 text-sm text-destructive">{error}</p>}
 
-        <div className="mt-6">
-          <span className="mb-2 block text-sm font-medium text-muted-foreground">
-            Add to content/blog/index.ts
-          </span>
-          <CodeBlock>
-            <code className="language-ts">{registrationSnippet}</code>
-          </CodeBlock>
+        <div className="mt-5 flex flex-wrap gap-3">
+          <Button
+            onClick={() => publish('published')}
+            disabled={publishing !== null}
+            className="bg-gradient-to-r from-indigo-500 via-violet-500 to-sky-400"
+          >
+            {publishing === 'published' && <Loader2 className="size-4 animate-spin" />}
+            Publish
+          </Button>
+          <Button variant="outline" onClick={() => publish('draft')} disabled={publishing !== null}>
+            {publishing === 'draft' && <Loader2 className="size-4 animate-spin" />}
+            Save as draft
+          </Button>
         </div>
       </div>
     </div>

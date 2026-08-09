@@ -68,7 +68,7 @@ export const attributes: Tutorial = {
 
     {
       type: 'code',
-      title: 'Boolean Attributes',
+      title: 'Boolean Attributes Example',
       language: 'html',
       code: `<input type="text" disabled />
 <input type="checkbox" checked />`,

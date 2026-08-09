@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import ThemeProvider from '@/components/providers/ThemeProvider';
+import AuthProvider from '@/components/providers/AuthProvider';
 import Navbar from '@/components/ui/layout/Navbar';
 import { cn } from '@/lib/utils';
 import Footer from '@/components/ui/layout/Footer';
@@ -71,11 +72,13 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-background text-foreground font-sans">
         <ThemeProvider>
-          <Navbar />
+          <AuthProvider>
+            <Navbar />
 
-          <main className="px-4 lg:px-0 p-12">{children}</main>
+            <main className="px-4 lg:px-0 p-12">{children}</main>
 
-          <Footer />
+            <Footer />
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -49,7 +49,7 @@ export const operators = {
 
     {
       type: 'table',
-      title: 'Arithmetic Operators',
+      title: 'Arithmetic Operators Table',
       headers: ['Operator', 'Description', 'Example'],
       rows: [
         ['+', 'Addition', '5 + 2'],
@@ -85,7 +85,7 @@ console.log(a ** b);`,
 
     {
       type: 'table',
-      title: 'Assignment Operators',
+      title: 'Assignment Operators Table',
       headers: ['Operator', 'Meaning'],
       rows: [
         ['=', 'Assign'],
@@ -119,7 +119,7 @@ console.log(score);`,
 
     {
       type: 'table',
-      title: 'Comparison Operators',
+      title: 'Comparison Operators Table',
       headers: ['Operator', 'Description'],
       rows: [
         ['==', 'Equal'],
@@ -160,7 +160,7 @@ console.log(10 === "10");`,
 
     {
       type: 'table',
-      title: 'Logical Operators',
+      title: 'Logical Operators Table',
       headers: ['Operator', 'Description'],
       rows: [
         ['&&', 'AND'],

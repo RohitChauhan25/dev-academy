@@ -1,16 +1,13 @@
-import ProfileDropdown from '../profile/ProfileDropdown';
-import SignUpModal from '../auth/SignUpModal';
+import NavbarAuthSlot from './NavbarAuthSlot';
 import Logo from './Logo';
 import MobileMenu from './MobileMenu';
 import NavLinks from './NavLinks';
 import SearchDialog from './SearchDialog';
 import ThemeToggle from './ThemeToggle';
 import { getSearchIndex } from '@/lib/search-index';
-import { auth } from '@/auth';
 
-export default async function Navbar() {
+export default function Navbar() {
   const searchIndex = getSearchIndex();
-  const session = await auth();
 
   return (
     <header className="fixed top-0 z-50 border-b bg-background/80 backdrop-blur shadow w-full">
@@ -25,11 +22,7 @@ export default async function Navbar() {
           <SearchDialog items={searchIndex} />
           <ThemeToggle />
 
-          {session?.user ? (
-            <ProfileDropdown user={session.user} />
-          ) : (
-            <SignUpModal />
-          )}
+          <NavbarAuthSlot />
         </div>
 
         <div className="lg:hidden flex items-center gap-2">

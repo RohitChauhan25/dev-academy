@@ -42,7 +42,7 @@ add(2, "3"); // Error: Argument of type 'string' is not assignable to parameter 
 
     {
       type: 'code',
-      title: 'Optional and Default Parameters',
+      title: 'Optional and Default Parameters Example',
       language: 'typescript',
       code: `function greet(name: string, greeting?: string): string {
   return \`\${greeting ?? "Hello"}, \${name}!\`;
@@ -65,7 +65,7 @@ multiply(5);                // 10, using the default b = 2`,
 
     {
       type: 'code',
-      title: 'Rest Parameters',
+      title: 'Rest Parameters Example',
       language: 'typescript',
       code: `function sum(...numbers: number[]): number {
   return numbers.reduce((total, n) => total + n, 0);
@@ -101,7 +101,7 @@ const ascending: Comparator = (a, b) => a - b;`,
 
     {
       type: 'code',
-      title: 'Function Overloads',
+      title: 'Function Overloads Example',
       language: 'typescript',
       code: `function makeDate(timestamp: number): Date;
 function makeDate(year: number, month: number, day: number): Date;

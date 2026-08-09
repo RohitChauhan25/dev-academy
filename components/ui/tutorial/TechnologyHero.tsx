@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { BookOpen, ChevronRight, Clock3 } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
+import { getTechnologyLabel } from '@/lib/tutorials';
 
 interface TutorialHeroProps {
   technology: string;
@@ -36,9 +37,9 @@ export default function TutorialHero({
 
           <Link
             href={`/learn/${technology}`}
-            className="capitalize transition-colors hover:text-primary"
+            className="transition-colors hover:text-primary"
           >
-            {technology}
+            {getTechnologyLabel(technology)}
           </Link>
 
           <ChevronRight className="h-4 w-4" />
@@ -50,9 +51,7 @@ export default function TutorialHero({
         <div className="flex flex-wrap gap-2">
           <Badge>{level}</Badge>
 
-          <Badge variant="secondary" className="capitalize">
-            {technology}
-          </Badge>
+          <Badge variant="secondary">{getTechnologyLabel(technology)}</Badge>
         </div>
 
         {/* Heading */}

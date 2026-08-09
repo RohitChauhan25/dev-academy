@@ -23,10 +23,6 @@ const navItems = [
     href: '/interview-questions',
   },
   {
-    title: 'Roadmaps',
-    href: '/roadmaps',
-  },
-  {
     title: 'Blog',
     href: '/blog',
   },

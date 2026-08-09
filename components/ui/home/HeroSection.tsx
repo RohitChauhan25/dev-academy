@@ -1,22 +1,22 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { ArrowRight, Sparkles } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import Link from "next/link";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 const technologies = [
-  'JavaScript',
-  'React',
-  'Node.js',
-  'Java',
-  'Python',
-  'SQL',
-  'MongoDB',
-  'System Design',
-  'Machine Coding',
-  'DSA',
+  "JavaScript",
+  "React",
+  "Node.js",
+  "Java",
+  "Python",
+  "SQL",
+  "MongoDB",
+  "System Design",
+  "Machine Coding",
+  "DSA",
 ];
 
 const stagger = {
@@ -58,7 +58,12 @@ export default function Hero() {
 
       <div className="container mx-auto px-6">
         <div className="mx-auto max-w-5xl text-center">
-          <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={0}>
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            custom={0}
+          >
             <Badge
               variant="outline"
               className="rounded-full border-blue-500/40 bg-blue-500/10 px-5 py-2 text-blue-300"
@@ -74,7 +79,7 @@ export default function Hero() {
             custom={0.2}
             className="mt-8 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-7xl"
           >
-            Learn{' '}
+            Learn{" "}
             <span className="bg-gradient-to-r from-indigo-500 via-violet-500 to-sky-400 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient">
               Modern Technologies
             </span>
@@ -89,9 +94,10 @@ export default function Hero() {
             custom={0.35}
             className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-muted-foreground md:text-xl"
           >
-            Learn JavaScript, TypeScript, React, Next.js, Node.js, HTML, CSS, DSA, System Design,
-            and more through structured tutorials, interview questions, MCQs, output-based
-            challenges, company-wise preparation, and curated learning roadmaps.
+            Learn JavaScript, TypeScript, React, Next.js, Node.js, HTML, CSS,
+            DSA, System Design, and more through structured tutorials, interview
+            questions, MCQs, output-based challenges, and company-wise
+            preparation.
           </motion.p>
 
           <motion.div
@@ -110,15 +116,6 @@ export default function Hero() {
                 Start Practicing
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Link>
-            </Button>
-
-            <Button
-              variant="outline"
-              size="lg"
-              className="rounded-xl px-8 transition-all duration-300 hover:scale-105"
-              asChild
-            >
-              <Link href="/roadmaps">Explore Roadmaps</Link>
             </Button>
           </motion.div>
 
@@ -158,7 +155,7 @@ export default function Hero() {
                 {tech}
               </motion.span>
             ))}
-          </motion.div>
+          </motion.div> 
         </div>
       </div>
     </section>

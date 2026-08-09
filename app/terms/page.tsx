@@ -32,7 +32,7 @@ export default function TermsPage() {
           <p>
             These Terms of Service (&quot;Terms&quot;) govern your use of Dev Academy
             (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;), including our practice questions,
-            roadmaps, tutorials, and blog content. By using the site, you agree to these Terms.
+            tutorials, and blog content. By using the site, you agree to these Terms.
           </p>
 
           <h2>Use of the Site</h2>
@@ -44,7 +44,7 @@ export default function TermsPage() {
 
           <h2>Content Ownership</h2>
           <p>
-            Unless otherwise noted, all tutorials, questions, roadmaps, and blog content on this
+            Unless otherwise noted, all tutorials, questions, and blog content on this
             site are owned by Dev Academy or its content contributors and are protected by
             copyright. You may use this content for personal learning purposes, but you may not
             republish, redistribute, or sell it without permission.
@@ -61,7 +61,7 @@ export default function TermsPage() {
 
           <h2>No Professional Guarantee</h2>
           <p>
-            Content on this site — including interview questions, answers, and roadmaps — is
+            Content on this site — including interview questions and answers — is
             provided for educational purposes only. We make no guarantee that using this site will
             result in passing an interview, securing a job, or achieving any particular outcome.
           </p>

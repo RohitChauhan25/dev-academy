@@ -24,7 +24,7 @@ export const optionalAndReadonly: Tutorial = {
 
     {
       type: 'code',
-      title: 'Optional Properties',
+      title: 'Optional Properties Example',
       language: 'typescript',
       code: `interface Profile {
   username: string;
@@ -65,7 +65,7 @@ const profile2: Profile = { username: "bob", bio: "Loves TypeScript" };`,
 
     {
       type: 'code',
-      title: 'Readonly Properties',
+      title: 'Readonly Properties Example',
       language: 'typescript',
       code: `interface Point {
   readonly x: number;

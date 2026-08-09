@@ -103,7 +103,7 @@ export const introduction: Tutorial = {
 
     {
       type: 'table',
-      title: 'JavaScript vs Java',
+      title: 'JavaScript vs Java Comparison',
       headers: ['JavaScript', 'Java'],
       rows: [
         ['Runs inside Browser & Node.js', 'Runs on JVM'],
