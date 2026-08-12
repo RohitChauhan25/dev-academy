@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { BrainCircuit, Code2, Trophy } from 'lucide-react';
+import { motion } from "framer-motion";
+import { BrainCircuit, Code2, Trophy } from "lucide-react";
 
-import { Badge } from '@/components/ui/badge';
+import { Badge } from "@/components/ui/badge";
 
 const fadeUp = {
   hidden: {
@@ -19,11 +19,15 @@ const fadeUp = {
   },
 };
 
-export default function PracticeHero({ totalQuestionCount }: { totalQuestionCount: number }) {
+export default function PracticeHero({
+  totalQuestionCount,
+}: {
+  totalQuestionCount: number;
+}) {
   const stats = [
     {
       icon: Code2,
-      title: '5 Technologies Available',
+      title: "5 Technologies Available",
     },
     {
       icon: BrainCircuit,
@@ -31,7 +35,7 @@ export default function PracticeHero({ totalQuestionCount }: { totalQuestionCoun
     },
     {
       icon: Trophy,
-      title: 'Instant Scoring',
+      title: "Instant Scoring",
     },
   ];
 
@@ -50,7 +54,7 @@ export default function PracticeHero({ totalQuestionCount }: { totalQuestionCoun
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
             <Badge
               variant="outline"
-              className="rounded-full border-violet-500/30 bg-violet-500/10 px-4 py-2 text-violet-400"
+              className="rounded-full dark:border-[#FBBF24]/40 dark:bg-[#FBBF24]/10 px-5 py-2 dark:text-[#FBBF24] border-[#FBBF24]/40 bg-[#FBBF24]/10 text-[#000000]"
             >
               🧠 Test What You&apos;ve Learned
             </Badge>
@@ -62,8 +66,8 @@ export default function PracticeHero({ totalQuestionCount }: { totalQuestionCoun
             animate="visible"
             className="mt-8 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl"
           >
-            Practice{' '}
-            <span className="bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
+            Practice{" "}
+            <span className="bg-gradient-to-r from-[#FBBF24] via-[]  to-[#6366F1]  bg-clip-text text-transparent">
               Coding Questions
             </span>
           </motion.h1>
@@ -74,8 +78,9 @@ export default function PracticeHero({ totalQuestionCount }: { totalQuestionCoun
             animate="visible"
             className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-muted-foreground"
           >
-            Pick a technology, choose a topic, and test yourself with real practice questions
-            pulled straight from the tutorials — with instant scoring and correct answers.
+            Pick a technology, choose a topic, and test yourself with real
+            practice questions pulled straight from the tutorials — with instant
+            scoring and correct answers.
           </motion.p>
 
           <motion.div
@@ -90,9 +95,9 @@ export default function PracticeHero({ totalQuestionCount }: { totalQuestionCoun
               return (
                 <div
                   key={item.title}
-                  className="flex items-center gap-3 rounded-xl border bg-card px-5 py-3 transition-all hover:-translate-y-1 hover:border-violet-500"
+                  className="flex items-center gap-3 rounded-xl border bg-card px-5 py-3 transition-all hover:-translate-y-1 hover:border-[#FBBF24]"
                 >
-                  <Icon className="h-5 w-5 text-violet-500" />
+                  <Icon className="h-5 w-5 text-[#FBBF24]" />
 
                   <span className="font-medium">{item.title}</span>
                 </div>

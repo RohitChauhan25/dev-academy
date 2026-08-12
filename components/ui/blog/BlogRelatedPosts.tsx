@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import { BookOpen, ChevronRight } from 'lucide-react';
+import Link from "next/link";
+import { BookOpen, ChevronRight } from "lucide-react";
 
-import type { BlogPost } from '@/content/blog';
+import type { BlogPost } from "@/content/blog";
 
 export default function BlogRelatedPosts({ posts }: { posts: BlogPost[] }) {
   if (posts.length === 0) return null;

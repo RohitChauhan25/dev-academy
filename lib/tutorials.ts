@@ -86,3 +86,19 @@ export function slugifyLevel(level: string) {
 export function getTechnologyLabel(technology: string) {
   return technologyLabels[technology] ?? technology;
 }
+
+export function getTechnologies() {
+  return Object.entries(technologyLabels)
+    .filter(([id]) => id !== 'most-asked-javascript')
+    .map(([id, label]) => ({ id, label }));
+}
+
+export function getTopicsForTechnology(technology: string) {
+  const technologyTutorials = tutorials[technology as keyof typeof tutorials];
+  if (!technologyTutorials) return [];
+
+  return Object.values(technologyTutorials).map((t) => ({
+    slug: t.slug,
+    title: t.title,
+  }));
+}

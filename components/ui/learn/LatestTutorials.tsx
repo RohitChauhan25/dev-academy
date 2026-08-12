@@ -1,41 +1,42 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { ArrowRight, Clock, BookOpen } from 'lucide-react';
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowRight, Clock, BookOpen } from "lucide-react";
 
 const tutorials = [
   {
-    title: 'Introduction to JavaScript',
-    description: 'Learn JavaScript fundamentals with simple explanations and examples.',
-    category: 'JavaScript',
-    level: 'Beginner',
-    readTime: '8 min read',
-    href: '/learn/javascript/introduction',
+    title: "Introduction to JavaScript",
+    description:
+      "Learn JavaScript fundamentals with simple explanations and examples.",
+    category: "JavaScript",
+    level: "Beginner",
+    readTime: "8 min read",
+    href: "/learn/javascript/introduction",
   },
   {
-    title: 'Understanding React Components',
-    description: 'Learn how components work and build reusable UI in React.',
-    category: 'React',
-    level: 'Beginner',
-    readTime: '10 min read',
-    href: '/learn/react/components',
+    title: "Understanding React Components",
+    description: "Learn how components work and build reusable UI in React.",
+    category: "React",
+    level: "Beginner",
+    readTime: "10 min read",
+    href: "/learn/react/components",
   },
   {
-    title: 'Getting Started with Next.js',
-    description: 'Build fast and modern web applications using Next.js.',
-    category: 'Next.js',
-    level: 'Intermediate',
-    readTime: '12 min read',
-    href: '/learn/nextjs/introduction',
+    title: "Getting Started with Next.js",
+    description: "Build fast and modern web applications using Next.js.",
+    category: "Next.js",
+    level: "Intermediate",
+    readTime: "12 min read",
+    href: "/learn/nextjs/introduction",
   },
   {
-    title: 'Node.js Modules Explained',
-    description: 'Understand CommonJS, ES Modules, and project structure.',
-    category: 'Node.js',
-    level: 'Intermediate',
-    readTime: '9 min read',
-    href: '/learn/nodejs/modules',
+    title: "Node.js Modules Explained",
+    description: "Understand CommonJS, ES Modules, and project structure.",
+    category: "Node.js",
+    level: "Intermediate",
+    readTime: "9 min read",
+    href: "/learn/nodejs/modules",
   },
 ];
 export default function LatestTutorials() {
@@ -43,7 +44,7 @@ export default function LatestTutorials() {
     <section className="py-24 bg-muted/30">
       <div className="container mx-auto px-6">
         <div className="text-center">
-          <p className="font-semibold text-blue-500">Latest Tutorials</p>
+          <p className="font-semibold text-[#FBBF24]">Latest Tutorials</p>
 
           <h2 className="mt-2 text-4xl font-bold">Recently Added Tutorials</h2>
 
@@ -62,16 +63,16 @@ export default function LatestTutorials() {
               transition={{ delay: index * 0.08 }}
             >
               <Link href={tutorial.href}>
-                <div className="group h-full rounded-2xl border bg-card p-6 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500 hover:shadow-xl">
+                <div className="group h-full rounded-2xl border bg-card p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#FBBF24] dark:hover:border-[#917d4a] hover:shadow-xl">
                   <div className="flex items-center justify-between">
-                    <span className="rounded-full bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-500">
+                    <span className="rounded-full bg-blue-500/10 px-3 py-1 text-xs font-medium dark:text-[#FBBF24]">
                       {tutorial.category}
                     </span>
 
                     <BookOpen className="h-5 w-5 text-muted-foreground" />
                   </div>
 
-                  <h3 className="mt-6 text-xl font-semibold group-hover:text-blue-500">
+                  <h3 className="mt-6 text-xl font-semibold group-hover:text-[#FBBF24]">
                     {tutorial.title}
                   </h3>
 
@@ -90,7 +91,7 @@ export default function LatestTutorials() {
                     </div>
                   </div>
 
-                  <div className="mt-6 flex items-center gap-2 text-sm font-medium text-blue-500">
+                  <div className="mt-6 flex items-center gap-2 text-sm font-medium text-[#FBBF24]">
                     Read Tutorial
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </div>
@@ -103,7 +104,7 @@ export default function LatestTutorials() {
         <div className="mt-12 text-center">
           <Link
             href="/learn"
-            className="inline-flex items-center gap-2 font-medium text-blue-500 hover:gap-3"
+            className="inline-flex items-center gap-2 font-medium text-[#FBBF24] hover:gap-3"
           >
             View All Tutorials
             <ArrowRight className="h-4 w-4" />

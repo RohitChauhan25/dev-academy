@@ -145,10 +145,10 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={sending || submitted}
-        className={`mt-6 inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition disabled:cursor-not-allowed ${
+        className={`mt-6 inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition disabled:cursor-not-allowed ${
           submitted
-            ? 'bg-emerald-500'
-            : 'bg-gradient-to-r from-indigo-500 via-violet-500 to-sky-400 hover:opacity-90 disabled:opacity-60'
+            ? 'bg-emerald-500 text-white'
+            : 'bg-[#FBBF24] text-black hover:opacity-90 disabled:opacity-60'
         }`}
       >
         {sending ? (

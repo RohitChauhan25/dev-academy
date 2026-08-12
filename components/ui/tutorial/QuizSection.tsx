@@ -111,7 +111,9 @@ export default function QuizSection({ quiz, technology, topic }: QuizSectionProp
                     'flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition';
 
                   if (!submitted) {
-                    className += selected ? ' border-primary bg-primary/10' : ' hover:bg-muted';
+                    className += selected
+                      ? ' border-[#FBBF24] bg-[#FBBF24]/10'
+                      : ' hover:bg-muted';
                   } else {
                     if (isCorrect) {
                       className += ' border-green-500 bg-green-500/10 text-green-600';
@@ -124,6 +126,7 @@ export default function QuizSection({ quiz, technology, topic }: QuizSectionProp
                     <label key={option} className={className}>
                       <input
                         type="radio"
+                        className="h-4 w-4 shrink-0 appearance-none rounded-full border-2 border-[#FBBF24] checked:bg-[#FBBF24] transition-colors"
                         checked={selected}
                         onChange={() => handleSelect(questionIndex, optionIndex)}
                         disabled={submitted}
@@ -149,7 +152,11 @@ export default function QuizSection({ quiz, technology, topic }: QuizSectionProp
                     <p className="font-medium text-green-600">✅ Correct Answer</p>
                   ) : (
                     <>
-                      <p className="font-medium text-red-600">❌ Wrong Answer</p>
+                      {answers[questionIndex] === -1 ? (
+                        <p className="font-medium text-yellow-600">⚠️ Not Answered</p>
+                      ) : (
+                        <p className="font-medium text-red-600">❌ Wrong Answer</p>
+                      )}
 
                       <p className="mt-2 text-sm text-muted-foreground">
                         Correct Answer:{' '}

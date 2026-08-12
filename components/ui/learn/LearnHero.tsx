@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 25 },
@@ -17,16 +17,15 @@ export default function LearnHero() {
     <section className="relative overflow-hidden py-24">
       {/* Background */}
       <div className="absolute inset-0 -z-20 bg-background" />
-      <div className="absolute left-1/2 top-0 -z-10 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-blue-500/10 blur-[140px]" />
-      <div className="absolute right-0 top-10 -z-10 h-[300px] w-[300px] rounded-full bg-violet-500/10 blur-[120px]" />
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:42px_42px]" />
+      {/* <div className="absolute left-1/2 top-0 -z-10 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-blue-500/10 blur-[140px]" />
+      <div className="absolute right-0 top-10 -z-10 h-[300px] w-[300px] rounded-full bg-violet-500/10 blur-[120px]" /> */}
 
       <div className="container mx-auto px-6">
         <div className="mx-auto max-w-4xl text-center">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
             <Badge
               variant="outline"
-              className="rounded-full border-blue-500/30 bg-blue-500/10 px-4 py-2 text-blue-400"
+              className="rounded-full dark:border-[#FBBF24]/40 dark:bg-[#FBBF24]/10 px-5 py-2 dark:text-[#FBBF24] border-[#FBBF24]/40 bg-[#FBBF24]/10 text-[#000000]"
             >
               📚 Free Developer Tutorials
             </Badge>
@@ -38,8 +37,8 @@ export default function LearnHero() {
             animate="visible"
             className="mt-8 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl"
           >
-            Learn{' '}
-            <span className="bg-gradient-to-r from-blue-500 via-violet-500 to-cyan-400 bg-clip-text text-transparent">
+            Learn{" "}
+            <span className="bg-gradient-to-r from-[#FBBF24] to-[#6366F1] bg-clip-text text-transparent">
               Modern Technologies
             </span>
           </motion.h1>

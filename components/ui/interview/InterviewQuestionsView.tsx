@@ -588,7 +588,7 @@ export default function InterviewQuestionsView({
               className={`${showQuestionCount ? "mt-6" : ""} font-black leading-tight ${headingSizeClass}`}
             >
               {technology} Interview{" "}
-              <span className="bg-gradient-to-r from-indigo-500 via-violet-500 to-sky-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#FBBF24] via-[#ecd9a9] to-[#6366F1]  bg-clip-text text-transparent">
                 Questions &amp; Answers
               </span>
             </h1>
@@ -689,7 +689,7 @@ export default function InterviewQuestionsView({
                     id={topic.slug}
                     className="scroll-mt-24 pt-8 first:pt-0"
                   >
-                    <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-violet-600 dark:text-violet-400">
+                    <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-[#FBBF24] dark:text-[#f3c960]">
                       {topic.title}
                     </h2>
 
@@ -706,7 +706,7 @@ export default function InterviewQuestionsView({
                         >
                           <div className="flex items-start justify-between gap-3">
                             <h3 className="text-2xl font-bold leading-7">
-                              <span className="text-violet-600 dark:text-violet-400">
+                              <span className="text-[#FBBF24] dark:text-[#f3c960]">
                                 Q{questionNumber}.
                               </span>{" "}
                               {item.question}

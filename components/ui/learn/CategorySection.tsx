@@ -1,63 +1,71 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
-import { motion } from 'framer-motion';
-import { Monitor, Server, BrainCircuit, Database, Boxes, Code2 } from 'lucide-react';
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { motion } from "framer-motion";
+import {
+  Monitor,
+  Server,
+  BrainCircuit,
+  Database,
+  Boxes,
+  Code2,
+} from "lucide-react";
 
 export const categories = [
   {
-    title: 'Frontend',
-    slug: 'frontend',
-    description: 'HTML, CSS, JavaScript, React, Next.js',
+    title: "Frontend",
+    slug: "frontend",
+    description: "HTML, CSS, JavaScript, React, Next.js",
     icon: Monitor,
   },
   {
-    title: 'Backend',
-    slug: 'backend',
-    description: 'Node.js, Express, APIs, Authentication',
+    title: "Backend",
+    slug: "backend",
+    description: "Node.js, Express, APIs, Authentication",
     icon: Server,
   },
   {
-    title: 'Programming',
-    slug: 'programming',
-    description: 'JavaScript, TypeScript, Python, Java',
+    title: "Programming",
+    slug: "programming",
+    description: "JavaScript, TypeScript, Python, Java",
     icon: Code2,
   },
   {
-    title: 'Database',
-    slug: 'database',
-    description: 'MongoDB, MySQL, PostgreSQL',
+    title: "Database",
+    slug: "database",
+    description: "MongoDB, MySQL, PostgreSQL",
     icon: Database,
   },
   {
-    title: 'DSA',
-    slug: 'dsa',
-    description: 'Arrays, Trees, Graphs, Dynamic Programming',
+    title: "DSA",
+    slug: "dsa",
+    description: "Arrays, Trees, Graphs, Dynamic Programming",
     icon: BrainCircuit,
   },
   {
-    title: 'Tools',
-    slug: 'tools',
-    description: 'Git, Docker, VS Code, npm',
+    title: "Tools",
+    slug: "tools",
+    description: "Git, Docker, VS Code, npm",
     icon: Boxes,
   },
 ];
 
 export default function CategorySection() {
   const searchParams = useSearchParams();
-  const activeCategory = searchParams.get('category');
+  const activeCategory = searchParams.get("category");
 
   return (
     <section className="py-24">
       <div className="container mx-auto px-6">
         <div className="text-center">
-          <p className="font-semibold text-blue-500">Categories</p>
+          <p className="font-semibold text-[#FBBF24]">Categories</p>
 
           <h2 className="mt-2 text-4xl font-bold">Browse by Category</h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Choose a category and start learning the technologies that matter most.
+            Choose a category and start learning the technologies that matter
+            most.
           </p>
         </div>
 
@@ -76,15 +84,19 @@ export default function CategorySection() {
               >
                 <Link href={`/learn?category=${category.slug}#technologies`}>
                   <div
-                    className={`group rounded-2xl border bg-card p-6 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500 hover:shadow-xl ${
-                      isActive ? 'border-blue-500 ring-1 ring-blue-500/40' : ''
+                    className={`group rounded-2xl border bg-card p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#FBBF24] dark:hover:border-[#917d4a]  hover:shadow-xl ${
+                      isActive
+                        ? "border-[#FBBF24] ring-1 ring-[#FBBF24]/40"
+                        : ""
                     }`}
                   >
-                    <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-blue-500/10">
-                      <Icon className="h-7 w-7 text-blue-500 transition-transform group-hover:scale-110" />
+                    <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#FBBF24]/10">
+                      <Icon className="h-7 w-7 text-[#FBBF24] transition-transform group-hover:scale-110" />
                     </div>
 
-                    <h3 className="mt-6 text-xl font-semibold">{category.title}</h3>
+                    <h3 className="mt-6 text-xl font-semibold">
+                      {category.title}
+                    </h3>
 
                     <p className="mt-3 text-sm leading-6 text-muted-foreground">
                       {category.description}

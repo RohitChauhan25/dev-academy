@@ -49,12 +49,12 @@ export default function Hero() {
       <div className="absolute inset-0 -z-20 bg-background" />
 
       {/* Glow */}
-      <div className="absolute left-1/2 top-10 -z-10 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-violet-600/20 blur-[150px]" />
+      {/* <div className="absolute left-1/2 top-10 -z-10 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-[#FBBF24]/20 blur-[150px]" />
 
-      <div className="absolute right-0 top-0 -z-10 h-[350px] w-[350px] rounded-full bg-cyan-500/10 blur-[120px]" />
+      <div className="absolute right-0 top-0 -z-10 h-[350px] w-[350px] rounded-full bg-cyan-500/10 blur-[120px]" /> */}
 
       {/* Grid */}
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:42px_42px]" />
+      {/* <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:42px_42px]" /> */}
 
       <div className="container mx-auto px-6">
         <div className="mx-auto max-w-5xl text-center">
@@ -66,7 +66,7 @@ export default function Hero() {
           >
             <Badge
               variant="outline"
-              className="rounded-full border-blue-500/40 bg-blue-500/10 px-5 py-2 text-blue-300"
+              className="rounded-full dark:border-[#FBBF24]/40 dark:bg-[#FBBF24]/10 px-5 py-2 dark:text-[#FBBF24] border-[#FBBF24]/40 bg-[#FBBF24]/10 text-[#000000]"
             >
               <Sparkles className="mr-2 h-4 w-4" />
               Learn • Practice • Crack Interviews
@@ -80,7 +80,7 @@ export default function Hero() {
             className="mt-8 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-7xl"
           >
             Learn{" "}
-            <span className="bg-gradient-to-r from-indigo-500 via-violet-500 to-sky-400 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient">
+            <span className="bg-gradient-to-r from-[#FBBF24] via-[#6366F1] to-[#6366F1] bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient">
               Modern Technologies
             </span>
             <br />
@@ -109,7 +109,7 @@ export default function Hero() {
           >
             <Button
               size="lg"
-              className="rounded-xl px-8 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-violet-500/30"
+              className="rounded-xl px-8 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#FBBF24]/30"
               asChild
             >
               <Link href="/practice">
@@ -150,12 +150,12 @@ export default function Hero() {
                 whileTap={{
                   scale: 0.95,
                 }}
-                className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground transition-all hover:border-violet-500 hover:text-white hover:shadow-lg hover:shadow-violet-500/20"
+                className="rounded-full border border-border bg-card px-4 py-2 text-sm text-muted-foreground transition-all hover:border-[#FBBF24] hover:shadow-lg hover:shadow-violet-500/20"
               >
                 {tech}
               </motion.span>
             ))}
-          </motion.div> 
+          </motion.div>
         </div>
       </div>
     </section>

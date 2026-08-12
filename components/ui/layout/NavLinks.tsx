@@ -1,24 +1,24 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const links = [
   {
-    title: 'Learn',
-    href: '/learn',
+    title: "Learn",
+    href: "/learn",
   },
   {
-    title: 'Practice',
-    href: '/practice',
+    title: "Practice",
+    href: "/practice",
   },
   {
-    title: 'Questions',
-    href: '/interview-questions',
+    title: "Questions",
+    href: "/interview-questions",
   },
   {
-    title: 'Blogs',
-    href: '/blogs',
+    title: "Blogs",
+    href: "/blogs",
   },
   // {
   //   title: 'Resources',
@@ -26,8 +26,8 @@ const links = [
   // },
 
   {
-    title: 'About',
-    href: '/about',
+    title: "About",
+    href: "/about",
   },
 ];
 
@@ -48,8 +48,8 @@ export default function NavLinks() {
           >
             {link.title}
             <span
-              className={`absolute -bottom-1 left-0 h-0.5 w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-sky-400 transition-transform duration-300 ease-out group-hover:scale-x-100 ${
-                isActive ? 'scale-x-100' : ''
+              className={`absolute -bottom-1 left-0 h-0.5 w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-[#FBBF24] via-[#FBBF24] to-[#6366F1]  transition-transform duration-300 ease-out group-hover:scale-x-100 ${
+                isActive ? "scale-x-100" : ""
               }`}
             />
           </Link>

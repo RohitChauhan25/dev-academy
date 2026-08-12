@@ -11,16 +11,16 @@ const fadeUp = {
 const values = [
   {
     icon: Target,
-    color: 'text-violet-400',
-    bg: 'bg-violet-500/10 border-violet-500/20',
+    color: 'text-accent',
+    bg: 'bg-accent/10 border-accent/20',
     title: 'Focused Learning',
     description:
       'Every piece of content is curated to be practical and interview-relevant — no fluff, no filler.',
   },
   {
     icon: Lightbulb,
-    color: 'text-yellow-400',
-    bg: 'bg-yellow-500/10 border-yellow-500/20',
+    color: 'text-primary',
+    bg: 'bg-primary/10 border-primary/20',
     title: 'Clear Explanations',
     description:
       'Complex topics broken down into digestible concepts with real-world examples and code snippets.',
@@ -57,7 +57,7 @@ export default function AboutMission() {
         >
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             Our{' '}
-            <span className="bg-gradient-to-r from-indigo-500 via-violet-500 to-sky-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#FBBF24] via-[#e7c97c] to-[#6366F1] bg-clip-text text-transparent">
               Mission
             </span>
           </h2>

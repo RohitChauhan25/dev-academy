@@ -73,7 +73,7 @@ const questionSets = [
       "Box model, Flexbox, Grid, specificity, responsive design and more.",
     questions: "90+",
     icon: SiCss,
-    color: "text-blue-500",
+    color: "text-[#FBBF24]",
     href: "/interview-questions/css",
     status: "live" as const,
   },
@@ -182,7 +182,7 @@ export default function Hero() {
         <div className="mx-auto max-w-5xl text-center">
           {/* Badge */}
 
-          <Badge className="rounded-full border-violet-500/30 bg-violet-500/10 px-5 py-2 text-violet-300">
+          <Badge className="rounded-full dark:border-[#FBBF24]/40 dark:bg-[#FBBF24]/10 px-5 py-2 dark:text-[#FBBF24] border-[#FBBF24]/40 bg-[#FBBF24]/10 text-[#000000]">
             <Sparkles className="mr-2 h-4 w-4" />
             Practice • Learn • Crack Interviews
           </Badge>
@@ -205,7 +205,7 @@ export default function Hero() {
           >
             Prepare for
             <br />
-            <span className="bg-gradient-to-r from-indigo-500 via-violet-500 to-sky-400  bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#FBBF24] via-[#e4c881] to-[#6366F1] bg-clip-text text-transparent">
               Technical Interview Rounds
             </span>
             <motion.span
@@ -318,7 +318,7 @@ export default function Hero() {
                 }}
                 whileHover={isLive ? { y: -6 } : undefined}
                 className={`group relative h-full overflow-hidden rounded-2xl border bg-card p-6 transition-colors duration-300 ${
-                  isLive ? "hover:border-violet-500" : "opacity-80"
+                  isLive ? "hover:border-[#FBBF24]" : "opacity-80"
                 }`}
               >
                 <div className="flex items-center gap-4">
@@ -339,7 +339,7 @@ export default function Hero() {
 
                 <div className="mt-5">
                   {isLive ? (
-                    <span className="inline-flex items-center text-sm font-medium text-violet-400 transition group-hover:translate-x-1">
+                    <span className="inline-flex items-center text-sm font-medium text-[#FBBF24] transition group-hover:translate-x-1">
                       View questions →
                     </span>
                   ) : (

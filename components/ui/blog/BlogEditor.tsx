@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { formatBlogDate } from '@/lib/blog';
 import { createBlog } from '@/lib/auth-api';
+import { getTechnologies, getTopicsForTechnology } from '@/lib/tutorials';
 import { useAuth } from '@/components/providers/AuthProvider';
 import SignUpModal from '@/components/ui/auth/SignUpModal';
 import RichTextEditor from './RichTextEditor';
@@ -31,6 +32,8 @@ export default function BlogEditor() {
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [technology, setTechnology] = useState('');
+  const [topic, setTopic] = useState('');
   const [tagsInput, setTagsInput] = useState('');
   const [content, setContent] = useState(SAMPLE_CONTENT);
   const [wordCount, setWordCount] = useState(0);
@@ -38,14 +41,27 @@ export default function BlogEditor() {
   const [publishing, setPublishing] = useState<'draft' | 'published' | null>(null);
   const [error, setError] = useState('');
 
-  const tags = useMemo(
-    () =>
-      tagsInput
-        .split(',')
-        .map((t) => t.trim())
-        .filter(Boolean),
-    [tagsInput],
-  );
+  const technologies = useMemo(() => getTechnologies(), []);
+  const topics = useMemo(() => getTopicsForTechnology(technology), [technology]);
+
+  const handleTechnologyChange = (value: string) => {
+    setTechnology(value);
+    setTopic('');
+  };
+
+  const tags = useMemo(() => {
+    const technologyLabel = technologies.find((t) => t.id === technology)?.label;
+    const topicLabel = topics.find((t) => t.slug === topic)?.title;
+
+    const manualTags = tagsInput
+      .split(',')
+      .map((t) => t.trim())
+      .filter(Boolean);
+
+    return Array.from(
+      new Set([technologyLabel, topicLabel, ...manualTags].filter((t): t is string => Boolean(t))),
+    );
+  }, [tagsInput, technology, topic, technologies, topics]);
 
   const readingTime = `${Math.max(1, Math.round(wordCount / 200))} min read`;
 
@@ -114,8 +130,45 @@ export default function BlogEditor() {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Understanding Closures in JavaScript"
-            className="h-11 rounded-lg"
+            className="h-11 rounded-lg focus-visible:border-[#FBBF24] focus-visible:ring-[#FBBF24]/50"
           />
+        </div>
+
+        <div>
+          <label className="mb-1.5 block text-sm font-medium">Technology</label>
+          <select
+            value={technology}
+            onChange={(e) => handleTechnologyChange(e.target.value)}
+            className="h-11 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm text-foreground outline-none focus-visible:border-[#FBBF24] focus-visible:ring-3 focus-visible:ring-[#FBBF24]/50 dark:bg-input/30"
+          >
+            <option value="" className="bg-popover text-popover-foreground">
+              Select a technology
+            </option>
+            {technologies.map((t) => (
+              <option key={t.id} value={t.id} className="bg-popover text-popover-foreground">
+                {t.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label className="mb-1.5 block text-sm font-medium">Topic</label>
+          <select
+            value={topic}
+            onChange={(e) => setTopic(e.target.value)}
+            disabled={!technology}
+            className="h-11 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm text-foreground outline-none focus-visible:border-[#FBBF24] focus-visible:ring-3 focus-visible:ring-[#FBBF24]/50 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-input/30"
+          >
+            <option value="" className="bg-popover text-popover-foreground">
+              {technology ? 'Select a topic' : 'Pick a technology first'}
+            </option>
+            {topics.map((t) => (
+              <option key={t.slug} value={t.slug} className="bg-popover text-popover-foreground">
+                {t.title}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="sm:col-span-2">
@@ -124,17 +177,17 @@ export default function BlogEditor() {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="A one or two sentence summary shown on the blog listing card."
-            className="h-11 rounded-lg"
+            className="h-11 rounded-lg focus-visible:border-[#FBBF24] focus-visible:ring-[#FBBF24]/50"
           />
         </div>
 
         <div className="sm:col-span-2">
-          <label className="mb-1.5 block text-sm font-medium">Tags</label>
+          <label className="mb-1.5 block text-sm font-medium">Additional tags (optional)</label>
           <Input
             value={tagsInput}
             onChange={(e) => setTagsInput(e.target.value)}
             placeholder="javascript, closures, fundamentals"
-            className="h-11 rounded-lg"
+            className="h-11 rounded-lg focus-visible:border-[#FBBF24] focus-visible:ring-[#FBBF24]/50"
           />
         </div>
 
@@ -144,7 +197,7 @@ export default function BlogEditor() {
               <Badge
                 key={tag}
                 variant="outline"
-                className="rounded-full border-violet-500/25 bg-violet-500/10 text-violet-700 dark:text-violet-300"
+                className="rounded-full border-amber-300 bg-amber-100 text-amber-900 dark:border-[#FBBF24]/30 dark:bg-[#FBBF24]/10 dark:text-[#FBBF24]"
               >
                 {tag}
               </Badge>
@@ -161,7 +214,7 @@ export default function BlogEditor() {
               onClick={() => setMode('write')}
               className={`flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium transition ${
                 mode === 'write'
-                  ? 'border-violet-500 bg-violet-500 text-white'
+                  ? 'border-[#FBBF24] bg-[#FBBF24] text-black'
                   : 'text-muted-foreground'
               }`}
             >
@@ -172,7 +225,7 @@ export default function BlogEditor() {
               onClick={() => setMode('preview')}
               className={`flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium transition ${
                 mode === 'preview'
-                  ? 'border-violet-500 bg-violet-500 text-white'
+                  ? 'border-[#FBBF24] bg-[#FBBF24] text-black'
                   : 'text-muted-foreground'
               }`}
             >
@@ -195,7 +248,7 @@ export default function BlogEditor() {
                   <Badge
                     key={tag}
                     variant="outline"
-                    className="rounded-full border-violet-500/25 bg-violet-500/10 text-violet-700 dark:text-violet-300"
+                    className="rounded-full border-amber-300 bg-amber-100 text-amber-900 dark:border-[#FBBF24]/30 dark:bg-[#FBBF24]/10 dark:text-[#FBBF24]"
                   >
                     {tag}
                   </Badge>
@@ -236,7 +289,7 @@ export default function BlogEditor() {
           <Button
             onClick={() => publish('published')}
             disabled={publishing !== null}
-            className="bg-gradient-to-r from-indigo-500 via-violet-500 to-sky-400"
+            className="bg-[#FBBF24] text-black hover:opacity-90"
           >
             {publishing === 'published' && <Loader2 className="size-4 animate-spin" />}
             Publish

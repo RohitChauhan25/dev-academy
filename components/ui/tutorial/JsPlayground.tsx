@@ -103,7 +103,7 @@ export default function JsPlayground({ code: initialCode }: { code: string }) {
           <Button
             size="sm"
             variant="ghost"
-            className="h-7 cursor-pointer px-2 text-xs"
+            className="h-7 cursor-pointer px-2 text-xs text-zinc-300 hover:bg-white/10 hover:text-zinc-100"
             onClick={handleReset}
           >
             <RotateCcw className="h-3.5 w-3.5" />

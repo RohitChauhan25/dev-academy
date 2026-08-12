@@ -1,28 +1,28 @@
-import Link from 'next/link';
-import { ArrowRight, Calendar, Clock } from 'lucide-react';
+import Link from "next/link";
+import { ArrowRight, Calendar, Clock } from "lucide-react";
 
-import { Badge } from '@/components/ui/badge';
-import { formatBlogDate, type DisplayBlogPost } from '@/lib/blog';
+import { Badge } from "@/components/ui/badge";
+import { formatBlogDate, type DisplayBlogPost } from "@/lib/blog";
 
 export default function BlogCard({ post }: { post: DisplayBlogPost }) {
   return (
     <Link
       href={`/blogs/${post.slug}`}
-      className="group flex h-full flex-col rounded-2xl border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-violet-500 hover:shadow-xl"
+      className="group flex h-full flex-col rounded-2xl border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#FBBF24] hover:shadow-xl"
     >
       <div className="flex flex-wrap gap-2">
         {post.meta.tags.slice(0, 3).map((tag) => (
           <Badge
             key={tag}
             variant="outline"
-            className="rounded-full border-violet-500/25 bg-violet-500/10 text-violet-700 dark:text-violet-300"
+            className="rounded-full border-amber-300 bg-amber-100 text-amber-900 dark:border-[#FBBF24]/30 dark:bg-[#FBBF24]/10 dark:text-[#FBBF24]"
           >
             {tag}
           </Badge>
         ))}
       </div>
 
-      <h3 className="mt-4 text-xl font-bold leading-snug transition group-hover:text-violet-500">
+      <h3 className="mt-4 text-xl font-bold leading-snug transition group-hover:text-[#FBBF24]">
         {post.meta.title}
       </h3>
 

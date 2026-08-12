@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { BookOpen, PenSquare, Tag } from 'lucide-react';
+import { motion } from "framer-motion";
+import { BookOpen, PenSquare, Tag } from "lucide-react";
 
-import { Badge } from '@/components/ui/badge';
+import { Badge } from "@/components/ui/badge";
 
 const fadeUp = {
   hidden: {
@@ -36,7 +36,7 @@ export default function BlogHero({ postCount, tagCount }: BlogHeroProps) {
     },
     {
       icon: BookOpen,
-      title: 'Written for Developers',
+      title: "Written for Developers",
     },
   ];
 
@@ -55,7 +55,7 @@ export default function BlogHero({ postCount, tagCount }: BlogHeroProps) {
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
             <Badge
               variant="outline"
-              className="rounded-full border-violet-500/30 bg-violet-500/10 px-4 py-2 text-violet-400"
+              className="rounded-full dark:border-[#FBBF24]/40 dark:bg-[#FBBF24]/10 px-5 py-2 dark:text-[#FBBF24] border-[#FBBF24]/40 bg-[#FBBF24]/10 text-[#000000]"
             >
               ✍️ From the Dev Academy Team
             </Badge>
@@ -67,8 +67,8 @@ export default function BlogHero({ postCount, tagCount }: BlogHeroProps) {
             animate="visible"
             className="mt-8 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl"
           >
-            The{' '}
-            <span className="bg-gradient-to-r from-indigo-500 via-violet-500 to-sky-400 bg-clip-text text-transparent">
+            The{" "}
+            <span className="bg-gradient-to-r from-[#FBBF24] via-[#e7c97c] to-[#6366F1]  bg-clip-text text-transparent">
               Dev Academy Blog
             </span>
           </motion.h1>
@@ -79,8 +79,8 @@ export default function BlogHero({ postCount, tagCount }: BlogHeroProps) {
             animate="visible"
             className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-muted-foreground"
           >
-            Practical, no-fluff articles on JavaScript fundamentals, common gotchas, and the
-            concepts that keep showing up in interviews.
+            Practical, no-fluff articles on JavaScript fundamentals, common
+            gotchas, and the concepts that keep showing up in interviews.
           </motion.p>
 
           <motion.div
@@ -95,9 +95,9 @@ export default function BlogHero({ postCount, tagCount }: BlogHeroProps) {
               return (
                 <div
                   key={item.title}
-                  className="flex items-center gap-3 rounded-xl border bg-card px-5 py-3 transition-all hover:-translate-y-1 hover:border-violet-500"
+                  className="flex items-center gap-3 rounded-xl border bg-card px-5 py-3 transition-all hover:-translate-y-1 hover:border-[#FBBF24]"
                 >
-                  <Icon className="h-5 w-5 text-violet-500" />
+                  <Icon className="h-5 w-5 text-[#FBBF24]" />
 
                   <span className="font-medium">{item.title}</span>
                 </div>

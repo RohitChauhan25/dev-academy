@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { ArrowRight, Brain, Code2, Briefcase } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowRight, Brain, Code2, Briefcase } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function PracticeCTA() {
   return (
@@ -20,7 +20,7 @@ export default function PracticeCTA() {
           <div className="absolute inset-0 -z-10 bg-gradient-to-r from-blue-500/5 via-violet-500/10 to-cyan-500/5" />
 
           <div className="mx-auto max-w-3xl text-center">
-            <span className="rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-sm font-medium text-blue-500">
+            <span className="rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-sm font-medium text-[#FBBF24]">
               🚀 Ready for the Next Step?
             </span>
 
@@ -31,16 +31,18 @@ export default function PracticeCTA() {
             </h2>
 
             <p className="mt-6 text-lg text-muted-foreground">
-              Reinforce what you've learned with MCQs, output-based questions, coding challenges,
-              and interview questions designed to improve your problem-solving skills.
+              Reinforce what you've learned with MCQs, output-based questions,
+              coding challenges, and interview questions designed to improve
+              your problem-solving skills.
             </p>
 
             <div className="mt-10 grid gap-4 md:grid-cols-3">
               <div className="rounded-xl border bg-background p-5">
-                <Brain className="mx-auto h-8 w-8 text-blue-500" />
+                <Brain className="mx-auto h-8 w-8 text-[#FBBF24]" />
                 <h3 className="mt-3 font-semibold">MCQs</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Test your understanding with topic-wise multiple-choice questions.
+                  Test your understanding with topic-wise multiple-choice
+                  questions.
                 </p>
               </div>
 
@@ -56,7 +58,8 @@ export default function PracticeCTA() {
                 <Briefcase className="mx-auto h-8 w-8 text-cyan-500" />
                 <h3 className="mt-3 font-semibold">Interview Questions</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Prepare with beginner to advanced interview questions from top technologies.
+                  Prepare with beginner to advanced interview questions from top
+                  technologies.
                 </p>
               </div>
             </div>
@@ -70,7 +73,9 @@ export default function PracticeCTA() {
               </Button>
 
               <Button variant="outline" size="lg" asChild>
-                <Link href="/interview-questions">Explore Interview Questions</Link>
+                <Link href="/interview-questions">
+                  Explore Interview Questions
+                </Link>
               </Button>
             </div>
           </div>

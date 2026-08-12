@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import { useRouter } from 'next/navigation';
+import * as React from "react";
+import { useRouter } from "next/navigation";
 import {
   BookOpen,
   BrainCircuit,
@@ -9,7 +9,7 @@ import {
   Newspaper,
   PenSquare,
   Search,
-} from 'lucide-react';
+} from "lucide-react";
 
 import {
   Command,
@@ -19,10 +19,10 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '@/components/ui/command';
-import { Button } from '../button';
-import { Drawer, DrawerContent } from '../drawer';
-import type { SearchItem } from '@/lib/search-index';
+} from "@/components/ui/command";
+import { Button } from "../button";
+import { Drawer, DrawerContent } from "../drawer";
+import type { SearchItem } from "@/lib/search-index";
 
 interface SearchDialogProps {
   mobile?: boolean;
@@ -45,49 +45,62 @@ function substringFilter(value: string, search: string) {
   if (target.startsWith(term)) return 1;
 
   const wordBoundaryMatch = new RegExp(
-    `\\b${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`,
+    `\\b${term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`,
   ).test(target);
 
   return wordBoundaryMatch ? 0.75 : 0.5;
 }
 
 const QUICK_LINKS = [
-  { title: 'Learn JavaScript', href: '/learn', icon: BookOpen },
-  { title: 'Practice Questions', href: '/practice', icon: BrainCircuit },
-  { title: 'Interview Questions', href: '/interview-questions', icon: MessageCircleQuestion },
-  { title: 'Blog', href: '/blogs', icon: Newspaper },
-  { title: 'Write a Post', href: '/blogs/write', icon: PenSquare },
+  { title: "Learn JavaScript", href: "/learn", icon: BookOpen },
+  { title: "Practice Questions", href: "/practice", icon: BrainCircuit },
+  {
+    title: "Interview Questions",
+    href: "/interview-questions",
+    icon: MessageCircleQuestion,
+  },
+  { title: "Blog", href: "/blogs", icon: Newspaper },
+  { title: "Write a Post", href: "/blogs/write", icon: PenSquare },
 ];
 
-export default function SearchDialog({ mobile = false, items }: SearchDialogProps) {
+export default function SearchDialog({
+  mobile = false,
+  items,
+}: SearchDialogProps) {
   const [open, setOpen] = React.useState(false);
-  const [query, setQuery] = React.useState('');
+  const [query, setQuery] = React.useState("");
   const router = useRouter();
 
   const handleOpenChange = (next: boolean) => {
-    if (next) setQuery('');
+    if (next) setQuery("");
     setOpen(next);
   };
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === 'k' && (e.ctrlKey || e.metaKey)) {
+      if (e.key === "k" && (e.ctrlKey || e.metaKey)) {
         e.preventDefault();
         setOpen((prev) => {
           const next = !prev;
-          if (next) setQuery('');
+          if (next) setQuery("");
           return next;
         });
       }
     };
 
-    document.addEventListener('keydown', down);
+    document.addEventListener("keydown", down);
 
-    return () => document.removeEventListener('keydown', down);
+    return () => document.removeEventListener("keydown", down);
   }, []);
 
   const groups = React.useMemo(() => {
-    const order = ['Topics', 'Interview Questions', 'Tutorials', 'Blog', 'Pages'];
+    const order = [
+      "Topics",
+      "Interview Questions",
+      "Tutorials",
+      "Blog",
+      "Pages",
+    ];
     const map = new Map<string, SearchItem[]>();
 
     items.forEach((item) => {
@@ -115,11 +128,11 @@ export default function SearchDialog({ mobile = false, items }: SearchDialogProp
       />
 
       <CommandList>
-        {query.trim() === '' ? (
+        {query.trim() === "" ? (
           <>
             <div className="flex flex-col items-center gap-3 px-4 pb-6 pt-8 text-center">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500/15 via-violet-500/15 to-sky-400/15">
-                <Search className="h-5 w-5 text-violet-500" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#FBBF24]/15 via-[#e7c97c]/15 to-[#6366F1]/15">
+                <Search className="h-5 w-5 text-primary" />
               </div>
               <div>
                 <p className="text-sm font-semibold">Search Dev Academy</p>
@@ -138,7 +151,7 @@ export default function SearchDialog({ mobile = false, items }: SearchDialogProp
                     value={link.title}
                     onSelect={() => handleSelect(link.href)}
                   >
-                    <Icon className="h-4 w-4 text-violet-500" />
+                    <Icon className="h-4 w-4 text-primary" />
                     {link.title}
                   </CommandItem>
                 );
@@ -159,8 +172,8 @@ export default function SearchDialog({ mobile = false, items }: SearchDialogProp
                       // for Topics, the subtitle is just the parent tutorial's name,
                       // and matching on it makes every section under a tutorial show
                       // up whenever that tutorial's own title matches the search.
-                      item.group === 'Blog'
-                        ? `${item.title} ${item.subtitle ?? ''}`.trim()
+                      item.group === "Blog"
+                        ? `${item.title} ${item.subtitle ?? ""}`.trim()
                         : item.title
                     }
                     onSelect={() => handleSelect(item.href)}
@@ -186,17 +199,23 @@ export default function SearchDialog({ mobile = false, items }: SearchDialogProp
   return (
     <>
       {mobile ? (
-        <Button variant="ghost" size="icon" onClick={() => handleOpenChange(true)}>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => handleOpenChange(true)}
+        >
           <Search className="h-5 w-5" />
         </Button>
       ) : (
         <button
           onClick={() => handleOpenChange(true)}
-          className="flex items-center gap-2 rounded-md border px-3 py-2 text-sm text-muted-foreground hover:bg-accent"
+          className="flex items-center gap-2 rounded-md border px-3 py-2 text-sm text-muted-foreground hover:bg-muted"
         >
           <Search className="h-4 w-4" />
           <span>Search</span>
-          <kbd className="ml-6 rounded border bg-muted px-1.5 text-xs">Ctrl K</kbd>
+          <kbd className="ml-6 rounded border bg-muted px-1.5 text-xs">
+            Ctrl K
+          </kbd>
         </button>
       )}
 
@@ -205,7 +224,11 @@ export default function SearchDialog({ mobile = false, items }: SearchDialogProp
           <DrawerContent className="h-[80vh]">{results}</DrawerContent>
         </Drawer>
       ) : (
-        <CommandDialog open={open} onOpenChange={handleOpenChange} className="max-w-3xl">
+        <CommandDialog
+          open={open}
+          onOpenChange={handleOpenChange}
+          className="max-w-3xl"
+        >
           {results}
         </CommandDialog>
       )}
