@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Hero from "@/components/ui/home/HeroSection";
 import HowItWorksSection from "@/components/ui/home/HowItWorksSection";
 import CategorySection from "@/components/ui/learn/CategorySection";
@@ -10,7 +11,9 @@ export default function Home() {
 
       <Hero />
       <HowItWorksSection />
-      <CategorySection />
+      <Suspense fallback={null}>
+        <CategorySection />
+      </Suspense>
       <PracticeCTA />
     </>
   );
