@@ -1,61 +1,61 @@
-"use client";
+'use client';
 
-import Link from "next/link";
+import Link from 'next/link';
 
-import { Mail, ArrowUpRight, X } from "lucide-react";
-import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
-import Logo from "./Logo";
+import { Mail, ArrowUpRight, X } from 'lucide-react';
+import { FaLinkedin, FaXTwitter } from 'react-icons/fa6';
+import Logo from './Logo';
 export default function Footer() {
   const platformLinks = [
     {
-      title: "Practice",
-      href: "/practice",
+      title: 'Practice',
+      href: '/practice',
     },
     {
-      title: "Interview Questions",
-      href: "/interview-questions",
+      title: 'Interview Questions',
+      href: '/interview-questions',
     },
     {
-      title: "Blogs",
-      href: "/blogs",
+      title: 'Blogs',
+      href: '/blogs',
     },
   ];
 
   const resources = [
     {
-      title: "Frontend",
-      href: "/interview-questions",
+      title: 'Frontend',
+      href: '/interview-questions',
     },
     {
-      title: "Backend",
-      href: "/interview-questions",
+      title: 'Backend',
+      href: '/interview-questions',
     },
     {
-      title: "System Design",
-      href: "/interview-questions",
+      title: 'System Design',
+      href: '/interview-questions',
     },
     {
-      title: "Machine Coding",
-      href: "/interview-questions",
+      title: 'Machine Coding',
+      href: '/interview-questions',
     },
   ];
 
   const company = [
     {
-      title: "About",
-      href: "/about",
+      title: 'About',
+      href: '/about',
     },
     {
-      title: "Privacy Policy",
-      href: "/privacy",
+      title: 'Privacy Policy',
+      href: '/privacy',
     },
     {
-      title: "Terms",
-      href: "/terms",
+      title: 'Terms',
+      href: '/terms',
     },
     {
-      title: "Contact",
-      href: "/contact",
+      title: 'Contact',
+      href: '/contact',
     },
   ];
 
@@ -69,14 +69,13 @@ export default function Footer() {
             <Logo />
 
             <p className="mt-5 max-w-sm leading-7 text-muted-foreground">
-              Practice real interview questions, prepare for technical
-              interviews, and learn through developer-focused blogs—all in one
-              place.
+              Practice real interview questions, prepare for technical interviews, and learn through
+              developer-focused blogs—all in one place.
             </p>
 
             <div className="mt-6 flex gap-3">
               <Link
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/devacademy-official"
                 target="_blank"
                 className="rounded-lg border p-2 transition hover:border-[#FBBF24] hover:text-[#FBBF24]"
               >

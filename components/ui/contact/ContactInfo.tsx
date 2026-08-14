@@ -1,25 +1,25 @@
-import Link from "next/link";
-import { Mail } from "lucide-react";
-import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import Link from 'next/link';
+import { Mail } from 'lucide-react';
+import { FaLinkedin, FaXTwitter } from 'react-icons/fa6';
 
 const CHANNELS = [
   {
-    title: "Email",
-    value: "devacademyofficial@gmail.com",
-    href: "mailto:devacademyofficial@gmail.com",
+    title: 'Email',
+    value: 'devacademyofficial@gmail.com',
+    href: 'mailto:devacademyofficial@gmail.com',
     icon: Mail,
   },
 
   {
-    title: "LinkedIn",
-    value: "linkedin.com/company/devacademy",
-    href: "https://linkedin.com",
+    title: 'LinkedIn',
+    value: 'https://www.linkedin.com/company/devacademy-official/',
+    href: 'https://www.linkedin.com/company/devacademy-official/',
     icon: FaLinkedin,
   },
   {
-    title: "X (Twitter)",
-    value: "@devacademy",
-    href: "https://twitter.com",
+    title: 'X (Twitter)',
+    value: '@devacademy',
+    href: 'https://twitter.com',
     icon: FaXTwitter,
   },
 ];
@@ -42,9 +42,7 @@ export default function ContactInfo() {
 
             <div className="min-w-0">
               <p className="text-sm font-semibold">{channel.title}</p>
-              <p className="truncate text-sm text-muted-foreground">
-                {channel.value}
-              </p>
+              <p className="truncate text-sm text-muted-foreground">{channel.value}</p>
             </div>
           </Link>
         );
